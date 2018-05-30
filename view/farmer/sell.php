@@ -46,15 +46,174 @@
   </header>
   <!-- END: header -->
   
-  <div class="probootstrap-section">
-    <div class="container text-center">
+   <div class="probootstrap-section">
+    <div class="container ">
       <div class="row">
-        <div class="col-md-6 col-md-offset-3 mb40">
-          <h2></h2>       
-        </div>
+          <div class="row">
+          <h2></h2>
+          </div>
+          
+          <form method="post">
+<!--            Type dropdown-->
+            <div class="row">
+            <div class="col-md-2">
+              <div class="form-group">
+                <label for="croptype">Crop Type:</label>
+              </div>
+            </div>
+              <div class="col-md-3">
+              <div class="form-group">
+                <select name="croptype">
+                    <option selected disabled>Select crop type</option>
+                    <option value="watermelon">Watermelon</option>
+                    <option value="pumpkin">Pumpkin</option>
+                    <option value="rice">Rice</option>
+                    <option value="strawberry">Strawberry</option>
+                    <option value="tomato">Tomato</option>
+                    <option value="mango">Mango</option>
+                    <option value="lemon">Lemon</option>
+                    <option value="potato">Potato</option>
+                    <option value="dill">Dill</option>
+                    <option value="eggplant">Eggplant</option>
+                    <option value="grapefruit">Grapefruit</option>
+                    <option value="kiwi">Kiwi</option>
+                    <option value="kale">Kale</option>
+                    <option value="apple">Apple</option>
+                    <option value="apricot">Apricot</option>
+                    <option value="avocado">Avocado</option>
+                    <option value="cabbage">Cabbage</option>
+                    <option value="carrot">Carrot</option>
+                    <option value="celery">Celery</option>
+                  </select>
+              </div>
+            </div>
+              </div>
+<!--              Farmer's username-->
+              <div class="row">
+            <div class="col-md-2">
+              <div class="form-group">
+                <label for="username">Username:</label>
+              </div>
+            </div>
+              <div class="col-md-3">
+              <div class="form-group">
+                <input type="text" class="form-control" id="username" name="username" required>
+              </div>
+            </div>
+              </div>
+<!--              Price-->
+              <div class="row">
+            <div class="col-md-2">
+              <div class="form-group">
+                <label for="price">Price:</label>
+              </div>
+            </div>
+              <div class="col-md-3">
+              <div class="form-group">
+                <input type="text" class="form-control" id="price" name="price" required>
+              </div>
+            </div>
+                  <div class="col-md-1">
+              <div class="form-group">
+                <label for="won">Won</label>
+              </div>
+            </div>
+              </div>
+<!--              Unit-->
+              <div class="row">
+            <div class="col-md-2">
+              <div class="form-group">
+                <label for="unit">Unit:</label>
+              </div>
+            </div>
+              <div class="col-md-3">
+              <div class="form-group">
+                <select name="unit">
+                    <option selected disabled>Select unit</option>
+                    <option value="kg">Kg</option>
+                    <option value="pereach">Per each</option>
+                  </select>
+              </div>
+            </div>
+              </div>
+              
+<!--              Origin-->
+              <div class="row">
+            <div class="col-md-2">
+              <div class="form-group">
+                <label for="origin">Origin:</label>
+              </div>
+            </div>
+              <div class="col-md-3">
+              <div class="form-group">
+                <select name="origin">
+                    <option selected disabled>Select</option>
+                  </select>
+              </div>
+            </div>
+              </div>
+<!--              Discount Rate-->
+              <div class="row">
+            <div class="col-md-2">
+              <div class="form-group">
+                <label for="discountrate">Discount Rate:</label>
+              </div>
+            </div>
+              <div class="col-md-2">
+              <div class="form-group">
+                <select name="rate">
+                    <option selected disabled>Discount rate</option>
+                    <option value="ten">10</option>
+                    <option value="twenty">20</option>
+                    <option value="thirty">30</option>
+                    <option value="fourty">40</option>
+                  </select>
+              </div>
+            </div>
+                  <div class="col-md-2">
+              <div class="form-group">
+                <select name="min">
+                    <option selected disabled>Min quantity</option>
+                    <option value="one">1</option>
+                    <option value="two">2</option>
+                    <option value="three">3</option>
+                    <option value="four">4</option>
+                    <option value="five">5</option>
+                    <option value="six">6</option>
+                    <option value="seven">7</option>
+                    <option value="eight">8</option>
+                    <option value="nine">9</option>
+                    <option value="ten">10</option>
+                    <option value="eleven">11</option>
+                  </select>
+              </div>
+            </div>
+                  <div class="col-md-2">
+              <div class="form-group">
+                <select name="max">
+                    <option selected disabled>Max quantity</option>
+                    <option value="two">2</option>
+                    <option value="three">3</option>
+                    <option value="four">4</option>
+                    <option value="five">5</option>
+                    <option value="six">6</option>
+                    <option value="seven">7</option>
+                    <option value="eight">8</option>
+                    <option value="nine">9</option>
+                    <option value="ten">10</option>
+                    <option value="eleven">11</option>
+                    <option value="twelve">12</option>
+                    <option value="thirteen">13</option>
+                  </select>
+              </div>
+            </div>
+              </div>
+             
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary" id="submit" name="submit" value="Submit">
+            </div>
+          </form>
       </div>
-
-      
     </div>
   </div>
 
