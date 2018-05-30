@@ -47,14 +47,70 @@
   <!-- END: header -->
   
   <div class="probootstrap-section">
-    <div class="container text-center">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3 mb40">
-          <h2></h2>       
-        </div>
+    <div class="container">
+       <div class="row">
+          <div class="row">
+          <h2></h2>
+          </div>
+          
+          <form method="post">
+<!--              Title of the post-->
+              <div class="row">
+            <div class="col-md-2">
+              <div class="form-group">
+                <label for="title">Title:</label>
+              </div>
+            </div>
+              <div class="col-md-3">
+              <div class="form-group">
+                <input type="text" class="form-control" id="username" name="username" required>
+              </div>
+            </div>
+              </div>
+<!--              Uses of crops-->
+              <div class="row">
+            <div class="col-md-2">
+              <div class="form-group">
+                <label for="uses">Uses:</label>
+              </div>
+            </div>
+              <div class="col-md-3">
+              <div class="form-group">
+                <input type="text" class="form-control" id="uses" name="uses" required>
+              </div>
+            </div>
+              </div>
+<!--              Disease-->
+              <div class="row">
+            <div class="col-md-2">
+              <div class="form-group">
+                <label for="disease">Disease:</label>
+              </div>
+            </div>
+              <div class="col-md-3">
+              <div class="form-group">
+                <input type="text" class="form-control" id="disease" name="disease" required>
+              </div>
+            </div>
+              </div>
+<!--              Description of crops-->
+              <div class="row">
+            <div class="col-md-2">
+              <div class="form-group">
+                <label for="description">Description:</label>
+              </div>
+            </div>
+              <div class="col-md-3">
+              <div class="form-group">
+                <input type="text" class="form-control" id="description" name="description" required>
+              </div>
+            </div>
+              </div>
+              <div class="form-group">
+              <input type="submit" class="btn btn-primary" id="writepost" name="writepost" value="Write Post">
+            </div>
+          </form>
       </div>
-
-      
     </div>
   </div>
 
