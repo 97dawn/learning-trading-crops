@@ -47,11 +47,142 @@
   <!-- END: header -->
   
   <div class="probootstrap-section">
-    <div class="container text-center">
+    <div class="container">
       <div class="row">
-        <div class="col-md-6 col-md-offset-3 mb40">
-          <h2></h2>       
-        </div>
+        <form method="post">
+<!--            Type dropdown-->
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="croptype">Crop Type:</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <select name="croptype">
+                            <option selected disabled>Select crop type</option>
+                            <option value="watermelon">Watermelon</option>
+                            <option value="pumpkin">Pumpkin</option>
+                            <option value="rice">Rice</option>
+                            <option value="strawberry">Strawberry</option>
+                            <option value="tomato">Tomato</option>
+                            <option value="mango">Mango</option>
+                            <option value="lemon">Lemon</option>
+                            <option value="potato">Potato</option>
+                            <option value="dill">Dill</option>
+                            <option value="eggplant">Eggplant</option>
+                            <option value="grapefruit">Grapefruit</option>
+                            <option value="kiwi">Kiwi</option>
+                            <option value="kale">Kale</option>
+                            <option value="apple">Apple</option>
+                            <option value="apricot">Apricot</option>
+                            <option value="avocado">Avocado</option>
+                            <option value="cabbage">Cabbage</option>
+                            <option value="carrot">Carrot</option>
+                            <option value="celery">Celery</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+<!--              Farmer's username-->
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                </div>
+            </div>
+<!--              Price-->
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="price">Price:</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="price" name="price" required>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="form-group">
+                        <label for="won">Won</label>
+                    </div>
+                </div>
+            </div>
+<!--              Quantity-->
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="quantity">Quantity:</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="quantity" name="quantity" required>
+                    </div>
+                </div>
+            </div>            
+<!--              Unit-->
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="unit">Unit:</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <select name="unit">
+                            <option selected disabled>Select unit</option>
+                            <option value="kg">Kg</option>
+                            <option value="pereach">Per each</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+<!--              Period-->
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="period">Period:</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="period" name="period" required>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="form-group">
+                        <label for="month">Month(s)</label>
+                    </div>
+                </div>
+            </div>  
+<!--              Origin-->
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="origin">Origin:</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <select name="origin">
+                            <option selected disabled>Select</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+<!--              Submit button-->
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary" id="submit" name="submit" value="Submit">
+            </div>
+          </form>
       </div>
 
       
