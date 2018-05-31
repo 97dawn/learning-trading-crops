@@ -48,12 +48,50 @@
   <div class="probootstrap-section">
     <div class="container text-center">
       <div class="row">
-        <div class="col-md-6 col-md-offset-3 mb40">
-          <h2></h2>      
+        <div class="col-md-10 col-md-offset-1 mb40">
+          <h2></h2>
+          <p>Purchase products from farmers</p>
         </div>
       </div>
-
-      
+            <div class="row">
+              <div class="col-md-2">
+                  <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Origin
+                        <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                
+                            </ul>
+                  </div>    
+              </div>
+              <div class="col-md-2">
+                  <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Crop type
+                        <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">Vegetable</a></li>
+                              <li><a href="#">Fruit</a></li>
+                              <li><a href="#">Herb</a></li>
+                              <li><a href="#">Nut</a></li>
+                              <li><a href="#">Grain</a></li>
+                            </ul>
+                  </div>    
+              </div>
+              <div class="col-md-2">
+                  <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Price
+                        <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">0-10000won</a></li>
+                              <li><a href="#">10,000-20,000won</a></li>
+                              <li><a href="#">20,000-30,000won</a></li>
+                              <li><a href="#">30,000-40,000won</a></li>
+                              <li><a href="#">40,000-50,000won</a></li>
+                              <li><a href="#">50,000-100,000won</a></li>
+                              <li><a href="#">Above 100,000won</a></li>    
+                            </ul>
+                  </div>    
+              </div>
+            </div>
     </div>
   </div>
 
