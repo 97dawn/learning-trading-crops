@@ -11,7 +11,17 @@
     <link rel="stylesheet" href="../../css/styles-merged.css">
     <link rel="stylesheet" href="../../css/style.min.css">
     <link rel="stylesheet" href="../../css/custom.css">
+<style>
+.dropdown-submenu {
+    position: relative;
+}
 
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+</style>
   </head>
   <body>
 
@@ -48,12 +58,63 @@
   <div class="probootstrap-section">
     <div class="container text-center">
       <div class="row">
-        <div class="col-md-6 col-md-offset-3 mb40">
-          <h2></h2>      
+        <div class="col-md-10 col-md-offset-1 mb40">
+          <h2></h2>
+          <p>Purchase product for one time or subscribe to a farmer to get weekly or monthly delivery - Your choice  </p>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-2">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Origin
+                <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                                
+                    </ul>
+            </div>    
+        </div>
+          <div class="col-md-2">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Crop type
+                    <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                              <li><a href="#">Vegetable</a></li>
+                              <li><a href="#">Fruit</a></li>
+                              <li><a href="#">Herb</a></li>
+                              <li><a href="#">Nut</a></li>
+                              <li><a href="#">Grain</a></li>
+<!--                            <option value="herb" onclick="renderCropNames(this)">herb</option>-->
+<!--                                <a value="herb" onclick="renderCropNames(this)">herb</a></li>-->
+                        </ul>
+                </div>
+            </div>
+            
 
-      
+        <div class="col-md-2">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Price
+                <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">0-10000won</a></li>
+                        <li><a href="#">10,000-20,000won</a></li>
+                        <li><a href="#">20,000-30,000won</a></li>
+                        <li><a href="#">30,000-40,000won</a></li>
+                        <li><a href="#">40,000-50,000won</a></li>
+                        <li><a href="#">50,000-100,000won</a></li>
+                        <li><a href="#">Above 100,000won</a></li>    
+                    </ul>
+            </div>    
+        </div>
+        <div class="col-md-2">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Frequency
+                <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">month?</a></li>
+                    </ul>
+            </div>    
+        </div>
+      </div>
     </div>
   </div>
 
@@ -64,6 +125,20 @@
   <script src="../../js/scripts.min.js"></script>
   <script src="../../js/main.min.js"></script>
   <script src="../../js/custom.js"></script>
-
+<!--
+    <script>
+         
+      function renderCropNames(cropType){
+          if(cropType == "herb"){
+               document.getElementById("cropNames").innerHTML = "" "<option selected disabled>Select crop type</option>
+              document.getElementById("cropNames").innerHTML = "
+                            <li><a value=\"watermelon\">Watermelon</a></li>";
+                            <option value=\"watermelon1\">Watermelon</option>
+                            <option value=\"pumpkin\">Pumpkin</option>
+                            <option value=\"rice\">Rice</option>";
+          }
+      }
+      </script>
+-->
   </body>
 </html>
