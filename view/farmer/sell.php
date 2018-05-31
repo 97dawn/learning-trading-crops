@@ -47,24 +47,24 @@
   <!-- END: header -->
   
    <div class="probootstrap-section">
-    <div class="container ">
-      <div class="row">
+      <div class="container ">
+        <div class="row">
           <div class="row">
           <h2></h2>
           </div>
           
           <form method="post">
 <!--            Type dropdown-->
-            <div class="row">
+        <div class="row">
             <div class="col-md-2">
               <div class="form-group">
-                <label for="croptype">Crop Type:</label>
+                <label for="croptype">Crop:</label>
               </div>
             </div>
-              <div class="col-md-3">
+            <div class="col-md-3">
               <div class="form-group">
-                <select name="croptype">
-                    <option selected disabled>Select crop type</option>
+                <select name="crop">
+                    <option selected disabled>Select crop</option>
                     <option value="watermelon">Watermelon</option>
                     <option value="pumpkin">Pumpkin</option>
                     <option value="rice">Rice</option>
@@ -87,46 +87,46 @@
                   </select>
               </div>
             </div>
-              </div>
+        </div>
 <!--              Farmer's username-->
-              <div class="row">
+        <div class="row">
             <div class="col-md-2">
               <div class="form-group">
                 <label for="username">Username:</label>
               </div>
             </div>
-              <div class="col-md-3">
+            <div class="col-md-3">
               <div class="form-group">
                 <input type="text" class="form-control" id="username" name="username" required>
               </div>
             </div>
-              </div>
+         </div>
 <!--              Price-->
-              <div class="row">
+         <div class="row">
             <div class="col-md-2">
               <div class="form-group">
                 <label for="price">Price:</label>
               </div>
             </div>
-              <div class="col-md-3">
+            <div class="col-md-3">
               <div class="form-group">
                 <input type="text" class="form-control" id="price" name="price" required>
               </div>
             </div>
-                  <div class="col-md-1">
+            <div class="col-md-1">
               <div class="form-group">
                 <label for="won">Won</label>
               </div>
             </div>
-              </div>
+         </div>
 <!--              Unit-->
-              <div class="row">
+         <div class="row">
             <div class="col-md-2">
               <div class="form-group">
                 <label for="unit">Unit:</label>
               </div>
             </div>
-              <div class="col-md-3">
+            <div class="col-md-3">
               <div class="form-group">
                 <select name="unit">
                     <option selected disabled>Select unit</option>
@@ -135,23 +135,23 @@
                   </select>
               </div>
             </div>
-              </div>
+         </div>
               
 <!--              Origin-->
-              <div class="row">
+         <div class="row">
             <div class="col-md-2">
               <div class="form-group">
                 <label for="origin">Origin:</label>
               </div>
             </div>
-              <div class="col-md-3">
+            <div class="col-md-3">
               <div class="form-group">
                 <select name="origin">
                     <option selected disabled>Select</option>
-                  </select>
+                </select>
               </div>
             </div>
-              </div>
+         </div>
 <!--              Discount Rate-->
               <div class="row">
             <div class="col-md-2">

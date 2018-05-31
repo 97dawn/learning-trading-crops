@@ -54,13 +54,13 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label for="croptype">Crop Type:</label>
+                        <label for="croptype">Crop:</label>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <select name="croptype">
-                            <option selected disabled>Select crop type</option>
+                        <select name="crop">
+                            <option selected disabled>Select crop</option>
                             <option value="watermelon">Watermelon</option>
                             <option value="pumpkin">Pumpkin</option>
                             <option value="rice">Rice</option>

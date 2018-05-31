@@ -46,7 +46,7 @@
   <!-- END: header -->
   
   <div class="probootstrap-section">
-    <div class="container text-center">
+    <div class="container">
       <div class="row">
         </div>
       </div>
