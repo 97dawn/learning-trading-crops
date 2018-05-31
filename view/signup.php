@@ -21,7 +21,7 @@
 
   <!-- START: header -->
 
-  <div class="probootstrap-loader"></div>
+  <div class="probootstrap-loader" method="post" id="register-form"></div>
 
   <header role="banner" class="probootstrap-header">
     <div class="container">
@@ -64,13 +64,13 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="fname">First Name</label>
-                  <input type="text" class="form-control" id="first_name" name="fname">
+                  <input type="text" class="form-control" id="first_name" name="fname" placeholder="John">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="lname">Last Name</label>
-                  <input type="text" class="form-control" id="last_name" name="lname">
+                  <input type="text" class="form-control" id="last_name" name="lname" placeholder="Doe">
                 </div>
               </div>
             <div class="col-md-6">
@@ -79,46 +79,58 @@
                   <input type="text" class="form-control" id="user_name" name="username">
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-2">
                 <div class="form-group">
                    <br>
-                   <button type="submit" class="btn btn-primary" name = "check">Check</button>
+                   <button type="submit" class="btn btn-primary" id="btn-check" name = "check">Check</button>
                 </div>
+            </div>
+
+            <div class="col-md-2">
+              <div class="form-group">
+                <label for="fname">Farmer/Buyer: </label>
+
+                <select name="membertype" default="">
+                  <option value="farmer">Farmer</option>
+                  <option value="buyer">Buyer</option>
+                </select>
+              </div>
             </div>
             </div>
 
 
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" name="email">
+              <input type="email" class="form-control" id="email" name="email" placeholder="john.doe@gmail.com">
             </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" id="password" name="password">
-            </div>
-            <div class="form-group">
+            <div>
               <label for="phonenumber">Phone Number</label>
-              <input type="phonenumber" class="form-control" id="phonenumber" name="phonenumber">
+              <input type="phonenumber" class="form-control" id="phonenumber" name="phonenumber" placeholder="10 digits Korean phone number">
             </div>
-
             <div class="row">
-              <div class="col-md-2">
+              <div class="col-md-6">
                 <div class="form-group">
-                  <label for="fname">Farmer/Buyer: </label>
+                  <label for="fname">Address</label>
+                  <input type="text" class="form-control" id="streetInfo" name="streetInfo" placeholder="59 Siheung-ro, Yongsan 2(i)ga-dong">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <select name="membertype">
-                    <option value="farmer">Farmer</option>
-                    <option value="buyer">Buyer</option>
-                  </select>
+                  <label for="lname">City</label>
+                  <input type="text" class="form-control" id="city" name="city" placeholder="Seoul">
                 </div>
               </div>
             </div>
-
             <div class="form-group">
-              <input type="submit" class="btn btn-primary" id="submit" name="submit" value="Submit">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" name="password" placeholder="Password must be at least 8 and no more 15 characters in length">
+            </div>
+            <div class="form-group">
+              <label for="password">Re-type Password</label>
+              <input type="password" class="form-control" id="cpassword" name="cpassword">
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary" id="btn-submit" name="submit" value="Submit">
             </div>
           </form>
         </div>
