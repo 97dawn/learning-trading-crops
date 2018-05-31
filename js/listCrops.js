@@ -32,12 +32,25 @@ function listCrops(cropType){
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Avocado\">Avocado</button></li>";
     }
     else if(cropType.value == "Herb"){
-        cropNames.innerHTML += "<li><button value=\"Dill\">Dill</button></li>";
+        cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Dill\">Dill</button></li>";
+        cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Basil\">Basil</button></li>";
+        cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Mints\">Mints</button></li>";
+        cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Lavender\">Lavender</button></li>";
+        cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Rosemary\">Rosemary</button></li>";
+
     }
     else if(cropType.value == "Nut"){
-        cropNames.innerHTML += "<li><button value=\"Pecan\">Pecan</button></li>";
+        cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Pecan\">Pecan</button></li>";
+        cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Almond\">Almond</button></li>";
+        cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Peanut\">Peanut</button></li>";
+        cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Walnut\">Walnut</button></li>";
+        cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Cashew\">Cashew</button></li>";
     }
     else if(cropType.value == "Grain"){
-        cropNames.innerHTML += "<li><button value=\"Rice\">Rice</button></li>";
+        cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Rice\">Rice</button></li>";
+        cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Barley\">Barley</button></li>";
+        cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Wheat\">Wheat</button></li>";
+        cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Oatmeal\">Oatmeal</button></li>";
+        cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Millet\">Millet</button></li>";
     }
 }
