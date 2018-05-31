@@ -15,11 +15,16 @@
   </head>
   <body>
   <style>
+    
+  
   button{
     border: none;
     background-color:transparent;
     color:black;
     width:150px;
+  }
+  #search{
+    padding-top:10px;
   }
   </style>
   <!-- START: header -->
@@ -53,14 +58,6 @@
   <!-- END: header -->
   
   <div class="probootstrap-section">
-      <div class="container text-center">
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1 mb40">
-          <h2></h2>
-          <p>This is where you learn new things for your farming toolbox. Get your questions answered by community members or just scroll down and learn something new.</p>
-        </div>
-      </div>
-    </div>
     <div class="container">
       <div class="row">
           <div class="col-md-2">
@@ -85,10 +82,11 @@
                             </ul>
                   </div>    
           </div>
+          <button onclick="search();" id="search">Search</button>
         </div>
+        <h2>View posts about<h2 id="crop"></h2></h2>
         <div id="posts">
-          <h2>View posts about</h2>
-          </div>
+        </div>
     </div>
   </div>
 
@@ -102,6 +100,7 @@
   <script src="../../js/main.min.js"></script>
   <script src="../../js/custom.js"></script>
   <script src="../../js/listCrops.js"></script>
+  <script src="../../js/searchPosts.js"></script>
 
   </body>
 </html>
