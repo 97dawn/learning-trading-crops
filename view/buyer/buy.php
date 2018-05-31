@@ -71,7 +71,7 @@
                               <li><a href="#">Vegetable</a></li>
                               <li><a href="#">Fruit</a></li>
                               <li><a href="#">Herb</a></li>
-                              <li><a href="#">Nut</a></li>
+                              <li><a href="#">Nuts</a></li>
                               <li><a href="#">Grain</a></li>
                             </ul>
                   </div>    
