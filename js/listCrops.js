@@ -1,16 +1,17 @@
 function showCropName(cropName){
     var showCropName = document.getElementById("cropName");
     showCropName.innerText = "";
-    showCropName.innerText=cropName.value+" ▼";
+    showCropName.innerText=cropName.innerText+" ▼";
 }
 function listCrops(cropType){
     var cropNames = document.getElementById("cropNames");
     cropNames.innerHTML="";
-    document.getElementById("cropName").innerText="Crop Name ▼";
+    document.getElementById("cropName").innerText="Doesn't matter ▼";
     var showCropType =  document.getElementById("cropType");
     showCropType.innerText = "";
-    showCropType.innerText=cropType.value+" ▼";
+    showCropType.innerText=cropType.innerText+" ▼";
     if(cropType.value == "Vegetable"){
+        cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"null\">Doesn't matter</button></li>";
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Tomato\">Tomato</button></li>";
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Potato\">Potato</button></li>";
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Kale\">Kale</button></li>";
@@ -21,6 +22,7 @@ function listCrops(cropType){
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Eggplant\">Eggplant</button></li>";
     }
     else if(cropType.value == "Fruit"){
+        cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"null\">Doesn't matter</button></li>";
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Watermelon\">Watermelon</button></li>";
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Strawberry\">Strawberry</button></li>";
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Mango\">Mango</button></li>";
@@ -32,6 +34,7 @@ function listCrops(cropType){
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Avocado\">Avocado</button></li>";
     }
     else if(cropType.value == "Herb"){
+        cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"null\">Doesn't matter</button></li>";
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Dill\">Dill</button></li>";
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Basil\">Basil</button></li>";
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Mints\">Mints</button></li>";
@@ -40,6 +43,7 @@ function listCrops(cropType){
 
     }
     else if(cropType.value == "Nut"){
+        cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"null\">Doesn't matter</button></li>";
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Pecan\">Pecan</button></li>";
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Almond\">Almond</button></li>";
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Peanut\">Peanut</button></li>";
@@ -47,6 +51,7 @@ function listCrops(cropType){
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Cashew\">Cashew</button></li>";
     }
     else if(cropType.value == "Grain"){
+        cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"null\">Doesn't matter</button></li>";
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Rice\">Rice</button></li>";
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Barley\">Barley</button></li>";
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Wheat\">Wheat</button></li>";

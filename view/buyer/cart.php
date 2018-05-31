@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -47,13 +48,19 @@
   
   <div class="probootstrap-section">
     <div class="container text-center">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3 mb40">
-          <h2></h2>      
-        </div>
+      <div class="row" id="saved-products">
+      <?php
+        require_once("DBinfo.php");
+        // Connect to DB
+        $conn = new mysqli($hn, $un, $pw, $db);
+        if ($conn->connect_error) die($conn->connect_error);
+        $sql = "SELECT * FROM Stores;";
+        $result = $conn->query($sql) or die ("Error: " . mysql_error());
+        foreach($row = $result->fetch_assoc()){
+          echo "<div class=\"cart\"> id=\"cart-".$row["cartid"]."\"> ";
+        }
+      ?>
       </div>
-
-      
     </div>
   </div>
 

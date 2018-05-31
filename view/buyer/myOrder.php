@@ -48,8 +48,6 @@
   <div class="probootstrap-section">
     <div class="container text-center">
       <div class="row">
-        <div class="col-md-6 col-md-offset-3 mb40">
-          <h2></h2>      
         </div>
       </div>
 

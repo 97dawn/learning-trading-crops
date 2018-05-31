@@ -14,7 +14,17 @@
 
   </head>
   <body>
-
+  <style>
+  button{
+    border: none;
+    background-color:transparent;
+    color:black;
+    width:150px;
+  }
+  #search{
+    padding-top:10px;
+  }
+  </style>
   <!-- START: header -->
   
   <div class="probootstrap-loader"></div>
@@ -46,14 +56,78 @@
   <!-- END: header -->
   
   <div class="probootstrap-section">
-    <div class="container text-center">
+    <div class="container">
       <div class="row">
-        <div class="col-md-6 col-md-offset-3 mb40">
-          <h2></h2>      
+          <div class="col-md-2">
+              <div class="dropdown" >
+                    <label>Crop Type</label>
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="cropType" style="width:150px;">Doesn't matter ▼
+                    </button>
+                        <ul class="dropdown-menu">
+                          <li><button onclick="listCrops(this);" value="null">Doesn't matter</button></li>
+                          <li><button onclick="listCrops(this)" value="Vegetable">Vegetable</button></li>
+                          <li><button onclick="listCrops(this)" value="Fruit">Fruit</button></li>
+                          <li><button onclick="listCrops(this)" value="Herb">Herb</button></li>
+                          <li><button onclick="listCrops(this)" value="Nut">Nut</button></li>
+                          <li><button onclick="listCrops(this)" value="Grain">Grain</button></li>
+                        </ul>
+              </div>    
+          </div>
+          <div class="col-md-2">
+              <div class="dropdown">
+                    <label>Crop Name</label>
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="cropName" style="width:150px;">Doesn't matter ▼
+                    </button>
+                    <ul class="dropdown-menu" id="cropNames"></ul>
+              </div>    
+          </div>
+          <div class="col-md-2">
+              <div class="dropdown">
+                  <label>Price Range</label>
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="priceRange" style="width:150px;">Doesn't matter ▼
+                    </button>
+                    <ul class="dropdown-menu" id="priceRanges">
+                        <li><button onclick="showPriceRange(this);" value="null">Doesn't matter</button></li>
+                        <li><button onclick="showPriceRange(this);" value="below 10000">below 10000 won</button></li>
+                        <li><button onclick="showPriceRange(this);" value="10000-19999">10000-19999 won</button></li>
+                        <li><button onclick="showPriceRange(this);" value="20000-29999">20000-29999 won</button></li>
+                        <li><button onclick="showPriceRange(this);" value="30000-39999">30000-39999 won</button></li>
+                        <li><button onclick="showPriceRange(this);" value="40000-49999">40000-49999 won</button></li>
+                        <li><button onclick="showPriceRange(this);" value="above 49999">above 49999 won</button></li>
+                    </ul>
+              </div>    
+          </div>
+          <div class="col-md-2">
+              <div class="dropdown">
+                  <label>Rating</label>
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="rating" style="width:150px;">Doesn't matter ▼
+                    </button>
+                    <ul class="dropdown-menu" id="ratings">
+                        <li><button onclick="showRating(this);" value="null">Doesn't matter</button></li>
+                        <li><button onclick="showRating(this);" value="1">above from 1</button></li>
+                        <li><button onclick="showRating(this);" value="2">above from 2</button></li>
+                        <li><button onclick="showRating(this);" value="3">above from 3</button></li>
+                        <li><button onclick="showRating(this);" value="4">above from 4</button></li>
+                        <li><button onclick="showRating(this);" value="5">only 5</button></li>
+                    </ul>
+              </div>    
+          </div>
+          <div class="col-md-2">
+              <div class="dropdown">
+                  <label>Is Orgnaic</label>
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="isOrganic" style="width:150px;">Doesn't matter ▼
+                    </button>
+                    <ul class="dropdown-menu" id="ratings">
+                        <li><button onclick="showOrganic(this);" value="null">Doesn't matter</button></li>
+                        <li><button onclick="showOrganic(this);" value="true">yes</button></li>
+                        <li><button onclick="showOrganic(this);" value="false">no</button></li>
+                    </ul>
+              </div>    
+          </div>
+          <button onclick="search();" id="search">Search</button>
         </div>
-      </div>
-
-      
+        <div id="products">
+        </div>
     </div>
   </div>
 
@@ -62,10 +136,12 @@
     <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
   </div>
   
-
   <script src="../../js/scripts.min.js"></script>
   <script src="../../js/main.min.js"></script>
   <script src="../../js/custom.js"></script>
-
+  <script src="../../js/listCrops.js"></script>
+  <script src="../../js/renderProducts.js"></script>
+  <script src="../../js/showValue.js"></script>
+  
   </body>
 </html>
