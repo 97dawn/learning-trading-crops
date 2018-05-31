@@ -1,15 +1,15 @@
 function showCropName(cropName){
     var showCropName = document.getElementById("cropName");
     showCropName.innerText = "";
-    showCropName.innerText=cropName.value;
+    showCropName.innerText=cropName.value+" ▼";
 }
 function listCrops(cropType){
     var cropNames = document.getElementById("cropNames");
     cropNames.innerHTML="";
-    document.getElementById("cropName").innerText="Crop Name";
+    document.getElementById("cropName").innerText="Crop Name ▼";
     var showCropType =  document.getElementById("cropType");
     showCropType.innerText = "";
-    showCropType.innerText=cropType.value;
+    showCropType.innerText=cropType.value+" ▼";
     if(cropType.value == "Vegetable"){
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Tomato\">Tomato</button></li>";
         cropNames.innerHTML += "<li><button onclick=\"showCropName(this);\" value=\"Potato\">Potato</button></li>";

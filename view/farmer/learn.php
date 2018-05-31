@@ -67,8 +67,8 @@
       <div class="row">
           <div class="col-md-2">
                   <div class="dropdown" >
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="cropType" style="width:150px;">Crop type
-                        <span class="caret"></span></button>
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="cropType" style="width:150px;">Crop type ▼
+                        </button>
                             <ul class="dropdown-menu">
                               <li><button onclick="listCrops(this)" value="Vegetable">Vegetable</button></li>
                               <li><button onclick="listCrops(this)" value="Fruit">Fruit</button></li>
@@ -80,8 +80,8 @@
           </div>
           <div class="col-md-2">
                   <div class="dropdown"style="width:10px;">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="cropName" style="width:150px;">Crop Name
-                        <span class="caret"></span></button>
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="cropName" style="width:150px;">Crop Name ▼
+                        </button>
                             <ul class="dropdown-menu" id="cropNames" >
                               
                             </ul>
