@@ -47,14 +47,41 @@
   <!-- END: header -->
   
   <div class="probootstrap-section">
-    <div class="container text-center">
+      <div class="container text-center">
       <div class="row">
-        <div class="col-md-6 col-md-offset-3 mb40">
-          <h2></h2>       
+        <div class="col-md-10 col-md-offset-1 mb40">
+          <h2></h2>
+          <p>This is where you learn new things for your farming toolbox. Get your questions answered by community members or just scroll down and learn something new.</p>
         </div>
       </div>
-
-      
+    </div>
+    <div class="container">
+      <div class="row">
+          <h2></h2>   
+          <div class="col-md-2">
+                  <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Crop type
+                        <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">Vegetable</a></li>
+                              <li><a href="#">Fruit</a></li>
+                              <li><a href="#">Herb</a></li>
+                              <li><a href="#">Nut</a></li>
+                              <li><a href="#">Grain</a></li>
+                            </ul>
+                  </div>    
+          </div>
+          <div class="col-md-2">
+                  <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Crop Name
+                        <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                              
+                            </ul>
+                  </div>    
+          </div>
+        </div>
+          <h2>View posts about</h2>
     </div>
   </div>
 
