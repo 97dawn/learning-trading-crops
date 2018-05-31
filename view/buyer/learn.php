@@ -14,7 +14,19 @@
 
   </head>
   <body>
-
+  <style>
+    
+  
+  button{
+    border: none;
+    background-color:transparent;
+    color:black;
+    width:150px;
+  }
+  #search{
+    padding-top:10px;
+  }
+  </style>
   <!-- START: header -->
   
   <div class="probootstrap-loader"></div>
@@ -46,17 +58,35 @@
   <!-- END: header -->
   
   <div class="probootstrap-section">
-    <div class="container text-center">
+    <div class="container">
       <div class="row">
-        <div class="col-md-6 col-md-offset-3 mb40">
-          <!--body-->
-          <div>
-            
+          <div class="col-md-2">
+                  <div class="dropdown" >
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="cropType" style="width:150px;">Crop type ▼
+                        </button>
+                            <ul class="dropdown-menu">
+                              <li><button onclick="listCrops(this)" value="Vegetable">Vegetable</button></li>
+                              <li><button onclick="listCrops(this)" value="Fruit">Fruit</button></li>
+                              <li><button onclick="listCrops(this)" value="Herb">Herb</button></li>
+                              <li><button onclick="listCrops(this)" value="Nut">Nut</button></li>
+                              <li><button onclick="listCrops(this)" value="Grain">Grain</button></li>
+                            </ul>
+                  </div>    
           </div>
+          <div class="col-md-2">
+                  <div class="dropdown"style="width:10px;">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="cropName" style="width:150px;">Crop Name ▼
+                        </button>
+                            <ul class="dropdown-menu" id="cropNames" >
+                              
+                            </ul>
+                  </div>    
+          </div>
+          <button onclick="search();" id="search">Search</button>
         </div>
-      </div>
-
-      
+        <h2>View posts about<h2 id="crop"></h2></h2>
+        <div id="posts">
+        </div>
     </div>
   </div>
 
@@ -69,6 +99,8 @@
   <script src="../../js/scripts.min.js"></script>
   <script src="../../js/main.min.js"></script>
   <script src="../../js/custom.js"></script>
+  <script src="../../js/listCrops.js"></script>
+  <script src="../../js/searchPosts.js"></script>
 
   </body>
 </html>
