@@ -1,11 +1,24 @@
 <?php
 require_once 'DBinfo.php';
+
+    try{
+        $dbc = new PDO($hn;$db,$un,$pw);
+        $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+    catch(PDOException $e){
+        echo $e->getMessage();
+        echo "Cannot connect to DB"
+        file_put_contents('PDOErrors.txt', $e->getMessage(), FILE_APPEND);
+    }
 //  check username validity
+$user_name = "";
+$user_email ="";
+$phone = "";
 if($_POST['check']){
     $user_name 		= mysql_real_escape_string($_POST['username']);
     try{
-      $query = $dbc->prepare("SELECT * FROM fpdb.Members WHERE username=$user_name");
-      $query->execute(array(":username"=>$user_name));
+      $query = $dbc->prepare("SELECT * FROM fpdb.Members WHERE username=:user");
+      $query->execute(array(":user"=>$user_name));
       $count = $query->rowCount();
       if($count>0){
         echo "Username already exists";
@@ -22,22 +35,26 @@ if($_POST['submit'])
     $phone 	= mysql_real_escape_string($_POST['phonenumber']);
     //  check email and phone number validity
     try{
-      $query1 = "SELECT * FROM fpdb.Buyers WHERE email=:email;";
-      $query2 = "SELECT * FROM fpdb.Farmers WHERE email=:email;";
-      $query3 = "SELECT * FROM fpdb.Buyers WHERE phone=:phone;";
-      $query4 = "SELECT * FROM fpdb.Farmers WHERE phone=:phone;";
-      $result1   = $dbc->query($query1);
-      $result2   = $dbc->query($query2);
-      $result3   = $dbc->query($query3);
-      $result4   = $dbc->query($query4);
-      $rows1 = $result1->num_rows;
-      $rows2 = $result2->num_rows;
-      $rows3 = $result3->num_rows;
-      $rows4 = $result4->num_rows;
-      if($rows1>0 || $rows2>0){
+      $query1 = $dbc->prepare("SELECT * FROM fpdb.Buyers WHERE email=:email");
+      $query1->execute(array(":email"=>$user_email));
+      $count1 = $query1->rowCount();
+
+      $query2 = $dbc->prepare("SELECT * FROM fpdb.Farmers WHERE email=:email");
+      $query2->execute(array(":email"=>$user_email));
+      $count2 = $query2->rowCount();
+
+      $query3 = $dbc->prepare("SELECT * FROM fpdb.Buyers WHERE phone=:phone");
+      $query3->execute(array(":phone"=>$phone));
+      $count3 = $query3->rowCount();
+
+      $query4 = $dbc->prepare("SELECT * FROM fpdb.Farmers WHERE phone=:phone");
+      $query4->execute(array(":phone"=>$phone));
+      $count4 = $query4->rowCount();
+
+      if($count1>0 || $count2>0){
         echo "This email is already chosen";
       }
-      if($rows3>0 || $rows4>0){
+      if($count3>0 || $count4>0){
         echo "This phone is associated with an existing account";
       }
       else{
@@ -51,22 +68,16 @@ if($_POST['submit'])
         //$joining_date 	= date('Y-m-d H:i:s');
         if(!empty($_POST['membertype'])){
           $membertype = $_POST['membertype'];
-          $stmt;
+          $insertion;
           if($membertype=="farmer"){
-            $stmt = $dbc->prepare("INSERT INTO fpdb.Farmers(username, pw, firstName, lastName, phone, email, streetInfo, city) VALUES(:uname, :pw, :fname; :lname, :phone, :email, :streetinfo, :city);");
+            $insertion = $dbc->prepare("INSERT INTO fpdb.Farmers(fid, fName, lName, phone, email, avgRating,streetInfo, city) VALUES(:username, :fname; :lname,:pw, :phone, :email, -1, :streetinfo, :city)");
           }
           else if($membertype=="buyer"){
-            $stmt = $dbc->prepare("INSERT INTO fpdb.Buyers(username, pw, firstName, lastName, phone, email, streetInfo, city) VALUES(:uname, :pw, :fname; :lname, :phone, :email, :streetinfo, :city);");
+            $insertion = $dbc->prepare("INSERT INTO fpdb.Buyers(bid, fName, lName, phone, email, streetInfo, city) VALUES(:username, :fname; :lname,:pw, :phone, :email, :streetinfo, :city)");
           }
-          $stmt->bindParam(":uname",$user_name);
-          $stmt->bindParam(":fname",$user_first);
-          $stmt->bindParam(":lname",$user_last);
-          $stmt->bindParam(":email",$user_email);
-          $stmt->bindParam(":pw",$password);
-          $stmt->bindParam(":phone",$phone);
-          $stmt->bindParam(":streetinfo", $streetInfo);
-          $stmt->bindParam(":city", $city);
-          if($stmt->execute())
+          $userinfo = array('username'=>$user_name,'fname'=>$user_first, 'lname'=>$user_last,'pw'=>$password, 'streetinfo'=>$streetInfo, 'city'=>$city);
+          $insertion->execute($userinfo);
+          if($insertion->execute($userinfo))
           {
               echo "registered";
           }

@@ -1,7 +1,5 @@
 $('document').ready(function()
 {
-  /* validation */
-  /*TODO is address required? */
   $("#register-form").validate({
     rules:
     {
@@ -28,7 +26,7 @@ $('document').ready(function()
       },
       password: {
         required: true,
-        minlength: 8,
+        minlength: 5,
         maxlength: 15
       },
       cpassword: {
@@ -55,7 +53,7 @@ $('document').ready(function()
           equalTo: "Password Mismatch! Retype"
         }
       },
-      submitHandler: submitForm
+      submitHandler: submitForm()
     });
     /* validation */
 
@@ -94,7 +92,7 @@ $('document').ready(function()
           {
 
             $("#btn-submit").html('Signing Up');
-            setTimeout('$(".form-signin").fadeOut(500, function(){ $(".signin-form").load("successreg.php"); }); ',5000);
+            setTimeout('$(".probootstrap-form mb60").fadeOut(500, function(){ $(".signin-form").load("successreg.php"); }); ',5000);
 
           }
           else{
