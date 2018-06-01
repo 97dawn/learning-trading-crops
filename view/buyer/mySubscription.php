@@ -48,7 +48,6 @@
   <div class="probootstrap-section">
     <div class="container">
       <div class="row">
-          <h2>Your subscriptions</h2>      
         
       </div>
     </div>

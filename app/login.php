@@ -12,7 +12,7 @@
     if ($conn->connect_error) die($conn->connect_error);
 
     // Check whether the username exists
-    $sql = "SELECT * FROM Members;";
+    $sql = "SELECT * FROM MEMBERS;";
     $result = $conn->query($sql) or die ("Error: " . mysql_error());
     $wrongUsername = true;
     $json = [
@@ -23,7 +23,7 @@
         if($row['username']==$username){
             // The username exists
             $wrongUsername = false;
-            if($row['password'] == $password){
+            if($row['pw'] == $password){
                 // The username's password exists
                 session_start();
                 $_SESSION["username"] = $username;
