@@ -14,8 +14,6 @@
   </head>
   <body>
   <style>
-    
-  
   button{
     border: none;
     background-color:transparent;
@@ -56,76 +54,34 @@
   </header>
   <!-- END: header -->
   
-<<<<<<< Updated upstream
   <div class="probootstrap-section">
     <div class="container">
       <div class="row">
           <div class="col-md-2">
-                  <div class="dropdown" >
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="cropType" style="width:150px;">Crop type ▼
-                        </button>
-                            <ul class="dropdown-menu">
-                              <li><button onclick="listCrops(this)" value="Vegetable">Vegetable</button></li>
-                              <li><button onclick="listCrops(this)" value="Fruit">Fruit</button></li>
-                              <li><button onclick="listCrops(this)" value="Herb">Herb</button></li>
-                              <li><button onclick="listCrops(this)" value="Nut">Nut</button></li>
-                              <li><button onclick="listCrops(this)" value="Grain">Grain</button></li>
-                            </ul>
-                  </div>    
+          <div class="dropdown" >
+                    <label>Crop Type</label>
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="cropType" style="width:150px;">Doesn't matter ▼
+                    </button>
+                        <ul class="dropdown-menu">
+                          <li><button onclick="listCrops(this);" value="null">Doesn't matter</button></li>
+                          <li><button onclick="listCrops(this)" value="Vegetable">Vegetable</button></li>
+                          <li><button onclick="listCrops(this)" value="Fruit">Fruit</button></li>
+                          <li><button onclick="listCrops(this)" value="Herb">Herb</button></li>
+                          <li><button onclick="listCrops(this)" value="Nut">Nut</button></li>
+                          <li><button onclick="listCrops(this)" value="Grain">Grain</button></li>
+                        </ul>
+              </div>    
           </div>
-          <div class="col-md-2">
-                  <div class="dropdown"style="width:10px;">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="cropName" style="width:150px;">Crop Name ▼
-                        </button>
-                            <ul class="dropdown-menu" id="cropNames" >
-                              
-                            </ul>
-                  </div>    
-          </div>
+          <div class="dropdown">
+                    <label>Crop Name</label>
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="cropName" style="width:150px;">Doesn't matter ▼
+                    </button>
+                    <ul class="dropdown-menu" id="cropNames"></ul>
+              </div>   
           <button onclick="search();" id="search">Search</button>
         </div>
-        <h2>View posts about<h2 id="crop"></h2></h2>
         <div id="posts">
         </div>
-=======
- <div class="probootstrap-section">
-    <div class="container text-center">
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1 mb40">
-          <h2></h2>
-          <p>This is where you learn new things for your farming toolbox. Get your questions answered by community members or just scroll down and learn something new.</p>
-        </div>
-      </div>
-    </div>
-     
-     <div class="container">
-        <div class="row">
-          <h2></h2>   
-          <div class="col-md-2">
-                  <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Crop type
-                        <span class="caret"></span></button>
-                            <ul class="dropdown-menu">
-                              <li><a href="#">Vegetable</a></li>
-                              <li><a href="#">Fruit</a></li>
-                              <li><a href="#">Herb</a></li>
-                              <li><a href="#">Nut</a></li>
-                              <li><a href="#">Grain</a></li>
-                            </ul>
-                  </div>    
-          </div>
-          <div class="col-md-2">
-                  <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Crop Name
-                        <span class="caret"></span></button>
-                            <ul class="dropdown-menu">
-                              
-                            </ul>
-                  </div>    
-          </div>
-        </div>
-          <h2>View posts about</h2> 
->>>>>>> Stashed changes
     </div>
   </div>
 
@@ -139,7 +95,7 @@
   <script src="../../js/main.min.js"></script>
   <script src="../../js/custom.js"></script>
   <script src="../../js/listCrops.js"></script>
-  <script src="../../js/searchPosts.js"></script>
+  <script src="../../js/renderPosts.js"></script>
 
     
       

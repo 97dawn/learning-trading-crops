@@ -51,8 +51,6 @@
           <h2>Your saved posts</h2>      
         
       </div>
-
-      
     </div>
   </div>
 

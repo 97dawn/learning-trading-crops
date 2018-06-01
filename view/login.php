@@ -27,7 +27,7 @@
         <nav role="navigation" class="probootstrap-nav hidden-xs">
           <ul class="probootstrap-main-nav">
             <li class="active"><a href="../index.html">Home</a></li>
-            <li><a href="login.php">LoginTEST</a></li>
+            <li><a href="login.php">Login</a></li>
             <li><a href="signup.php">Sign Up</a></li>
           </ul>
         </nav>
