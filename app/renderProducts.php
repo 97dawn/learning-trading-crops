@@ -32,10 +32,15 @@
     $all=[];
     $output=[];
     foreach($row = $result->fetch_assoc()){
-        $sql2 = "SELECT * FROM CROPS WHERE cropName = '".$row["cropName"]."';";
+        $sql2 = "SELECT * FROM PRODUCT_REPUTATIONS WHERE avgRating=".$row["avgRating"].";";
         $result2 = $conn->query($sql2) or die ("Error: " . mysql_error());
-        $obj = {"pid" => $row["pid"], "farmer"=>$row["fid"], "cropType" => $result2->fetch_assoc()["cropType"],"cropName" => $row["cropName"],
-             "price" => $row["pricePerUnit"], "isOrganic"=>$row["organicTrue"],"rating"=>$row["avgRating"]};
+        $sql3 = "SELECT * FROM CROPS WHERE cropName=".$row["cropName"].";";
+        $result3 = $conn->query($sql3) or die ("Error: " . mysql_error());
+        $sql4 = "SELECT * FROM FARMER_REPUTATIONS FR, FARMERS F WHERE F.fid=" . $row["fid"]. "AND F.avgRating=FR.avgRating;";
+        $result4 = $conn->query($sql4) or die ("Error: " . mysql_error());
+        $obj = {"pid" => $row["pid"], "farmer"=>$row["fid"],"cropName" => $row["cropName"],
+             "price" => $row["pricePerUnit"], "preputation"=>$result2->fetch_assoc()["productRep"], 
+             "unit" =>$result3->fetch_assoc()["unitToSell"], "freputation"=>$result4->fetch_assoc()["farmerRep"] };
         $all[] = $obj;
     }
 

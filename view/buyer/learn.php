@@ -31,6 +31,17 @@
     margin:10px;
     width: 20%;
   }
+  #label{
+    float:left;
+    width:20%;
+    color:black;
+  }
+  #content{
+    float:right;
+    width:80%;
+    text-align: justify;
+    color:black;
+  }
   </style>
   <!-- START: header -->
   
@@ -104,7 +115,7 @@
   <script src="../../js/main.min.js"></script>
   <script src="../../js/custom.js"></script>
   <script src="../../js/listCrops.js"></script>
-  <script src="../../js/renderPosts.js"></script>
+  <script src="../../js/renderPostsFarmer.js"></script>
   <script src="../../js/formPost.js"></script>
   <script src="../../js/showLearningPost.js"></script>
   <script src="../../js/saveLearningPost.js"></script>

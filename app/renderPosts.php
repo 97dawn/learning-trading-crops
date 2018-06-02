@@ -29,10 +29,7 @@
     $all=[];
     $output=[];
     foreach($row = $result->fetch_assoc()){
-        $sql2 = "SELECT * FROM CROPS WHERE cropName = '".$row["cropName"]."';";
-        $result2 = $conn->query($sql2) or die ("Error: " . mysql_error());
-        $obj = {"postid" => $row["postid"], "author"=>$row["fid"], "cropType" => $result2->fetch_assoc()["cropType"],
-            "cropName" => $row["cropName"], "title" => $row["title"]};
+        $obj = {"postid" => $row["postid"], "author"=>$row["fid"], "cropName" => $row["cropName"], "title" => $row["title"]};
         $all[] = $obj;
     }
 
@@ -50,10 +47,10 @@
                 $sameCropName[] = $obj;
             }
         }
-        $output["products"] = $sameCropName; 
+        $output["posts"] = $sameCropName; 
     }
     else{
-        $output["products"] = $all;    
+        $output["posts"] = $all;    
     }
     $conn->close();
     echo(json_encode($output));

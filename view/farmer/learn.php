@@ -99,6 +99,9 @@
   <script src="../../js/main.min.js"></script>
   <script src="../../js/custom.js"></script>
   <script src="../../js/listCrops.js"></script>
-  <script src="../../js/searchPosts.js"></script>
+  <script src="../../js/renderPostsFarmer.js"></script>
+  <script src="../../js/formPost.js"></script>
+  <script src="../../js/showLearningPostFarmer.js"></script>
+  <script src="../../js/saveLearningPost.js"></script>
   </body>
 </html>
