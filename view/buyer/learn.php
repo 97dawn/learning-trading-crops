@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>The Greatest Farmer</title>
-    <meta name="description" content="Free Bootstrap Theme by uicookies.com">
-    <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
     <link rel="stylesheet" href="../../css/styles-merged.css">
     <link rel="stylesheet" href="../../css/style.min.css">
@@ -22,6 +20,27 @@
   }
   #search{
     padding-top:10px;
+  }
+  h5{
+    color:black;
+    margin:0.5rem;
+  }
+  .post{
+    border: 2px solid black;
+    float: left;
+    margin:10px;
+    width: 20%;
+  }
+  #label{
+    float:left;
+    width:20%;
+    color:black;
+  }
+  #content{
+    float:right;
+    width:80%;
+    text-align: justify;
+    color:black;
   }
   </style>
   <!-- START: header -->
@@ -58,29 +77,31 @@
     <div class="container">
       <div class="row">
           <div class="col-md-2">
-          <div class="dropdown" >
-                    <label>Crop Type</label>
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="cropType" style="width:150px;">Doesn't matter ▼
-                    </button>
-                        <ul class="dropdown-menu">
-                          <li><button onclick="listCrops(this);" value="null">Doesn't matter</button></li>
-                          <li><button onclick="listCrops(this)" value="Vegetable">Vegetable</button></li>
-                          <li><button onclick="listCrops(this)" value="Fruit">Fruit</button></li>
-                          <li><button onclick="listCrops(this)" value="Herb">Herb</button></li>
-                          <li><button onclick="listCrops(this)" value="Nut">Nut</button></li>
-                          <li><button onclick="listCrops(this)" value="Grain">Grain</button></li>
-                        </ul>
-              </div>    
+            <div class="dropdown" >
+                <label>Crop Type</label>
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="cropType" style="width:150px;">Doesn't matter ▼
+                </button>
+                    <ul class="dropdown-menu">
+                      <li><button onclick="listCrops(this);" value="null">Doesn't matter</button></li>
+                      <li><button onclick="listCrops(this)" value="Vegetable">Vegetable</button></li>
+                      <li><button onclick="listCrops(this)" value="Fruit">Fruit</button></li>
+                      <li><button onclick="listCrops(this)" value="Herb">Herb</button></li>
+                      <li><button onclick="listCrops(this)" value="Nut">Nut</button></li>
+                      <li><button onclick="listCrops(this)" value="Grain">Grain</button></li>
+                    </ul>
+            </div>    
           </div>
-          <div class="dropdown">
-                    <label>Crop Name</label>
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="cropName" style="width:150px;">Doesn't matter ▼
-                    </button>
-                    <ul class="dropdown-menu" id="cropNames"></ul>
-              </div>   
+          <div class="col-md-2">
+            <div class="dropdown">
+                  <label>Crop Name</label>
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="cropName" style="width:150px;">Doesn't matter ▼
+                  </button>
+                  <ul class="dropdown-menu" id="cropNames"></ul>
+            </div>   
+            </div>
           <button onclick="search();" id="search">Search</button>
         </div>
-        <div id="posts">
+        <div id="posts" style="margin-top: 2rem;">
         </div>
     </div>
   </div>
@@ -89,15 +110,15 @@
   <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
   </div>
-  
 
   <script src="../../js/scripts.min.js"></script>
   <script src="../../js/main.min.js"></script>
   <script src="../../js/custom.js"></script>
   <script src="../../js/listCrops.js"></script>
-  <script src="../../js/renderPosts.js"></script>
-
-    
-      
+  <script src="../../js/renderPostsFarmer.js"></script>
+  <script src="../../js/formPost.js"></script>
+  <script src="../../js/showLearningPost.js"></script>
+  <script src="../../js/saveLearningPost.js"></script>
+  
   </body>
 </html>

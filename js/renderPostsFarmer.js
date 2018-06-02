@@ -18,10 +18,10 @@ function search(){
             for(var data in json['posts']){
                 var contents = {author:data.author, cropName:data.cropName};
                 if(data.title.length > 19){
-                    posts.innerHTML += formLearningPost(data.title.substring(0,19) + "...", contents, data.postid);
+                    posts.innerHTML += formLearningPostFarmer(data.title.substring(0,19) + "...", contents, data.postid);
                 }
                 else{
-                    posts.innerHTML += formLearningPost(data.title, contents, data.postid);
+                    posts.innerHTML += formLearningPostFarmer(data.title, contents, data.postid);
                 }
             }           
         }

@@ -43,6 +43,17 @@ function search(){
             var json = JSON.parse(xhr.responseText);
             var products = document.getElementById("products");
             // render products
+            products.innerHTML = "";
+            for(var data in json['products']){
+                var contents = {price:data.price, preputation:data.preputation,freputation:data.freputation, unit:data.unit};
+                var title = data.cropName + " from " + data.farmer;
+                if(title.length > 19){
+                    products.innerHTML += formProductPost(title.substring(0,19) + "...", contents, data.pid);
+                }
+                else{
+                    products.innerHTML += formProductPost(title, contents, data.pid);
+                }
+            }   
         }
     }
     xhr.send("data="+data);

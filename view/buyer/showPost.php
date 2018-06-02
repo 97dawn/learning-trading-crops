@@ -4,9 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>The Greatest Farmer</title>
-    <meta name="description" content="Free Bootstrap Theme by uicookies.com">
-    <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
-    
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
     <link rel="stylesheet" href="../../css/styles-merged.css">
     <link rel="stylesheet" href="../../css/style.min.css">
@@ -14,6 +11,19 @@
 
   </head>
   <body>
+  <style>
+  #label{
+    float:left;
+    width:20%;
+    color:black;
+  }
+  #content{
+    float:right;
+    width:80%;
+    text-align: justify;
+    color:black;
+  }
+  </style>
   <!-- START: header -->
   
   <div class="probootstrap-loader"></div>
@@ -45,9 +55,7 @@
   <!-- END: header -->
   
   <div class="probootstrap-section">
-    <div class="container">
-      <div class="row" >
-      </div>
+    <div class="container" id="post">
     </div>
   </div>
 
@@ -55,10 +63,15 @@
   <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
   </div>
-  
+
   <script src="../../js/scripts.min.js"></script>
   <script src="../../js/main.min.js"></script>
   <script src="../../js/custom.js"></script>
-
+  <script src="../../js/listCrops.js"></script>
+  <script src="../../js/renderPosts.js"></script>
+  <script src="../../js/formPost.js"></script>
+  <script src="../../js/showLearningPost.js"></script>
+  <script src="../../js/saveLearningPost.js"></script>
+  
   </body>
 </html>

@@ -30,9 +30,11 @@
     $all=[];
     $output=[];
     foreach($row = $result->fetch_assoc()){
-        $sql2 = "SELECT * FROM CROPS WHERE cropName = '".$row["cropName"]."';";
+        $sql2 = "SELECT * FROM FARMER_REPUTATIONS WHERE avgRating = '".$row["avgRating"]."';";
         $result2 = $conn->query($sql2) or die ("Error: " . mysql_error());
-        $obj = {"subid" => $row["subid"], "farmer"=>$row["fid"], "cropType" => $result2->fetch_assoc()["cropType"],
+        $sql3 = "SELECT * FROM CROPS WHERE cropName=".$row["cropName"].";";
+        $result3 = $conn->query($sql3) or die ("Error: " . mysql_error());
+        $obj = {"subid" => $row["subid"], "farmer"=>$row["fid"], "reputation" => $result2->fetch_assoc()["farmerRep"],"unit"=>$result3->fetch_assoc()["unitToSell"],
             "cropName" => $row["cropName"], "price" => $row["pricePerUnit"], "quantityPerSub"=>$row["quantityPerSub"],"period"=>$row["subPeriod"]};
         $all[] = $obj;
     }
@@ -69,10 +71,10 @@
                 $inPriceRange[] = $obj;
             }
         }
-        $output["products"] = $inPriceRange; 
+        $output["subs"] = $inPriceRange; 
     }
     else{
-        $output["products"] = $all;    
+        $output["subs"] = $all;    
     }
     $conn->close();
     echo(json_encode($output));

@@ -36,6 +36,17 @@ function search(){
             var json = JSON.parse(xhr.responseText);
             var subs = document.getElementById("subs");
             // render subscriptions
+            subs.innerHTML = "";
+            for(var data in json['subs']){
+                var contents = {price:data.price, reputation:data.reputation, unit:data.unit,quantityPerSub:data.quantityPerSub, period:data.period};
+                var title = data.cropName + " from " + data.farmer;
+                if(title.length > 19){
+                    subs.innerHTML += formSubscriptionPost(title.substring(0,19) + "...", contents, data.subid);
+                }
+                else{
+                    subs.innerHTML += formSubscriptionPost(title, contents, data.subid);
+                }
+            } 
         }
     }
     xhr.send("data="+data);

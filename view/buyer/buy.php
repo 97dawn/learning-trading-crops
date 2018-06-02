@@ -24,6 +24,27 @@
   #search{
     padding-top:10px;
   }
+  h3, h5{
+    color:black;
+    margin:0.5rem;
+  }
+  .post{
+    border: 2px solid black;
+    float: left;
+    margin:10px;
+    width: 20%;
+  }
+  label{
+    padding-left:10px;
+    float:left;
+  }
+  input{
+    margin-right:10px;
+    margin-top:5px;
+    width:50%;
+    height:90%;
+    float:right;
+  }
   </style>
   <!-- START: header -->
   
@@ -126,7 +147,7 @@
           </div>
           <button onclick="search();" id="search">Search</button>
         </div>
-        <div id="products">
+        <div id="products" style="margin-top: 2rem;">
         </div>
     </div>
   </div>
@@ -142,6 +163,7 @@
   <script src="../../js/listCrops.js"></script>
   <script src="../../js/renderProducts.js"></script>
   <script src="../../js/showValue.js"></script>
+  <script src="../../js/formPost.js"></script>
   
   </body>
 </html>

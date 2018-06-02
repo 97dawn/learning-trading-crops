@@ -24,6 +24,7 @@
   <header role="banner" class="probootstrap-header">
     <div class="container">
         <a href="../index.html" class="probootstrap-logo">The Greatest Farmer<span>.</span></a>
+<<<<<<< HEAD
 
         <nav role="navigation" class="probootstrap-nav hidden-xs">
           <ul class="probootstrap-main-nav">
@@ -32,6 +33,8 @@
             <li class="active"><a href="signup.php">Sign Up</a></li>
           </ul>
         </nav>
+=======
+>>>>>>> e3ba33d8e53fe9836a3adceca790198e80920ebc
     </div>
   </header>
   <!-- END: header -->
