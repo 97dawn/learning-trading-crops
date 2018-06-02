@@ -1,13 +1,29 @@
 $('document').ready(function()
 {
+  var form = $("#register-form"),
+  data = $(form).serialize(),
+  formMethod  = 'POST'
+  phpHandler = '../app/signup.php';
+  var city_array;
+  var province_array;
+  /*get values from
+  function populateCityProvince(){
+  }
+
+  function getProvinceData(callback){
+    $.ajax({
+
+    });
+  }
+  */
   $("#register-form").validate({
     rules:
     {
-      first_name: {
+      fname: {
         required: true,
         minlength: 3
       },
-      last_name: {
+      lname: {
         required: true,
         minlength: 3
       },
@@ -21,8 +37,19 @@ $('document').ready(function()
       },
       phonenumber: {
         required: true,
+        digits:true,
         minlength: 10,
         maxlength: 10
+      },
+      streetInfo: {
+        required: true,
+        minlength: 5
+      },
+      city:{
+        required:true
+      },
+      province:{
+        require:true
       },
       password: {
         required: true,
@@ -38,13 +65,23 @@ $('document').ready(function()
     messages:
     {
       user_name: "Enter a Valid Username",
-      first_name: "Enter a Valid Name",
+      fname: "Enter a Valid Name",
       last_name: "Enter a Valid Name",
       email: {
-        required:"Email is Required"
-        email:"Enter a Valid Email"},
-      phone: "Enter a Valid Phone number",
-      password:{
+        required:"Email is Required",
+        email:"Enter a Valid Email"
+      },
+      phone: {
+        digits:"Please enter Digits only",
+        required: "Enter a Valid Phone number",
+        minlength: "Enter a Valid Phone number",
+        maxlength: "Enter a Valid Phone number"
+      },
+      streetInfo: {
+        required: "Provide an Address",
+        minlength: "Enter a Valid Address"
+      },
+      password: {
         required: "Provide a Password",
         minlength: "Password Needs To Be Minimum of 8 Characters"
       },
@@ -60,11 +97,6 @@ $('document').ready(function()
     /* form submit */
     function submitForm()
     {
-      var form = $("#register-form"),
-      data = form.serialize(),
-      formMethod  = form.attr.('method'),
-      phpHandler = form.attr.('action');
-
       $.ajax({
         type : formMethod,
         url  : phpHandler,
@@ -77,34 +109,21 @@ $('document').ready(function()
         success :  function(data)
         {
           if(data==1){
-
             $("#error").fadeIn(1000, function(){
-
-
-              $("#error").html('<div class="alert alert-danger"> <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Sorry email already taken !</div>');
-
-              $("#btn-submit").html('<span class="glyphicon glyphicon-log-in"></span> &nbsp; Create Account');
-
+              $("#error").html('<div class="alert alert-danger"> <span></span> &nbsp; Username already exists !</div>');
             });
-
           }
+
           else if(data=="registered")
           {
-
             $("#btn-submit").html('Signing Up');
-            setTimeout('$(".probootstrap-form mb60").fadeOut(500, function(){ $(".signin-form").load("successreg.php"); }); ',5000);
-
+            setTimeout('$(".probootstrap-section").fadeOut(500, function(){ $(".probootstrap-loader").load("successreg.php"); }); ',5000);
           }
           else{
-
             $("#error").fadeIn(1000, function(){
-
-              $("#error").html('<div class="alert alert-danger"><span class="glyphicon glyphicon-info-sign"></span> &nbsp; '+data+' !</div>');
-
-              $("#btn-submit").html('<span class="glyphicon glyphicon-log-in"></span> &nbsp; Create Account');
-
+              $("#error").html('<div class="alert alert-danger"><span></span> &nbsp; '+data+' !</div>');
+              $("#btn-submit").html('<span ></span> &nbsp; Create Account');
             });
-
           }
         }
       });

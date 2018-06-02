@@ -11,9 +11,7 @@
   <link rel="stylesheet" href="../css/styles-merged.css">
   <link rel="stylesheet" href="../css/style.min.css">
   <link rel="stylesheet" href="../css/custom.css">
-  <script src="../js/vendor/jquery.min.js"></script>
-  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
-  <script src="../js/signup.js"></script>
+
 
   </head>
 
@@ -37,7 +35,17 @@
     </div>
   </header>
   <!-- END: header -->
-
+  <?php
+  require_once '../app/DBinfo.php';
+      try{
+          $dbc = new PDO("mysql:host={$hn};dbname={$db}",$un,$pw);
+          $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          }
+          catch(PDOException $e){
+              echo $e->getMessage();
+              echo "Cannot connect to DB";
+          }
+            ?>
   <section class="probootstrap-section">
     <div class="container">
       <div class="row">
@@ -46,12 +54,9 @@
           <div id="error"></div>
           <form class="probootstrap-form mb60" id="register-form" action="../app/signup.php" method="post" >
             <div class="row">
-
-              <div class="col-md-6">
-                <div class="form-group">
+              <div class="col-md-6 form-group">
                   <label for="fname">First Name</label>
                   <input type="text" class="form-control" id="first_name" name="fname" placeholder="John">
-                </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
@@ -70,9 +75,10 @@
               <div class="form-group">
                 <label for="fname">Farmer/Buyer: </label>
 
-                <select name="membertype" default="">
-                  <option value="farmer">Farmer</option>
-                  <option value="buyer">Buyer</option>
+                <select name="membertype" id="membertype">
+
+                  <option value="F">Farmer</option>
+                  <option value="B">Buyer</option>
                 </select>
               </div>
             </div>
@@ -94,23 +100,62 @@
                   <input type="text" class="form-control" id="streetInfo" name="streetInfo" placeholder="59 Siheung-ro, Yongsan 2(i)ga-dong">
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="lname">City</label>
-                  <input type="text" class="form-control" id="city" name="city" placeholder="Seoul">
-                </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                  <div class="form-group">
+                        <label>Province</label>
+                        <select name="province" id="province">
+                          <option value="null"></option>
+                          <?php
+                              try{
+                                  $stm = $dbc->query("SELECT province from CITIES");
+                                  $stm->setFetchMode(PDO::FETCH_ASSOC);
+                                  while ($row = $stm->fetch()){
+                                    echo "<option value=\"".$row['province']."\">".$row['province']."</option>";
+                                  }
+                                  }
+                                  catch(PDOException $e){
+                                      echo $e->getMessage();
+                                      echo "Fetching Province failed";
+                                  }
+                                    ?>
+                            </select>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="form-group">
+                        <label>City</label>
+                        <select name="city" id="city">
+                          <option value="null"></option>
+                        <?php
+                            try{
+                                $stm = $dbc->query("SELECT city from CITIES");
+                                $stm->setFetchMode(PDO::FETCH_ASSOC);
+                                while ($row = $stm->fetch()){
+                                  echo "<option value=\"".$row['city']."\">".$row['city']."</option>";
+                                }
+                                }
+                                catch(PDOException $e){
+                                    echo $e->getMessage();
+                                    echo "Fetching city failed";
+                                }
+                                  ?>
+                            </select>
+                  </div>
               </div>
             </div>
+
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" class="form-control" id="password" name="password" placeholder="Password must be at least 8 and no more 15 characters in length">
+              <input type="password" class="form-control" id="password" name="password" placeholder="Password must be at least 5 and no more 15 characters in length">
             </div>
             <div class="form-group">
               <label for="password">Re-type Password</label>
               <input type="password" class="form-control" id="cpassword" name="cpassword">
             </div>
             <div class="form-group">
-              <input type="button" class="btn btn-primary" id="btn-submit" name="submit" value="Submit">
+              <input type="submit" class="btn btn-primary" id="btn-submit" name="submit" value="Submit">
             </div>
           </form>
         </div>
@@ -123,8 +168,10 @@
     <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
   </div>
 
-  <script src="../js/vendor/bootstrap.min.js"></script>
   <script src="../js/scripts.min.js"></script>
   <script src="../js/main.min.js"></script>
+  <script src="../js/jquery.validate.min.js"></script>
+  <script src="../js/additional-methods.min.js"></script>
+  <script src="../js/signup.js"></script>
   </body>
 </html>
