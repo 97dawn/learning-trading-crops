@@ -26,36 +26,12 @@
   <header role="banner" class="probootstrap-header">
     <div class="container">
         <a href="../index.html" class="probootstrap-logo">The Greatest Farmer<span>.</span></a>
-
-        <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
-        <div class="mobile-menu-overlay"></div>
-
-        <nav role="navigation" class="probootstrap-nav hidden-xs">
-          <ul class="probootstrap-main-nav">
-            <li><a href="../index.html">Home</a></li>
-<!--            <li><a href="services.html">Services</a></li>-->
-            <li><a href="login.php">Login</a></li>
-            <li class="active"><a href="signup.php">Sign Up</a></li>
-          </ul>
-          <div class="extra-text visible-xs">
-            <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
-            <h5>Address</h5>
-            <p>198 West 21th Street, Suite 721 New York NY 10016</p>
-            <h5>Connect</h5>
-            <ul class="social-buttons">
-              <li><a href="#"><i class="icon-twitter"></i></a></li>
-              <li><a href="#"><i class="icon-facebook2"></i></a></li>
-              <li><a href="#"><i class="icon-instagram2"></i></a></li>
-            </ul>
-          </div>
-        </nav>
     </div>
   </header>
   <!-- END: header -->
 
   <section class="probootstrap-section">
     <div class="container">
-
       <div class="row">
           <h2>Sign Up</h2>
         <div class="col-md-8 probootstrap-animate">
@@ -138,30 +114,6 @@
       </div>
     </div>
   </section>
-<!--
-  <div class="container probootstrap-animate">
-    <div id="map"></div>
-  </div>
--->
-  <!-- END section -->
-<!--
-
-  <footer class="probootstrap-footer" role="contentinfo">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <p class="probootstrap-copyright">&copy; 2017 <a href="https://uicookies.com/">uiCookies:Explorer</a> All Rights Reserved.</p>
-          <ul class="probootstrap-social">
-            <li><a href="#"><i class="icon-twitter"></i></a></li>
-            <li><a href="#"><i class="icon-facebook2"></i></a></li>
-            <li><a href="#"><i class="icon-instagram2"></i></a></li>
-            <li><a href="#"><i class="icon-google-plus"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
--->
 
   <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
@@ -170,11 +122,6 @@
 
   <script src="../js/scripts.min.js"></script>
   <script src="../js/main.min.js"></script>
-
-  <!-- Google Map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="../js/google-map.js"></script>
-
   <script src="../js/custom.js"></script>
   </body>
 </html>
