@@ -1,9 +1,7 @@
-DROP DATABASE IF EXISTS fpdb;
-
-CREATE DATABASE fpdb;
-
-USE fpdb;
-
+drop database if exists fpdb;
+create database fpdb;
+GRANT ALL PRIVILEGES ON fpdb.* to root@localhost IDENTIFIED BY 'root';
+use fpdb;
 CREATE TABLE MEMBERS (
 	username VARCHAR(254) NOT NULL,
     pw VARCHAR(254) NOT NULL,
@@ -175,7 +173,7 @@ CREATE TABLE POSTS (
     FOREIGN KEY(cropName) REFERENCES CROPS(cropName)
 );
 
-CREATE TABLE SAVED_POST (
+CREATE TABLE SAVED_POSTS (
 	username VARCHAR(254) NOT NULL,
     postid INT NOT NULL,
     PRIMARY KEY(username, postid),
@@ -458,7 +456,7 @@ INSERT INTO SUB_ORDERS(subid, bid, startDate, endDate) VALUES (10, "lgray", '201
 
 INSERT INTO POSTS(authorName, title, cropName, cropInfo, uses, disease, postDate) VALUES (
                           "jsmith", 
-                          "Pecan", 
+                          "Really Fresh Pecan", 
                           "Pecan", 
                           "Plant pecan trees in a hole about 3 feet deep and 2 feet wide. Position the tree in the hole so that the soil line on the tree is even with the surrounding soil, then adjust the depth of the hole, if necessary. Begin filling the hole with soil, arranging the roots in a natural position as you go. Don’t add soil amendments or fertilizer to the fill dirt. When the hole is half full, fill it with water to remove air pockets and settle the soil. After the water drains through, fill the hole with soil. Press the soil down with your foot and then water deeply. Add more soil if a depression forms after watering. ", 
                           "snack food or may be used as an ingredient in baked goods", 
@@ -466,7 +464,7 @@ INSERT INTO POSTS(authorName, title, cropName, cropInfo, uses, disease, postDate
                           '2018-05-18');
 INSERT INTO POSTS(authorName, title, cropName, cropInfo, uses, disease, postDate) VALUES ( 
                           "pstewart", 
-                          "Apricot", 
+                          "My Apricot", 
                           "Apricot", 
                           "To begin your apricot seed planting, choose a luscious mid- to late-season type of apricot, ideally one that was grown from seed itself. Eat the fruit; actually eat a few to up the chances of germination and save your pits. Scrub any flesh off and lay them out on newspaper for three hours or so to dry. Now you need to get the seed out of the pit. Use a hammer gingerly on the side of the pit to crack it. You can also use a nutcracker or vise. The idea is to get the seed out of the pit without crushing it. If you are in doubt that any of these methods will work for you, as a last resort, you can just plant the entire pit but germination will take longer. Once you have retrieved the seeds, allow them to dry on the newspaper for a few more hours. You can now store them in a cover jar or zip-top plastic bag in refrigerator to stratify the seeds for 60 days. Whether to stratify of not depends on where you obtained the fruit. If purchased from a grocery store, the fruit has already been cold stored, so it is less likely to need to stratify; but if you bought them from a farmers market or plucked them directly from a tree, it is necessary to stratify the seeds. If you are not going to stratify the seeds, wrap them in a clean, damp paper towel and place them in a plastic bag in a window. Keep an eye on it. Water as needed to keep it moist and change the paper towel if it begins to mildew.
 ", 
@@ -475,7 +473,7 @@ INSERT INTO POSTS(authorName, title, cropName, cropInfo, uses, disease, postDate
                           '2018-06-19');
 INSERT INTO POSTS(authorName, title, cropName, cropInfo, uses, disease, postDate) VALUES (
                           "jhall", 
-                          "Pumpkin", 
+                          "Do you know how to grow pumpkins?", 
                           "Pumpkin", 
                           "When you plant pumpkin seeds outside, remember that pumpkins need an incredible amount of space to grow. It’s recommended that you plan on a minimum of 20 square feet being needed for each plant. When the soil temperature is at least 65 F. (18 C.), you can plant your pumpkin seeds. Pumpkin seeds won’t germinate in cold soil. Mound the soil in the center of the chosen location up a bit to help the sun heat the pumpkin seeds. The warmer the soil, the faster the pumpkin seeds will germinate. In the mound, plant three to five pumpkin seeds about 1 inch deep. Once the pumpkin seeds germinate, select two of the healthiest and thin out the rest.", 
                           "Pumpkin flesh can be cooked and eaten in a variety of dishes", 
@@ -483,7 +481,7 @@ INSERT INTO POSTS(authorName, title, cropName, cropInfo, uses, disease, postDate
                           '2018-07-13');
 INSERT INTO POSTS(authorName, title, cropName, cropInfo, uses, disease, postDate) VALUES (
                           "cmorris", 
-                          "Rice", 
+                          "Yummy Rice", 
                           "Rice", 
                           "Choose your planting location. Make sure the soil in the area you're planting consists of slightly acidic clay for the best results. You may also plant your rice seeds in plastic buckets with the same type of soil. Wherever you plant, make sure you have a reliable water source and a way to drain that water when you need to harvest. Gather at least 1 to 2 ounces (28.5 to 56.5 g) of rice seeds to sow. Soak the seeds in water to prep them for planting. Allow them to soak for at least 12 hours but not longer than 36 hours. Remove the seeds from the water afterward. Plant the rice seeds throughout the soil, during the fall or spring season. Get rid of the weeds, till the beds, and level the soil. If you are using buckets, fill them with at least 6 inches (15 cm) of moist soil. Then add the rice seeds.",
                           "Rice can be used as brown rice or further processed to remove the bran to produce white rice.", 
@@ -491,7 +489,7 @@ INSERT INTO POSTS(authorName, title, cropName, cropInfo, uses, disease, postDate
                           '2018-06-22');      
 INSERT INTO POSTS(authorName, title, cropName, cropInfo, uses, disease, postDate) VALUES ( 
                           "kbell", 
-                          "Carrot", 
+                          "Delicious Carrot", 
                           "Carrot", 
                           "Plant your carrots in rows that are 1 to 2 feet apart is the best way how to grow carrots. Seeds should be planted about a ½ inch deep and 1 to 2 inches apart. When growing carrots in the garden, you’ll wait for your carrot plants to appear. When the plants are 4 inches high, thin the plants to 2 inches apart. You may find that some of the carrots are actually large enough to eat. Thin the carrots regularly to 4 inches apart. When growing carrots in the garden, make sure to plant, per person, five to ten feet of row to have enough carrots for table use. You will get about one pound of carrots in a one foot row. You want to keep your carrots free of weeds when growing carrots in the garden. This is never more so than when they are small. The weeds will take nutrients away from the carrots. This will cause poor carrot development.
 ", 
@@ -500,7 +498,7 @@ INSERT INTO POSTS(authorName, title, cropName, cropInfo, uses, disease, postDate
                           '2018-02-19'); 
 INSERT INTO POSTS(authorName, title, cropName, cropInfo, uses, disease, postDate) VALUES (
                           "ahyes", 
-                          "Avocado", 
+                          "Do you know Avocado?", 
                           "Avocado", 
                           "Avocados do not grow true from seed but you can get an interesting plant from starting a pit. Although many gardeners have experimented with germinating a pit in a glass of water, most avocados are propagated from tip grafting and the resulting seedlings will exhibit the characteristics of the graft wood or parent plant. Plant grafted seedlings with the graft under the soil, which is uncommon for other grafted trees. Stake young trees and keep them free of weeds while they are establishing.", 
                           "Avocado is usually consumed fresh as a fruit or as an ingredient in salads or savory dishes", 
@@ -508,7 +506,7 @@ INSERT INTO POSTS(authorName, title, cropName, cropInfo, uses, disease, postDate
                           '2018-02-19'); 
 INSERT INTO POSTS(authorName, title, cropName, cropInfo, uses, disease, postDate) VALUES (
                           "asanders", 
-                          "Cabbage", 
+                          "Fresh Cabbage", 
                           "Cabbage", 
                           "When growing cabbage, be sure to space the plants 12 to 24 inches apart. The closer you space your cabbage plants, the smaller the head of the cabbage will be. Early varieties of cabbage can be planted 12 inches apart and will grow one to three pound heads. The later varieties can produce heads upwards of eight pounds. Once you learn how to grow cabbage, you will have a great cabbage crop. Make sure to sow the cabbage seeds ¼ to ½ inch deep. After you sow them, keep them moist and thin them out to desired spacing once they grow. Make sure you fertilize your plants when growing cabbage, especially after transplanting. Then add nitrogen as well when the cabbage is half grown. This helps them mature better. Make sure the soil is moist throughout the growing season so your cabbage produces better heads.
 ", 
@@ -541,16 +539,16 @@ INSERT INTO POSTS(authorName, title, cropName, cropInfo, uses, disease, postDate
                           "Armillaria root rot", 
                           '2018-01-24');      
 
-INSERT INTO SAVED_POST VALUES ("kross", 1);
-INSERT INTO SAVED_POST VALUES ("swood", 2);
-INSERT INTO SAVED_POST VALUES ("bcooper", 3);
-INSERT INTO SAVED_POST VALUES ("kmorgan", 4);
-INSERT INTO SAVED_POST VALUES ("bperry", 5);
-INSERT INTO SAVED_POST VALUES ("dparker", 6);
-INSERT INTO SAVED_POST VALUES ("eevans", 7);
-INSERT INTO SAVED_POST VALUES ("erussell", 8);
-INSERT INTO SAVED_POST VALUES ("gbryant", 9);
-INSERT INTO SAVED_POST VALUES ("lgray", 10);
+INSERT INTO SAVED_POSTS VALUES ("kross", 1);
+INSERT INTO SAVED_POSTS VALUES ("swood", 2);
+INSERT INTO SAVED_POSTS VALUES ("bcooper", 3);
+INSERT INTO SAVED_POSTS VALUES ("kmorgan", 4);
+INSERT INTO SAVED_POSTS VALUES ("bperry", 5);
+INSERT INTO SAVED_POSTS VALUES ("dparker", 6);
+INSERT INTO SAVED_POSTS VALUES ("eevans", 7);
+INSERT INTO SAVED_POSTS VALUES ("erussell", 8);
+INSERT INTO SAVED_POSTS VALUES ("gbryant", 9);
+INSERT INTO SAVED_POSTS VALUES ("lgray", 10);
 
 INSERT INTO POST_COMMENTS(postid, commenterName, commentBody) VALUES (1, "bcollins", "Very helpful. Thank you!");
 INSERT INTO POST_COMMENTS(postid, commenterName, commentBody) VALUES (2, "dcampbell", "Helpful!");
