@@ -1,10 +1,8 @@
-DROP DATABASE IF EXISTS fpdb1;
+DROP DATABASE IF EXISTS fpdb;
 
-CREATE DATABASE fpdb1;
+CREATE DATABASE fpdb;
 
-GRANT ALL PRIVILEGES ON fpdb1.* to grader@localhost IDENTIFIED BY 'allowme';
-
-USE fpdb1;
+USE fpdb;
 
 CREATE TABLE MEMBERS (
 	username VARCHAR(254) NOT NULL,
@@ -111,7 +109,7 @@ CREATE TABLE ORDERS (
     pid INT NOT NULL,
     bid VARCHAR(254) NOT NULL,
     amount FLOAT(4) NOT NULL,
-    totalPrice INT,
+    totalPrice INT NOT NULL,
     orderDate DATETIME NOT NULL,
     PRIMARY KEY (orid),
     FOREIGN KEY(pid) REFERENCES PRODUCTS(pid) ON DELETE CASCADE,
@@ -124,7 +122,7 @@ CREATE TABLE STORES (
     bid VARCHAR(254) NOT NULL,
     amount FLOAT(4) NOT NULL,
     rawTotalPrice INT NOT NULL,
-    discountRate INT,
+    discountRate INT NOT NULL,
     extraCharge INT NOT NULL,
     PRIMARY KEY(cartid),
     FOREIGN KEY(pid) REFERENCES PRODUCTS(pid) ON DELETE CASCADE,
@@ -196,7 +194,7 @@ CREATE TABLE POST_COMMENTS (
 );
 
 
-INSERT INTO `Cities` (`City`, `Province`) VALUES
+INSERT INTO CITIES (city, province) VALUES
 ('Andong', 'North Gyeongsang'),
 ('Ansan', 'Gyeonggi'),
 ('Anseong', 'Gyeonggi'),
@@ -403,28 +401,16 @@ INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("erus
 INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("gbryant", 9, 3, "Probably wouldn't buy again. Most of the apples arrived mushy and turning brown.");
 INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("lgray", 10, 4, "These went bad too fast. Will stick to buying fruit at the grocery store.");
 
-INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (1, "kross", 2.00, 40000, '2018-05-18 13:10:01');
-INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (2, "swood", 3.00, 36000, '2018-05-22 15:03:00');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (1, "kross", 2.00, 36000, '2018-05-18 13:10:01');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (2, "swood", 3.00, 32400, '2018-05-22 15:03:00');
 INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (3, "bcooper", 5.00, 50000, '2018-04-18 10:01:30');
 INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (4, "kmorgan", 10.00, 24000, '2017-06-23 18:06:02');
-INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (5, "bperry", 5.00, 25000, '2018-02-07 20:11:11');
-INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (6, "dparker", 3.00, 8400, '2018-01-11 16:23:23');
-INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (7, "eevans", 10.00, 25000, '2018-09-12 08:09:11');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (5, "bperry", 5.00, 21000, '2018-02-07 20:11:11');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (6, "dparker", 3.00, 8560, '2018-01-11 16:23:23');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (7, "eevans", 10.00, 26000, '2018-09-12 08:09:11');
 INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (8, "erussell", 3.00, 15000, '2017-12-01 12:30:22');
-INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (9, "gbryant", 8.00, 56000, '2018-08-22 13:20:00');
-INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (10, "lgray", 4.00, 20000, '2018-04-27 14:50:20');
-
-
-INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (1, "kross", 2.00, 40000, NULL, 0);
-INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (2, "swood", 3.00, 36000, NULL, 0);
-INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (3, "bcooper", 5.00, 50000, NULL, 0);
-INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (4, "kmorgan", 10.00, 24000, NULL, 0);
-INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (5, "bperry", 5.00, 25000, NULL, 1000);
-INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (6, "dparker", 3.00, 8400, NULL, 1000);
-INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (7, "eevans", 10.00, 25000, NULL, 1000);
-INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (8, "erussell", 3.00, 15000, NULL, 0);
-INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (9, "gbryant", 8.00, 56000, NULL, 1000);
-INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (10, "lgray", 4.00, 20000, NULL, 0);
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (9, "gbryant", 8.00, 57000, '2018-08-22 13:20:00');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (10, "lgray", 4.00, 18000, '2018-04-27 14:50:20');
 
 INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 2, 4, 1);
 INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 3, 4, 2);
@@ -436,6 +422,17 @@ INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 2, 6
 INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (20, 6, 8, 8);
 INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (20, 5, 6, 9);
 INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 3, 5, 10);
+
+INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (1, "kross", 2.00, 40000, 10, 0);
+INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (2, "swood", 3.00, 36000, 10, 0);
+INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (3, "bcooper", 5.00, 50000, 0, 0);
+INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (4, "kmorgan", 10.00, 24000, 0, 0);
+INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (5, "bperry", 5.00, 25000, 20, 1000);
+INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (6, "dparker", 3.00, 8400, 10, 1000);
+INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (7, "eevans", 10.00, 25000, 0, 1000);
+INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (8, "erussell", 3.00, 15000, 0, 0);
+INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (9, "gbryant", 8.00, 56000, 0, 1000);
+INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (10, "lgray", 4.00, 20000, 10, 0);
 
 INSERT INTO SUB_PRODUCTS(fid, cropName, quantityPerSub, price, subPeriod) VALUES ("jsmith", "Grapefruit",   5.0,  10000,  3.0);
 INSERT INTO SUB_PRODUCTS(fid, cropName, quantityPerSub, price, subPeriod) VALUES ("pstewart", "Watermelon", 7.0,  70000,  2.0);
@@ -566,7 +563,7 @@ INSERT INTO POST_COMMENTS(postid, commenterName, commentBody) VALUES (8, "eevans
 INSERT INTO POST_COMMENTS(postid, commenterName, commentBody) VALUES (9, "erussell", "How do I prevent an apple from becoming brown?");
 INSERT INTO POST_COMMENTS(postid, commenterName, commentBody) VALUES (10, "lgray", "Thank you for providing good information.");
 
-
+/*
 SELECT * FROM CITIES;
 SELECT * FROM MEMBERS;
 SELECT * FROM BUYERS;
@@ -585,4 +582,4 @@ SELECT * FROM SUB_PRODUCTS;
 SELECT * FROM SUB_ORDERS;
 SELECT * FROM POSTS;
 SELECT * FROM SAVED_POST;
-SELECT * FROM POST_COMMENTS;
+SELECT * FROM POST_COMMENTS;*/
