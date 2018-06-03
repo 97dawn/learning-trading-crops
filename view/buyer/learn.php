@@ -125,6 +125,12 @@
         <div id="myModal" class="modal"  >
           <div class="modal-content">
             <div id="texts"></div>
+            <div style="margin-top:30px;"class="row">
+              <label id="label">Write Comment</label>
+              <textarea id="label" style="height:50px;width: 87%;">Write here...</textarea>
+              <button style="float:right;background-color:grey" style="height:10px;" id="submit">Submit</button>
+            </div>
+            <div id="comments"></div>
           </div>
         </div>
     </div>
@@ -134,7 +140,11 @@
   <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
   </div>
-
+  <script>
+  document.getElementById("submit").onclick = function(){
+    writeComment(document.getElementById("submit"), document.getElementsByTagName("textarea")[0]);
+  };
+  </script>
   <script src="../../js/scripts.min.js"></script>
   <script src="../../js/main.min.js"></script>
   <script src="../../js/custom.js"></script>
@@ -143,6 +153,6 @@
   <script src="../../js/formPost.js"></script>
   <script src="../../js/showLearningPost.js"></script>
   <script src="../../js/saveLearningPost.js"></script>
-  
+  <script src="../../js/writeComment.js"></script>
   </body>
 </html>
