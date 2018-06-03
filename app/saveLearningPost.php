@@ -12,14 +12,14 @@
     // Put row in SAVED_POSTS Table
     session_start();
     $conn->autocommit(FALSE);
-    $sql = "INSERT INTO SAVED_POSTS(username,postid) VALUES(".$_SESSION["username"].",".$postid.")";
+    $sql = "INSERT INTO SAVED_POSTS(username,postid) VALUES('".$_SESSION["username"]."',".$postid.");";
     $conn->query($sql);
-    if (!$conn->commit()) { 
-        $conn->rollback();
-        echo("false");
+    if ($conn->commit()) { 
+        echo("true");
     }
     else{
-        echo("true");
+        $conn->rollback();
+        echo("false");
     }
     $conn->close();
 ?>

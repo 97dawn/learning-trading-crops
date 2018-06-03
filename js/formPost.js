@@ -1,21 +1,11 @@
 function formLearningPost(title, contents, id){
     var postStart = "<div class=\"post\">";
-    var postTitle = "<button style=\"overflow-wrap: break-word;width:100%;\" onclick=\"showLearningPost(this)\" value=\""+id+"\">"+title+"</button>";
+    var postTitle = "<button id=\""+title+"\"style=\"overflow-wrap: break-word;width:100%;\" onclick=\"showLearningPost(this)\" value=\""+id+"\">"+title+"</button>";
     var postContent = "";
     var postEnd = "</div>";
     postContent += "<h5> Author: "+contents.author+"</h5>";
     postContent += "<h5> Crop: "+contents.cropName+"</h5>"; 
-    postContent += "<button style=\"overflow-wrap: break-word;width:100%;background-color:#B2CFEF\" onclick=\"saveLearningPost(this)\" value=\""+id+"\">Save</button>";
-    return postStart + postTitle + postContent + postEnd;
-}
-function formLearningPostFarmer(title, contents, id){
-    var postStart = "<div class=\"post\">";
-    var postTitle = "<button style=\"overflow-wrap: break-word;width:100%;\" onclick=\"showLearningPostFarmer(this)\" value=\""+id+"\">"+title+"</button>";
-    var postContent = "";
-    var postEnd = "</div>";
-    postContent += "<h5> Author: "+contents.author+"</h5>";
-    postContent += "<h5> Crop: "+contents.cropName+"</h5>"; 
-    postContent += "<button style=\"overflow-wrap: break-word;width:100%;background-color:#B2CFEF\" onclick=\"saveLearningPost(this)\" value=\""+id+"\">Save</button>";
+    postContent += "<button style=\"width:100%;background-color:#B2CFEF\" onclick=\"saveLearningPost(this)\" value=\""+id+"\">Save</button>";
     return postStart + postTitle + postContent + postEnd;
 }
 function formProductPost(title, contents, id){
@@ -34,8 +24,9 @@ function formProductPost(title, contents, id){
     else{
         postContent += "<input id=\"quantity\" type=\"number\"></div>";
     }
-    postContent += "<div><button style=\"overflow-wrap: break-word;width:60%;float:left;background-color:#EFB2B4\" onclick=\"addToCart(this)\" value=\""+id+"\">Add to Cart</button>";
-    postContent += "<button style=\"overflow-wrap: break-word;width:40%;float:left;background-color:#B2CFEF\" onclick=\"order(this)\" value=\""+id+"\">Order</button></div>";
+    postContent += "<div><button style=\"width:60%;float:left;background-color:#EFB2B4\" onclick=\"addToCart(this)\" value=\""+id+"\">Add to Cart</button>";
+    postContent += "<button style=\"width:40%;float:left;background-color:#B2CFEF\" onclick=\"order(this)\" value=\""+id+"\">Order</button></div>";
+    postContent += "<button style=\"width:100%;background-color:grey\" onclick=\"seeReview(this)\" value=\""+id+"\">See Reviews</button>";
     return postStart + postTitle + postContent + postEnd;
 }
 function formSubscriptionPost(title, contents, id){
@@ -47,6 +38,6 @@ function formSubscriptionPost(title, contents, id){
     postContent += "<h5> Price: "+contents.price+" won </h5>";
     postContent += "<h5> Quantity Per Subscription: "+contents.quantityPerSub+" "+contents.unit+" </h5>";
     postContent += "<h5> Period: once per "+contents.period+" month(s) </h5>";
-    postContent += "<button style=\"overflow-wrap: break-word;width:100%;background-color:#B2CFEF\" value=\""+id+"\" onclick=\"subscribe(this)\">Subscribe</button>";
+    postContent += "<button style=\"width:100%;background-color:#B2CFEF\" value=\""+id+"\" onclick=\"subscribe(this)\">Subscribe</button>";
     return postStart + postTitle + postContent + postEnd;
 }

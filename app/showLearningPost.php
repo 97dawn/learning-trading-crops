@@ -17,8 +17,8 @@
     $json["cropName"] = $row["cropName"];
     $json["cropInfo"] = $row["cropInfo"];
     $json["uses"] = $row["uses"];
-    $json["diseases"] = $row["diseases"];
-    $json["date"] = $row["date"];
+    $json["disease"] = $row["disease"];
+    $json["date"] = $row["postDate"];
     $conn->close();
     echo(json_encode($json));
 ?>

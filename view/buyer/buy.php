@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,6 +16,39 @@
   </head>
   <body>
   <style>
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
   button{
     border: none;
     background-color:transparent;
@@ -60,7 +94,7 @@
           <ul class="probootstrap-main-nav">
             <div class="btn-group">
                 <button style="color:navy;background-color:transparent;"class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Hello, <?php session_start();if ( ! empty( $_SESSION['username'] ) ) {echo htmlspecialchars($_SESSION['username']);} else{echo htmlspecialchars("");}?>
+                    Hello, <?php session_start();if ( ! empty( $_SESSION['username'] ) ) {echo ($_SESSION['username']);} else{echo ("");}?>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <a href="myOrder.php" style="padding-left:10px;">My Order</a><br>
@@ -149,6 +183,12 @@
         </div>
         <div id="products" style="margin-top: 2rem;">
         </div>
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="texts"></div>
+          </div>
+        </div>
     </div>
   </div>
 
@@ -164,6 +204,8 @@
   <script src="../../js/renderProducts.js"></script>
   <script src="../../js/showValue.js"></script>
   <script src="../../js/formPost.js"></script>
-  
+  <script src="../../js/seeReviews.js"></script>
+  <script src="../../js/orderRightAway.js"></script>
+  <script src="../../js/addToCart.js"></script>
   </body>
 </html>

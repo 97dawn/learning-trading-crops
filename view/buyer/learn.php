@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -41,7 +42,25 @@
     width:80%;
     text-align: justify;
     color:black;
-  }
+  }.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+}
   </style>
   <!-- START: header -->
   
@@ -57,7 +76,7 @@
           <ul class="probootstrap-main-nav">
             <div class="btn-group">
                 <button style="color:navy;background-color:transparent;"class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Hello, <?php session_start();if ( ! empty( $_SESSION['username'] ) ) {echo htmlspecialchars($_SESSION['username']);} else{echo htmlspecialchars("");}?>
+                    Hello, <?php session_start();if ( ! empty( $_SESSION['username'] ) ) {echo ($_SESSION['username']);} else{echo ("");}?>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <a href="myOrder.php" style="padding-left:10px;">My Order</a><br>
@@ -103,6 +122,11 @@
         </div>
         <div id="posts" style="margin-top: 2rem;">
         </div>
+        <div id="myModal" class="modal"  >
+          <div class="modal-content">
+            <div id="texts"></div>
+          </div>
+        </div>
     </div>
   </div>
 
@@ -115,7 +139,7 @@
   <script src="../../js/main.min.js"></script>
   <script src="../../js/custom.js"></script>
   <script src="../../js/listCrops.js"></script>
-  <script src="../../js/renderPostsFarmer.js"></script>
+  <script src="../../js/renderPosts.js"></script>
   <script src="../../js/formPost.js"></script>
   <script src="../../js/showLearningPost.js"></script>
   <script src="../../js/saveLearningPost.js"></script>

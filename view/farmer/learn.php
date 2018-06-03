@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,6 +25,45 @@
   #search{
     padding-top:10px;
   }
+  h5{
+    color:black;
+    margin:0.5rem;
+  }
+  .post{
+    border: 2px solid black;
+    float: left;
+    margin:10px;
+    width: 20%;
+  }
+  #label{
+    float:left;
+    width:20%;
+    color:black;
+  }
+  #content{
+    float:right;
+    width:80%;
+    text-align: justify;
+    color:black;
+  }.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+}
   </style>
 
   <!-- START: header -->
@@ -41,7 +81,7 @@
           <ul class="probootstrap-main-nav">
             <div class="btn-group">
                 <button style="color:navy;background-color:transparent;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Hello, <?php session_start(); if ( ! empty( $_SESSION['username'] ) ) {echo htmlspecialchars($_SESSION['username']);} else{echo htmlspecialchars("");}?>
+                    Hello, <?php session_start(); if ( ! empty( $_SESSION['username'] ) ) {echo ($_SESSION['username']);} else{echo ("");}?>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <a href="myProduct.php" style="padding-left:10px;">My Product</a><br>
@@ -61,35 +101,39 @@
     <div class="container">
       <div class="row">
           <div class="col-md-2">
-                  <div class="dropdown" >
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="cropType" style="width:150px;">Crop type ▼
-                        </button>
-                            <ul class="dropdown-menu">
-                              <li><button onclick="listCrops(this)" value="Vegetable">Vegetable</button></li>
-                              <li><button onclick="listCrops(this)" value="Fruit">Fruit</button></li>
-                              <li><button onclick="listCrops(this)" value="Herb">Herb</button></li>
-                              <li><button onclick="listCrops(this)" value="Nut">Nut</button></li>
-                              <li><button onclick="listCrops(this)" value="Grain">Grain</button></li>
-                            </ul>
-                  </div>    
+            <div class="dropdown" >
+                <label>Crop Type</label>
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="cropType" style="width:150px;">Doesn't matter ▼
+                </button>
+                    <ul class="dropdown-menu">
+                      <li><button onclick="listCrops(this);" value="null">Doesn't matter</button></li>
+                      <li><button onclick="listCrops(this)" value="Vegetable">Vegetable</button></li>
+                      <li><button onclick="listCrops(this)" value="Fruit">Fruit</button></li>
+                      <li><button onclick="listCrops(this)" value="Herb">Herb</button></li>
+                      <li><button onclick="listCrops(this)" value="Nut">Nut</button></li>
+                      <li><button onclick="listCrops(this)" value="Grain">Grain</button></li>
+                    </ul>
+            </div>    
           </div>
           <div class="col-md-2">
-                  <div class="dropdown"style="width:10px;">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="cropName" style="width:150px;">Crop Name ▼
-                        </button>
-                            <ul class="dropdown-menu" id="cropNames" >
-                              
-                            </ul>
-                  </div>    
-          </div>
+            <div class="dropdown">
+                  <label>Crop Name</label>
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="cropName" style="width:150px;">Doesn't matter ▼
+                  </button>
+                  <ul class="dropdown-menu" id="cropNames"></ul>
+            </div>   
+            </div>
           <button onclick="search();" id="search">Search</button>
         </div>
-        <h2>View posts about<h2 id="crop"></h2></h2>
-        <div id="posts">
+        <div id="posts" style="margin-top: 2rem;">
+        </div>
+        <div id="myModal" class="modal"  >
+          <div class="modal-content">
+            <div id="texts"></div>
+          </div>
         </div>
     </div>
   </div>
-
 
   <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
@@ -99,9 +143,9 @@
   <script src="../../js/main.min.js"></script>
   <script src="../../js/custom.js"></script>
   <script src="../../js/listCrops.js"></script>
-  <script src="../../js/renderPostsFarmer.js"></script>
+  <script src="../../js/renderPosts.js"></script>
   <script src="../../js/formPost.js"></script>
-  <script src="../../js/showLearningPostFarmer.js"></script>
+  <script src="../../js/showLearningPost.js"></script>
   <script src="../../js/saveLearningPost.js"></script>
   </body>
 </html>

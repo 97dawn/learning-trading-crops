@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -59,7 +60,7 @@
           <ul class="probootstrap-main-nav">
             <div class="btn-group">
                 <button style="color:navy;background-color:transparent;"class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Hello, <?php session_start();if ( ! empty( $_SESSION['username'] ) ) {echo htmlspecialchars($_SESSION['username']);} else{echo htmlspecialchars("");}?>
+                    Hello, <?php session_start();if ( ! empty( $_SESSION['username'] ) ) {echo ($_SESSION['username']);} else{echo ("");}?>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <a href="myOrder.php" style="padding-left:10px;">My Order</a><br>
