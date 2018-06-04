@@ -1,6 +1,5 @@
 <?php
 require_once 'DBinfo.php';
-
 try{
     $dbc = new PDO("mysql:host={$hn};dbname={$db}",$un,$pw);
     $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -71,24 +70,29 @@ if($_POST['submit'])
           if($result)
           {
               echo "registered";
+
           }
           else
           {
-              echo "Query could not execute !";
+            echo "servererror";
           }
         }
       }
       else {
         if($count>0){
-          echo "1"; //"Username already exists"
+          echo "1";//"Username already exists";
+
         }
         if($count1>0 || $count2>0){
-          echo "2"; //"This email is already chosen"
+          echo "2";//"This email is already chosen";
+
         }
         if($count3>0 || $count4>0){
-          echo "3"; //"This phone is associated with an existing account"
+         echo "3";//"This phone is associated with an existing account";
+
         }
       }
+
     }
     catch(PDOException $e){
         echo $e->getMessage();

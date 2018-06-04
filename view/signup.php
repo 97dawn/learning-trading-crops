@@ -24,8 +24,6 @@
   <header role="banner" class="probootstrap-header">
     <div class="container">
         <a href="../index.html" class="probootstrap-logo">The Greatest Farmer<span>.</span></a>
-<<<<<<< HEAD
-
         <nav role="navigation" class="probootstrap-nav hidden-xs">
           <ul class="probootstrap-main-nav">
             <li><a href="../index.html">Home</a></li>
@@ -33,8 +31,6 @@
             <li class="active"><a href="signup.php">Sign Up</a></li>
           </ul>
         </nav>
-=======
->>>>>>> e3ba33d8e53fe9836a3adceca790198e80920ebc
     </div>
   </header>
   <!-- END: header -->
@@ -54,18 +50,15 @@
       <div class="row">
           <h2>Sign Up</h2>
         <div class="col-md-8 probootstrap-animate">
-          <div id="error"></div>
-          <form class="probootstrap-form mb60" id="register-form" action="../app/signup.php" method="post" >
+          <form class="probootstrap-form mb60" id="register-form" method="post">
             <div class="row">
               <div class="col-md-6 form-group">
                   <label for="fname">First Name</label>
                   <input type="text" class="form-control" id="first_name" name="fname" placeholder="John">
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
+              <div class="col-md-6 form-group">
                   <label for="lname">Last Name</label>
                   <input type="text" class="form-control" id="last_name" name="lname" placeholder="Doe">
-                </div>
               </div>
             <div class="col-md-6">
                 <div class="form-group">
@@ -87,16 +80,16 @@
             </div>
             </div>
 
-
-            <div class="form-group">
+            <div class="row">
+            <div class="col-md-6 form-group">
               <label for="email">Email</label>
               <input type="email" class="form-control" id="email" name="email" placeholder="john.doe@gmail.com">
             </div>
-            <div>
+            <div class="col-md-6 form-group">
               <label for="phonenumber">Phone Number</label>
               <input type="phonenumber" class="form-control" id="phonenumber" name="phonenumber" placeholder="10 digits Korean phone number">
             </div>
-            <div class="row">
+
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="fname">Address</label>
@@ -160,6 +153,7 @@
             <div class="form-group">
               <input type="submit" class="btn btn-primary" id="btn-submit" name="submit" value="Submit">
             </div>
+            <div id="error"></div>
           </form>
         </div>
 
