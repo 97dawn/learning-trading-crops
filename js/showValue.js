@@ -18,3 +18,8 @@ function showOrganic(o){
     showOrganic.innerText = "";
     showOrganic.innerText=o.innerText+" ▼";
 }
+function showReviewRating(rating){
+    var showRating = document.getElementById("reviewRating");
+    showRating.innerText = "";
+    showRating.innerText=rating.innerText+" ▼";
+}

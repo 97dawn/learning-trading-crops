@@ -1,7 +1,7 @@
 function subscribe(sub){
     var subid = sub.value;
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "../app/subscribe.php", true);
+    xhr.open("POST", "../../app/subscribe.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function (){
         if(xhr.readyState === 4 && xhr.status === 200){

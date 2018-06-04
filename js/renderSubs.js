@@ -1,15 +1,31 @@
 function search(){
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "../app/renderSubs.php", true);
+    xhr.open("POST", "../../app/renderSubs.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     
     // Join data
     var cropType =  document.getElementById("cropType");
     var cropName =  document.getElementById("cropName");
     var priceRange =  document.getElementById("priceRange");
-    cropType = cropType.value;
-    cropName = cropName.value;
-    priceRange = priceRange.value;
+    if(cropType.value ==""){
+        cropType = "null";
+    }
+    else{
+        cropType = cropType.value;
+    }
+    if(cropName.value ==""){
+        cropName = "null";
+    }
+    else{
+        cropName = cropName.value;
+    }
+    if(priceRange.value ==""){
+        priceRange = "null";
+    }
+    else{
+        priceRange = priceRange.value;
+    }
+    
     var minPrice = 0;
     var maxPrice = -1;
     if(priceRange.includes("-")){

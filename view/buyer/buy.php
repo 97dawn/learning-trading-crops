@@ -16,39 +16,6 @@
   </head>
   <body>
   <style>
-.modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
-    padding-top: 100px; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
-}
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
   button{
     border: none;
     background-color:transparent;
@@ -79,6 +46,37 @@
     height:90%;
     float:right;
   }
+  #content{
+    float:right;
+    width:80%;
+    text-align: justify;
+    color:black;
+  }.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    color:black;
+}
+.mom {
+    display: table;
+}
+.child {
+    display: table-cell;
+}
   </style>
   <!-- START: header -->
   
@@ -183,10 +181,32 @@
         </div>
         <div id="products" style="margin-top: 2rem;">
         </div>
-        <div id="myModal" class="modal">
+        <div id="myModal" class="modal"  >
           <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="texts"></div>
+            <div style="margin-top:30px;"class="row">
+              <label id="label">Write Comment</label>
+              <div class="mom">
+                  <div class="child">
+                      <div class="childinner"><textarea id="label" style="float:left;margin-left:10px;height:50px;width:700px;;">Write here...</textarea></div>
+                  </div>
+                  <div class="child">
+                    <div class="dropdown" >
+                      <button style="margin-left:10px;height:50px;" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="reviewRating">1 ▼</button>
+                      <ul class="dropdown-menu" id="ratings">
+                          <li><button onclick="showReviewRating(this);" value="1">1</button></li>
+                          <li><button onclick="showReviewRating(this);" value="2">2</button></li>
+                          <li><button onclick="showReviewRating(this);" value="3">3</button></li>
+                          <li><button onclick="showReviewRating(this);" value="4">4</button></li>
+                          <li><button onclick="showReviewRating(this);" value="5">5</button></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="child">
+                      <div class="childinner"><button style="background-color:grey; margin-left:10px;height:50px;" id="submit">Submit</button></div>
+                  </div>
+              </div>
+              <div style="margin-left:20px;"id="reviews"></div>
+            </div>
           </div>
         </div>
     </div>
@@ -196,7 +216,12 @@
   <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
   </div>
-  
+  <script>
+  document.getElementById("submit").onclick = function(){
+    writeReview(document.getElementById("submit"), document.getElementsByTagName("textarea")[0], 
+    document.getElementById("reviewRating"));
+  };
+  </script>
   <script src="../../js/scripts.min.js"></script>
   <script src="../../js/main.min.js"></script>
   <script src="../../js/custom.js"></script>
@@ -207,5 +232,6 @@
   <script src="../../js/seeReviews.js"></script>
   <script src="../../js/orderRightAway.js"></script>
   <script src="../../js/addToCart.js"></script>
+  <script src="../../js/writeReview.js"></script>
   </body>
 </html>

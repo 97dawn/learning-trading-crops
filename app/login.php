@@ -4,8 +4,8 @@
     // Get username and password from Ajax
     header("Content-Type: application/json; charset=UTF-8");
     $data = json_decode($_POST["data"], false);
-    $username = $data->username;
-    $password = $data->password;
+    $username = trim($data->username);
+    $password = trim($data->password);
 
     // Connect to DB
     $conn = new mysqli($hn, $un, $pw, $db);

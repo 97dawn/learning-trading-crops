@@ -53,10 +53,7 @@ function showLearningPost(post){
             document.getElementById('texts').innerHTML = texts;
             document.getElementById('comments').innerHTML = comments;
             document.getElementById("submit").value=postid;
-            var btn = document.getElementById(post.getAttribute('id'));
-            btn.onclick = function() {
-                modal.style.display = "block";
-            }
+            modal.style.display = "block";
             window.onclick = function(event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
