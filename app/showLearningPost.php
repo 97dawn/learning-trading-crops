@@ -1,7 +1,6 @@
 <?php
     require_once("DBinfo.php");
         
-    // Get username and password from Ajax
     header("Content-Type: application/json; charset=UTF-8");
     $postid = intval($_POST["postid"]);
 

@@ -1,6 +1,6 @@
 function search(){
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "../app/renderProducts.php", true);
+    xhr.open("POST", "../../app/renderProducts.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     
     // Join data
@@ -9,14 +9,33 @@ function search(){
     var priceRange =  document.getElementById("priceRange");
     var rating =  document.getElementById("rating");
     var isOrganic =  document.getElementById("isOrganic");
-    cropType = cropType.value;
-    cropName = cropName.value;
-    priceRange = priceRange.value;
-    rating = rating.value;
-    if(!isNaN(rating)){
-        rating = parseInt(rating);
+    if(cropType.innerHTML.split(" ▼")[0] =="Doesn't matter"){
+        cropType = "null";
     }
-    isOrganic = isOrganic.value;
+    else{
+        cropType = cropType.innerHTML.split(" ▼")[0].toLowerCase();
+    }
+    if(cropName.innerHTML.split(" ▼")[0] =="Doesn't matter"){
+        cropName = "null";
+    }
+    else{
+        cropName = cropName.innerHTML.split(" ▼")[0];
+    }
+    if(priceRange.innerHTML.split(" ▼")[0] =="Doesn't matter"){
+        priceRange = "null";
+    }
+    else{
+        priceRange = priceRange.innerHTML.split(" ▼")[0];
+        priceRange = priceRange.split(" won")[0];
+    }
+    if(rating.innerHTML.split(" ▼")[0] =="Doesn't matter"){
+        rating = "null";
+    }
+    else{
+        rating = rating.innerHTML.split(" ");
+        rating = parseInt(rating[rating.length-2]);
+    }
+    
     var minPrice = 0;
     var maxPrice = -1;
     if(priceRange.includes("-")){
@@ -37,6 +56,14 @@ function search(){
             minPrice = -1;
         }
     }
+    if(isOrganic.innerHTML.split(" ▼")[0] =="Doesn't matter"){
+        isOrganic = "null";
+    }
+    else{
+        isOrganic = isOrganic.innerHTML.split(" ▼")[0];
+        if(isOrganic == "yes")isOrganic = true;
+        else isOrganic = false;
+    }
     var data = JSON.stringify({"cropType":cropType,"cropName":cropName,"minPrice":minPrice,"maxPrice":maxPrice, "rating":rating, "isOrganic":isOrganic});
     xhr.onreadystatechange = function (){
         if(xhr.readyState === 4 && xhr.status === 200){
@@ -45,15 +72,22 @@ function search(){
             // render products
             products.innerHTML = "";
             for(var data in json['products']){
-                var contents = {price:data.price, preputation:data.preputation,freputation:data.freputation, unit:data.unit};
-                var title = data.cropName + " from " + data.farmer;
-                if(title.length > 19){
-                    products.innerHTML += formProductPost(title.substring(0,19) + "...", contents, data.pid);
+                isOrganic = "yes";
+                if(json['products'][data].isOrganic == 0){
+                    isOrganic = "no";
+                }
+                var contents = {remaining:json['products'][data].remaining,isOrganic:isOrganic,farmer:json['products'][data].farmer,price:json['products'][data].price, preputation:json['products'][data].preputation,freputation:json['products'][data].freputation, unit:json['products'][data].unit};
+                var title = json['products'][data].cropName + " from " + json['products'][data].farmer;
+                if(title.length > 15){
+                    products.innerHTML += formProductPost(title.substring(0,15) + "...", contents, json['products'][data].pid);
                 }
                 else{
-                    products.innerHTML += formProductPost(title, contents, data.pid);
+                    products.innerHTML += formProductPost(title, contents, json['products'][data].pid);
                 }
             }   
+            if(json['products'].length == 0){
+                products.innerHTML += "Nothing to show";
+            }  
         }
     }
     xhr.send("data="+data);

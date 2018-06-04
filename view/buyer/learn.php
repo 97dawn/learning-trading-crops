@@ -128,7 +128,7 @@
             <div style="margin-top:30px;"class="row">
               <label id="label">Write Comment</label>
               <textarea id="label" style="height:50px;width: 87%;">Write here...</textarea>
-              <button style="float:right;background-color:grey" style="height:10px;" id="submit">Submit</button>
+              <button style="float:right;background-color:grey" id="submit">Submit</button>
             </div>
             <div id="comments"></div>
           </div>

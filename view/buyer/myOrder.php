@@ -1,4 +1,10 @@
-<?php ob_start(); ?>
+<?php 
+
+ob_start(); 
+require("../../app/DBinfo.php");
+$conn = new mysqli($hn, $un, $pw, $db);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -48,6 +54,21 @@
   <div class="probootstrap-section">
     <div class="container">
       <div class="row" >
+      <?php
+        if ($conn->connect_error) die($conn->connect_error);
+        $username = $_SESSION['username'];
+        $query = "SELECT orid FROM ORDERS WHERE bid = '" .$username."';";
+        $result = $conn->query($query) or die ("Error: " . mysql_error());
+           
+        if (!$result) echo "SELECT failed: $query<br>" .
+              $conn->error . "<br><br>";
+
+        while($row = $result->fetch_assoc()) {
+          $orid = $row['orid'];
+          echo "<input type='button' onclick='showOrders($orid)' name=$orid value=$orid>"."<br />";
+        }
+
+        ?>
       </div>
     </div>
   </div>
