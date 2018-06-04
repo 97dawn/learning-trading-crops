@@ -1,21 +1,5 @@
 $('document').ready(function()
 {
-  var form = $("#register-form"),
-  data = $(form).serialize(),
-  formMethod  = 'POST'
-  phpHandler = '../app/signup.php';
-  var city_array;
-  var province_array;
-  /*get values from
-  function populateCityProvince(){
-  }
-
-  function getProvinceData(callback){
-    $.ajax({
-
-    });
-  }
-  */
   $("#register-form").validate({
     rules:
     {
@@ -44,12 +28,6 @@ $('document').ready(function()
       streetInfo: {
         required: true,
         minlength: 5
-      },
-      city:{
-        required:true
-      },
-      province:{
-        require:true
       },
       password: {
         required: true,
@@ -90,16 +68,18 @@ $('document').ready(function()
           equalTo: "Password Mismatch! Retype"
         }
       },
-      submitHandler: submitForm()
+      submitHandler: submitForm
     });
     /* validation */
 
     /* form submit */
     function submitForm()
     {
+      var data = $("#register-form").serialize();
+
       $.ajax({
-        type : formMethod,
-        url  : phpHandler,
+        type : 'POST',
+        url  : '../app/signup.php',
         data : data,
         beforeSend: function()
         {
@@ -108,23 +88,32 @@ $('document').ready(function()
         },
         success :  function(data)
         {
+
           if(data==1){
             $("#error").fadeIn(1000, function(){
               $("#error").html('<div class="alert alert-danger"> <span></span> &nbsp; Username already exists !</div>');
             });
           }
-
-          else if(data=="registered")
-          {
-            $("#btn-submit").html('Signing Up');
-            setTimeout('$(".probootstrap-section").fadeOut(500, function(){ $(".probootstrap-loader").load("successreg.php"); }); ',5000);
-          }
-          else{
+          if(data==2){
             $("#error").fadeIn(1000, function(){
-              $("#error").html('<div class="alert alert-danger"><span></span> &nbsp; '+data+' !</div>');
-              $("#btn-submit").html('<span ></span> &nbsp; Create Account');
+              $("#error").html('<div class="alert alert-danger"> <span></span> &nbsp; This email is already chosen !</div>');
             });
           }
+          if(data==3){
+            $("#error").fadeIn(1000, function(){
+              $("#error").html('<div class="alert alert-danger"> <span></span> &nbsp; This phone number is associated with an existing account !</div>');
+            });
+          }
+          else if(data=="registered")
+          {
+          window.location.replace("../view/successreg.html");
+          }
+          else {
+            $("#error").fadeIn(1000, function(){
+              $("#error").html('<div class="alert alert-danger"> <span></span> &nbsp; There has been an error in the server :(</div>');
+            });
+          }
+
         }
       });
       return false;
