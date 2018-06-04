@@ -317,14 +317,14 @@ INSERT INTO FARMER_REPUTATIONS VALUES (3, "neutral");
 INSERT INTO FARMER_REPUTATIONS VALUES (4, "trust-worthy");
 INSERT INTO FARMER_REPUTATIONS VALUES (5, "super farmer");
 
-INSERT INTO FARMERS VALUES ("jsmith", "James", "Smith", "010-1234-1234", "jsmith@gmail.com", 1, "22 Bamgogae-ro 1-gil Gangnam-gu", "Seoul Special Metropolitan City" );
-INSERT INTO FARMERS VALUES ("pstewart", "Peter", "Stewart", "010-2345-2345", "pstewart@gmail.com", 2,"14 Teheran-ro 82-gil Gangnam-gu", "Seoul Special Metropolitan City" );
-INSERT INTO FARMERS VALUES ("jhall", "John", "Hall", "010-3456-3456", "jhall@gmail.com", 3, "53 Gyeongdongsijang-ro 2-gil Dongdaemun-gu", "Seoul Special Metropolitan City" );
-INSERT INTO FARMERS VALUES ("cmorris", "Cathy", "Morris", "010-4567-4567", "cmorris@gmail.com", 4, "25 Dogok-ro 64-gil Songpa-gu", "Seoul Special Metropolitan City" );
-INSERT INTO FARMERS VALUES ("kbell", "Katherine", "Bell", "010-5678-5678", "kbell@gmail.com", 2, "35 Ganchon-ro 27beon-gil Seo-gu", "Incheon Metropolitan City" );
-INSERT INTO FARMERS VALUES ("ahyes", "Abigail", "Hayes", "010-4321-4321", "ahyes@gmail.com", 5, "578 Maesohol-ro Nam-gu", "Incheon Metropolitan City" );
-INSERT INTO FARMERS VALUES ("asanders", "Addison", "Sanders", "010-5432-5432", "asanders@gmail.com", 3,"7 Hogupo-ro 889beon-gil Namdong-gu", "Incheon Metropolitan City");
-INSERT INTO FARMERS VALUES ("bcollins", "Benjamin", "Collins", "010-6543-6543", "bcollins@gmail.com", 2, "20 Pyeongnae-ro 29beonan-gil", "Namyangju" );
+INSERT INTO FARMERS VALUES ("jsmith", "James", "Smith", "010-1234-1234", "jsmith@gmail.com", 5, "22 Bamgogae-ro 1-gil Gangnam-gu", "Seoul Special Metropolitan City" );
+INSERT INTO FARMERS VALUES ("pstewart", "Peter", "Stewart", "010-2345-2345", "pstewart@gmail.com", 4,"14 Teheran-ro 82-gil Gangnam-gu", "Seoul Special Metropolitan City" );
+INSERT INTO FARMERS VALUES ("jhall", "John", "Hall", "010-3456-3456", "jhall@gmail.com", 4, "53 Gyeongdongsijang-ro 2-gil Dongdaemun-gu", "Seoul Special Metropolitan City" );
+INSERT INTO FARMERS VALUES ("cmorris", "Cathy", "Morris", "010-4567-4567", "cmorris@gmail.com", 5, "25 Dogok-ro 64-gil Songpa-gu", "Seoul Special Metropolitan City" );
+INSERT INTO FARMERS VALUES ("kbell", "Katherine", "Bell", "010-5678-5678", "kbell@gmail.com", 5, "35 Ganchon-ro 27beon-gil Seo-gu", "Incheon Metropolitan City" );
+INSERT INTO FARMERS VALUES ("ahyes", "Abigail", "Hayes", "010-4321-4321", "ahyes@gmail.com", 4, "578 Maesohol-ro Nam-gu", "Incheon Metropolitan City" );
+INSERT INTO FARMERS VALUES ("asanders", "Addison", "Sanders", "010-5432-5432", "asanders@gmail.com", 2,"7 Hogupo-ro 889beon-gil Namdong-gu", "Incheon Metropolitan City");
+INSERT INTO FARMERS VALUES ("bcollins", "Benjamin", "Collins", "010-6543-6543", "bcollins@gmail.com", 3, "20 Pyeongnae-ro 29beonan-gil", "Namyangju" );
 INSERT INTO FARMERS VALUES ("cgriffin", "Christopher", "Griffin","010-7654-7654","cgriffin@gmail.com", 1, "31 Haenggung-ro 62beon-gil Paldal-gu", "Suwon");
 INSERT INTO FARMERS VALUES ("dcampbell", "David", "Campbell", "010-8765-8765", "dcampbell@gmail.com", 4, "22 Chanumul 2-gil", "Siheung" );
 
@@ -376,27 +376,27 @@ INSERT INTO PRODUCT_REPUTATIONS VALUES (3, "average");
 INSERT INTO PRODUCT_REPUTATIONS VALUES (4, "quality guaranteed");
 INSERT INTO PRODUCT_REPUTATIONS VALUES (5, "superb");
 
-INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("jsmith", "Pecan", 20000, false , 2, 20.00);
-INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("pstewart", "Apricot", 12000, false, 3, 30.00);
-INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("jhall", "Pumpkin", 10000, false   , 1, 45.00);
-INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("cmorris", "Rice", 2400, false     , 4, 1000.00);
-INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("kbell", "Carrot", 5000, true      , 1, 30.00);
-INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("ahyes", "Avocado", 2800, true     , 5, 60.00);
-INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("asanders", "Cabbage", 2500, true  , 4, 80.00);
+INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("jsmith", "Pecan", 20000, false , 5, 20.00);
+INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("pstewart", "Apricot", 12000, false, 4, 30.00);
+INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("jhall", "Pumpkin", 10000, false   , 4, 45.00);
+INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("cmorris", "Rice", 2400, false     , 5, 1000.00);
+INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("kbell", "Carrot", 5000, true      , 5, 30.00);
+INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("ahyes", "Avocado", 2800, true     , 4, 60.00);
+INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("asanders", "Cabbage", 2500, true  , 2, 80.00);
 INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("bcollins", "Celery", 5000, false  , 3, 35.00);
-INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("cgriffin", "Apple", 7000, true   , 2, 55.00);
+INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("cgriffin", "Apple", 7000, true   , 1, 55.00);
 INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("dcampbell", "Lemon", 5000, false , 4, 70.00);
 
 
-INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("kross", 1 , 2, "These arrived fresh and intact. They are soft yet crisp as any good pecan would be.");
-INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("swood", 2 , 3, "Fresh and delicious");
+INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("kross", 1 , 5, "These arrived fresh and intact. They are soft yet crisp as any good pecan would be.");
+INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("swood", 2 , 4, "Fresh and delicious");
 INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("bcooper", 3 , 4, "I use this for pumpkin pie, which is my favorite pie of all. I also use it for pumpkin bread and muffins.");
 INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("kmorgan", 4 , 5, "I'm going to order it again. I really liked it!");
-INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("bperry", 5 , 1, "Excellent!");
-INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("dparker", 6 , 2, "I was amazed at the value here compared to our local supermarket. I would highly recommend this product to others.");
-INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("eevans", 7, 3, "They were shipped with other produce in a cardboard box with holes punched in the side. Almost all the items arrived rotten.");
-INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("erussell", 8, 4, "It's over priced for one celery");
-INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("gbryant", 9, 3, "Probably wouldn't buy again. Most of the apples arrived mushy and turning brown.");
+INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("bperry", 5 , 5, "Excellent!");
+INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("dparker", 6 , 4, "I was amazed at the value here compared to our local supermarket. I would highly recommend this product to others.");
+INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("eevans", 7, 2, "They were shipped with other produce in a cardboard box with holes punched in the side. Almost all the items arrived rotten.");
+INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("erussell", 8, 3, "It's over priced for one celery");
+INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("gbryant", 9, 1, "Probably wouldn't buy again. Most of the apples arrived mushy and turning brown.");
 INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("lgray", 10, 4, "These went bad too fast. Will stick to buying fruit at the grocery store.");
 
 INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (1, "kross", 2.00, 36000, '2018-05-18 13:10:01');
