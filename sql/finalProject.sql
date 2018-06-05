@@ -443,16 +443,16 @@ INSERT INTO SUB_PRODUCTS(fid, cropName, quantityPerSub, price, subPeriod) VALUES
 INSERT INTO SUB_PRODUCTS(fid, cropName, quantityPerSub, price, subPeriod) VALUES ("bcollins", "Pecan",      1.0,  20000,  2.0);
 INSERT INTO SUB_PRODUCTS(fid, cropName, quantityPerSub, price, subPeriod) VALUES ("cgriffin", "Kale",       2.0,  17800,  3.0);
 
-INSERT INTO SUB_ORDERS(subid, bid, startDate, endDate) VALUES (1, "kross", '2018-02-18', '2018-08-18');
-INSERT INTO SUB_ORDERS(subid, bid, startDate, endDate) VALUES (2, "swood", '2017-03-22', '2018-09-22');
-INSERT INTO SUB_ORDERS(subid, bid, startDate, endDate) VALUES (3, "bcooper", '2018-01-20', '2018-06-20');
-INSERT INTO SUB_ORDERS(subid, bid, startDate, endDate) VALUES (4, "kmorgan", '2017-05-01', '2018-05-01');
-INSERT INTO SUB_ORDERS(subid, bid, startDate, endDate) VALUES (5, "bperry", '2016-08-15', '2018-08-15');
-INSERT INTO SUB_ORDERS(subid, bid, startDate, endDate) VALUES (6, "dparker", '2017-07-12', '2018-07-12');
+INSERT INTO SUB_ORDERS(subid, bid, startDate, endDate) VALUES (1, "kross", '2018-02-18', NULL);
+INSERT INTO SUB_ORDERS(subid, bid, startDate, endDate) VALUES (2, "swood", '2017-03-22', NULL);
+INSERT INTO SUB_ORDERS(subid, bid, startDate, endDate) VALUES (3, "bcooper", '2018-01-20', NULL);
+INSERT INTO SUB_ORDERS(subid, bid, startDate, endDate) VALUES (4, "kmorgan", '2017-05-01', '2018-04-18');
+INSERT INTO SUB_ORDERS(subid, bid, startDate, endDate) VALUES (5, "bperry", '2016-08-15', NULL);
+INSERT INTO SUB_ORDERS(subid, bid, startDate, endDate) VALUES (6, "dparker", '2012-07-12', '2016-01-28');
 INSERT INTO SUB_ORDERS(subid, bid, startDate, endDate) VALUES (7, "eevans", '2018-01-09', '2018-05-09');
-INSERT INTO SUB_ORDERS(subid, bid, startDate, endDate) VALUES (8, "erussell", '2018-02-07', '2019-02-07');
-INSERT INTO SUB_ORDERS(subid, bid, startDate, endDate) VALUES (9, "gbryant", '2018-02-22', '2018-08-22');
-INSERT INTO SUB_ORDERS(subid, bid, startDate, endDate) VALUES (10, "lgray", '2018-05-02', '2020-05-02');
+INSERT INTO SUB_ORDERS(subid, bid, startDate, endDate) VALUES (8, "erussell", '2017-02-07', '2018-02-10');
+INSERT INTO SUB_ORDERS(subid, bid, startDate, endDate) VALUES (9, "gbryant", '2018-02-22', NULL);
+INSERT INTO SUB_ORDERS(subid, bid, startDate, endDate) VALUES (10, "lgray", '2016-05-02', '2018-05-02');
 
 INSERT INTO POSTS(authorName, title, cropName, cropInfo, uses, disease, postDate) VALUES (
                           "jsmith", 
