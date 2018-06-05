@@ -9,6 +9,9 @@ function subscribe(sub){
             if(answer == "true"){
                 alert("Successfully subscribed the subscription.");
             }
+            else if(answer == "already"){
+                alert("You have already subscribed");
+            }
             else{
                 alert("ERROR");
             }

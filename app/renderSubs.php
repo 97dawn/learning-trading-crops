@@ -12,10 +12,6 @@
     $conn = new mysqli($hn, $un, $pw, $db);
     if ($conn->connect_error) die($conn->connect_error);
 
-    // Check whether the username exists
-    $sql = "SELECT * FROM SUB_PRODUCTS;";
-    $result = $conn->query($sql) or die ("Error: " . mysql_error());
-    
     // Check whether all inputs are null or not
     $noCondition = true;
     foreach($data as $d){
@@ -26,48 +22,51 @@
     }
 
     // Store all rows
+    $sql = "SELECT * FROM SUB_PRODUCTS;";
+    $result = $conn->query($sql) or die ("Error: " . mysql_error());
     $all=[];
-    $output=[];
-    foreach($row = $result->fetch_assoc()){
-        $sql2 = "SELECT * FROM FARMER_REPUTATIONS WHERE avgRating = '".$row["avgRating"]."';";
+    while($row = $result->fetch_assoc()){
+        $sql2 ="SELECT * FROM `FARMER_REPUTATIONS` AS FR JOIN `FARMERS` AS F ON FR.avgRating = F.avgRating WHERE F.fid='" . $row["fid"]. "';";
         $result2 = $conn->query($sql2) or die ("Error: " . mysql_error());
-        $sql3 = "SELECT * FROM CROPS WHERE cropName=".$row["cropName"].";";
+        $sql3 = "SELECT * FROM CROPS WHERE cropName='".$row["cropName"]."';";
         $result3 = $conn->query($sql3) or die ("Error: " . mysql_error());
-        $obj = {"subid" => $row["subid"], "farmer"=>$row["fid"], "reputation" => $result2->fetch_assoc()["farmerRep"],"unit"=>$result3->fetch_assoc()["unitToSell"],
-            "cropName" => $row["cropName"], "price" => $row["pricePerUnit"], "quantityPerSub"=>$row["quantityPerSub"],"period"=>$row["subPeriod"]};
+        $result3Row = $result3->fetch_assoc();
+        $obj = ["subid" => $row["subid"], "farmer"=>$row["fid"], "reputation" => $result2->fetch_assoc()["farmerRep"],"unit"=>$result3Row["unitToSell"],
+        "cropName" => $row["cropName"], "price" => $row["price"], "quantityPerSub"=>$row["quantityPerSub"],"period"=>$row["subPeriod"], "cropType"=>$result3Row["cropType"]];
         $all[] = $obj;
     }
 
     // When there is a condition
+    $output=["subs"=>""];
     if(!$noCondition){
         $sameCropType=[];
         for($i=0 ; $i<count($all) ; $i++){
-            if($obj["cropType"] == $data[0] || $data[0] == "noCondition"){
-                $sameCropType[] = $obj;
+            if($all[$i]["cropType"] == $data[0] || $data[0] == "noCondition"){
+                $sameCropType[] = $all[$i];
             }
         }
         $sameCropName=[];
         for($i=0 ; $i<count($sameCropType) ; $i++){
-            if($obj["cropName"] == $data[1] || $data[1] == "noCondition"){
-                $sameCropName[] = $obj;
+            if($sameCropType[$i]["cropName"] == $data[1] || $data[1] == "noCondition"){
+                $sameCropName[] = $sameCropType[$i];
             }
         }
         $inPriceRange=[];
         for($i=0 ; $i<count($sameCropName) ; $i++){
             if($data[2] != "noCondition"){
                 if(intval($json->maxPrice) == -1){ // above 49999
-                    if($obj["price"] > 49999){
-                        $inPriceRange[] = $obj;
+                    if($sameCropName[$i]["price"] > 49999){
+                        $inPriceRange[] = $sameCropName[$i];
                     }
                 }
                 else{ //rest
-                    if($data[2] <= $obj["price"] && $obj["price"] <= intval($json->maxPrice)){
-                        $inPriceRange[] = $obj;
+                    if($data[2] <= $sameCropName[$i]["price"] && $sameCropName[$i]["price"] <= intval($json->maxPrice)){
+                        $inPriceRange[] = $sameCropName[$i];
                     }
                 }
             }
             else{
-                $inPriceRange[] = $obj;
+                $inPriceRange[] = $sameCropName[$i];
             }
         }
         $output["subs"] = $inPriceRange; 
