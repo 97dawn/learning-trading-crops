@@ -405,9 +405,9 @@ INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (3, "bcooper"
 INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (4, "kmorgan", 10.00, 24000, '2017-06-23 18:06:02');
 INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (5, "bperry", 5.00, 21000, '2018-02-07 20:11:11');
 INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (6, "dparker", 3.00, 8560, '2018-01-11 16:23:23');
-INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (7, "eevans", 10.00, 26000, '2018-09-12 08:09:11');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (7, "eevans", 10.00, 26000, '2018-01-12 08:09:11');
 INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (8, "erussell", 3.00, 15000, '2017-12-01 12:30:22');
-INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (9, "gbryant", 8.00, 57000, '2018-08-22 13:20:00');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (9, "gbryant", 8.00, 57000, '2018-02-22 13:20:00');
 INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (10, "lgray", 4.00, 18000, '2018-04-27 14:50:20');
 
 INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 2, 4, 1);
