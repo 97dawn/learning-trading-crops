@@ -29,7 +29,7 @@ CREATE TABLE BUYERS (
 )ENGINE=InnoDB;
 
 CREATE TABLE FARMER_REPUTATIONS(
-    avgRating INT NOT NULL,
+    avgRating INT,
     farmerRep VARCHAR(254) NOT NULL,
     PRIMARY KEY (avgRating)
 );
@@ -40,7 +40,7 @@ CREATE TABLE FARMERS (
 	lname VARCHAR(254) NOT NULL,
     phone VARCHAR(254) NOT NULL UNIQUE,
     email VARCHAR(254) NOT NULL UNIQUE,
-    avgRating INT NOT NULL,
+    avgRating INT DEFAULT NULL,
     streetInfo VARCHAR(254) NOT NULL,
     city VARCHAR(254) NOT NULL,
     PRIMARY KEY (fid),
@@ -71,7 +71,7 @@ CREATE TABLE ADDITIONAL_CHARGES (
 );
 
 CREATE TABLE PRODUCT_REPUTATIONS (
-	avgRating INT NOT NULL,
+	avgRating INT,
     productRep VARCHAR(254) NOT NULL,
     PRIMARY KEY(avgRating)
 )ENGINE=InnoDB;
@@ -82,7 +82,7 @@ CREATE TABLE PRODUCTS (
     cropName VARCHAR(254) NOT NULL,
     pricePerUnit INT NOT NULL,
     organicTrue BOOL NOT NULL,
-    avgRating INT NOT NULL,
+    avgRating INT DEFAULT NULL,
     remaining FLOAT(4) NOT NULL,
     PRIMARY KEY(pid),
     FOREIGN KEY(fid) REFERENCES FARMERS(fid),
@@ -131,7 +131,7 @@ CREATE TABLE DISCOUNT_RATES (
     discountid INT NOT NULL AUTO_INCREMENT,
 	rate INT NOT NULL,
     minQuantity INT NOT NULL,
-    maxQuantity INT NOT NULL,
+    maxQuantity INT DEFAULT NULL,
     pid INT NOT NULL,
     PRIMARY KEY(discountid),
     FOREIGN KEY(pid) REFERENCES PRODUCTS(pid) ON DELETE CASCADE
@@ -379,13 +379,23 @@ INSERT INTO PRODUCT_REPUTATIONS VALUES (5, "superb");
 INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("jsmith", "Pecan", 20000, false , 5, 20.00);
 INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("pstewart", "Apricot", 12000, false, 4, 30.00);
 INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("jhall", "Pumpkin", 10000, false   , 4, 45.00);
-INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("cmorris", "Rice", 2400, false     , 5, 1000.00);
+INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("cmorris", "Rice", 24000, false     , 5, 1000.00);
 INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("kbell", "Carrot", 5000, true      , 5, 30.00);
-INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("ahyes", "Avocado", 2800, true     , 4, 60.00);
+INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("ahyes", "Avocado", 2800, true     , 5, 60.00);
 INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("asanders", "Cabbage", 2500, true  , 2, 80.00);
 INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("bcollins", "Celery", 5000, false  , 3, 35.00);
 INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("cgriffin", "Apple", 7000, true   , 1, 55.00);
 INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("dcampbell", "Lemon", 5000, false , 4, 70.00);
+INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("jsmith", "Rosemary",13000, true, NULL, 1000.00 );
+INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("pstewart", "Millet", 3000, true, NULL, 2000.00);
+INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("jhall", "Oatmeal", 5000, false, NULL, 3000.00 );
+INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("cmorris", "Almond", 12300, false, NULL, 2500.00 );
+INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("kbell", "Cabbage", 4520, false, NULL, 300.00);
+INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("ahyes", "Kale", 3080, true, NULL, 230.00);
+INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("asanders", "Mango", 9030, false, NULL, 1230.00);
+INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("bcollins", "Apple", 2400, false, NULL, 3020.00);
+INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("cgriffin", "Mints", 4200, true, NULL, 250.00);
+INSERT INTO PRODUCTS(fid, cropName, pricePerUnit, organicTrue, avgRating, remaining) VALUES ("dcampbell", "Apricot", 5600, true,NULL , 4350.00);
 
 
 INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("kross", 1 , 5, "These arrived fresh and intact. They are soft yet crisp as any good pecan would be.");
@@ -397,23 +407,44 @@ INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("dpar
 INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("eevans", 7, 2, "They were shipped with other produce in a cardboard box with holes punched in the side. Almost all the items arrived rotten.");
 INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("erussell", 8, 3, "It's over priced for one celery");
 INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("gbryant", 9, 1, "Probably wouldn't buy again. Most of the apples arrived mushy and turning brown.");
-INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("lgray", 10, 4, "These went bad too fast. Will stick to buying fruit at the grocery store.");
+INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("lgray", 10, 4, "Pretty good.");
+INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("kross", 10, 4, "These arrived fresh and intact.");
+INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("swood", 9, 1, "Not fresh.");
+INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("bcooper", 8, 3, "SO SO.");
+INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("kmorgan", 7 , 1, "I'm not going to order it again.");
+INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("bperry", 6 , 5, "Excellent!");
+INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("dparker", 5 , 4, "I was amazed at the value here compared to our local supermarket. ");
+INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("eevans", 4, 4, "I would highly recommend this product to others.");
+INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("erussell", 3, 4, "It's GOOD celery");
+INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("gbryant", 2, 4, "Probably would buy again.");
+INSERT INTO PRODUCT_REVIEWS(reviewAuthor, pid, rating, reviewBody) VALUES ("lgray", 1, 5, "Absolutely good.");
 
+
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (4, "kmorgan", 10.00, 240000, '2017-06-23 18:06:02');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (7, "kmorgan", 10.00, 26000, '2017-06-23 18:06:03');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (8, "erussell", 3.00, 15000, '2017-12-01 12:30:22');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (3, "erussell", 3.00, 27000, '2017-12-01 12:30:23');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (6, "dparker", 3.00, 8560, '2018-01-11 16:23:23');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (5, "dparker", 3.00, 16000, '2018-01-11 16:23:24');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (7, "eevans", 10.00, 26000, '2018-01-12 08:09:11');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (4, "eevans", 10.00, 240000, '2018-01-12 08:09:12');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (5, "bperry", 5.00, 21000, '2018-02-07 20:11:11');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (6, "bperry", 5.00, 15000, '2018-02-07 20:11:12');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (9, "gbryant", 8.00, 57000, '2018-02-22 13:20:00');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (2, "gbryant", 8.00, 81600, '2018-02-22 13:20:01');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (3, "bcooper", 5.00, 50000, '2018-04-18 10:01:30');
+INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (10, "lgray", 4.00, 18000, '2018-04-27 14:50:20');
 INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (1, "kross", 2.00, 36000, '2018-05-18 13:10:01');
 INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (2, "swood", 3.00, 32400, '2018-05-22 15:03:00');
-INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (3, "bcooper", 5.00, 50000, '2018-04-18 10:01:30');
-INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (4, "kmorgan", 10.00, 24000, '2017-06-23 18:06:02');
-INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (5, "bperry", 5.00, 21000, '2018-02-07 20:11:11');
-INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (6, "dparker", 3.00, 8560, '2018-01-11 16:23:23');
-INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (7, "eevans", 10.00, 26000, '2018-01-12 08:09:11');
-INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (8, "erussell", 3.00, 15000, '2017-12-01 12:30:22');
-INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (9, "gbryant", 8.00, 57000, '2018-02-22 13:20:00');
-INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (10, "lgray", 4.00, 18000, '2018-04-27 14:50:20');
 
 INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 2, 4, 1);
-INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 3, 4, 2);
-INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 2, 3, 3);
+INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (15, 5, NULL, 1);
+INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 3, 7, 2);
+INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (15, 8, NULL, 2);
+INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 2, 6, 3);
+INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (15, 7, NULL, 3);
 INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 3, 5, 4);
+INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (15, 6, NULL, 4);
 INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (20, 4, 5, 5);
 INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 2, 4, 6);
 INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 2, 6, 7);
