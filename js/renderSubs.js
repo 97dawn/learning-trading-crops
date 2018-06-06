@@ -56,7 +56,7 @@ function search(){
             // render subscriptions
             subs.innerHTML = "";
             for(var data in json['subs']){
-                var contents = {price:json['subs'][data].price, reputation:json['subs'][data].reputation, 
+                var contents = {price:json['subs'][data].price, 
                 unit:json['subs'][data].unit,quantityPerSub:json['subs'][data].quantityPerSub,
                  period:json['subs'][data].period, cropName:json['subs'][data].cropName, farmer:json['subs'][data].farmer};
                 var title = json['subs'][data].cropName + " from " + json['subs'][data].farmer;

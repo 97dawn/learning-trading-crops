@@ -31,8 +31,9 @@
         $sql3 = "SELECT * FROM CROPS WHERE cropName='".$row["cropName"]."';";
         $result3 = $conn->query($sql3) or die ("Error: " . mysql_error());
         $result3Row = $result3->fetch_assoc();
-        $obj = ["subid" => $row["subid"], "farmer"=>$row["fid"], "reputation" => $result2->fetch_assoc()["farmerRep"],"unit"=>$result3Row["unitToSell"],
-        "cropName" => $row["cropName"], "price" => $row["price"], "quantityPerSub"=>$row["quantityPerSub"],"period"=>$row["subPeriod"], "cropType"=>$result3Row["cropType"]];
+        $obj = ["subid" => $row["subid"], "farmer"=>$row["fid"], "unit"=>$result3Row["unitToSell"],
+        "cropName" => $row["cropName"], "price" => $row["price"], "quantityPerSub"=>$row["quantityPerSub"],
+        "period"=>$row["subPeriod"], "cropType"=>$result3Row["cropType"]];
         $all[] = $obj;
     }
 

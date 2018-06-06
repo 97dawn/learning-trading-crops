@@ -29,16 +29,32 @@
     $result = $conn->query($sql) or die ("Error: " . mysql_error());
     $all=[];
     while($row = $result->fetch_assoc()){
-        $sql2 = "SELECT * FROM PRODUCT_REPUTATIONS WHERE avgRating=".$row["avgRating"].";";
-        $result2 = $conn->query($sql2) or die ("Error: " . mysql_error());
+        $productRepu;
+        if($row["avgRating"]==NULL){
+            $productRepu = "no reputation yet";
+        }
+        else{
+            $sql2 = "SELECT * FROM PRODUCT_REPUTATIONS WHERE avgRating=".$row["avgRating"].";";
+            $result2 = $conn->query($sql2) or die ("Error: " . mysql_error());
+            $productRepu = $result2->fetch_assoc()["productRep"];
+        }
         $sql3 = "SELECT * FROM CROPS WHERE cropName='".$row["cropName"]."';";
         $result3 = $conn->query($sql3) or die ("Error: " . mysql_error());
-        $sql4 ="SELECT * FROM `FARMER_REPUTATIONS` AS FR JOIN `FARMERS` AS F ON FR.avgRating = F.avgRating WHERE F.fid='" . $row["fid"]. "';";
-        $result4 = $conn->query($sql4) or die ("Error: " . $conn->error);
         $result3Row = $result3->fetch_assoc();
+        $sql4 ="SELECT * FROM FARMERS WHERE fid='" . $row["fid"]. "';";
+        $result4 = $conn->query($sql4) or die ("Error: " . $conn->error);
+        $farmerRating = $result4->fetch_assoc()["avgRating"];
+        if($farmerRating == NULL){
+            $farmerRating = "no reputation yet";
+        }
+        else{
+            $sql5 = "SELECT * FROM FARMER_REPUTATIONS WHERE avgRating=".$farmerRating.";";
+            $result5 = $conn->query($sql5) or die ("Error: " . $conn->error);
+            $farmerRating = $result5->fetch_assoc()["farmerRep"];
+        }
         $obj = ["pid" => $row["pid"], "farmer"=>$row["fid"],"cropName" => $row["cropName"],"isOrganic" => $row["organicTrue"], "remaining"=>$row["remaining"],
-             "price" => $row["pricePerUnit"], "preputation"=>$result2->fetch_assoc()["productRep"], "cropType"=>$result3Row["cropType"],
-             "unit" =>$result3Row["unitToSell"], "freputation"=>$result4->fetch_assoc()["farmerRep"],"rating"=>$row["avgRating"]];
+             "price" => $row["pricePerUnit"], "preputation"=>$productRepu, "cropType"=>$result3Row["cropType"],
+             "unit" =>$result3Row["unitToSell"], "freputation"=>$farmerRating,"rating"=>$row["avgRating"]];
         $all[] = $obj;
     }
 
