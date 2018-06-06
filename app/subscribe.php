@@ -11,15 +11,25 @@
     // Put row in SUB_ORDERS Table
     session_start();
     date_default_timezone_set("Asia/Seoul");
-    $conn->autocommit(FALSE);
-    $sql = "INSERT INTO SUB_ORDERS(subid,bid,startDate,endDate) VALUES(".$subid.",".$_SESSION["username"].",".date("Y-m-d").",".NULL.")";
-    $conn->query($sql);
-    if (!$conn->commit()) { 
-        $conn->rollback();
-        echo("false");
+    $sql = "SELECT COUNT(*) as c FROM SUB_ORDERS WHERE bid = '".$_SESSION["username"]."' AND subid=".$subid.";";
+    $result = $conn->query($sql) or die("Error".mysql_error());
+    $data=$result->fetch_assoc();
+    if($data['c'] == 0){
+        $conn->autocommit(FALSE);
+        $sql = "INSERT INTO SUB_ORDERS(subid,bid,startDate) VALUE(".$subid.",'".$_SESSION["username"]."','".date("Y-m-d")."');";
+        $conn->query($sql);
+        if (!$conn->commit()) { 
+            $conn->rollback();
+            echo("false");
+        }
+        else{
+            echo("true");
+        }
     }
     else{
-        echo("true");
+        echo("already");
     }
+    
+    
     $conn->close();
 ?>

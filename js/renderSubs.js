@@ -7,23 +7,25 @@ function search(){
     var cropType =  document.getElementById("cropType");
     var cropName =  document.getElementById("cropName");
     var priceRange =  document.getElementById("priceRange");
-    if(cropType.value ==""){
+    if(cropType.innerHTML.split(" ▼")[0] =="Doesn't matter"){
         cropType = "null";
     }
     else{
-        cropType = cropType.value;
+        cropType = cropType.innerHTML.split(" ▼")[0].toLowerCase();
     }
-    if(cropName.value ==""){
+    if(cropName.innerHTML.split(" ▼")[0] =="Doesn't matter"){
         cropName = "null";
     }
     else{
-        cropName = cropName.value;
+        cropName = cropName.innerHTML.split(" ▼")[0];
     }
-    if(priceRange.value ==""){
+    
+    if(priceRange.innerHTML.split(" ▼")[0] =="Doesn't matter"){
         priceRange = "null";
     }
     else{
-        priceRange = priceRange.value;
+        priceRange = priceRange.innerHTML.split(" ▼")[0];
+        priceRange = priceRange.split(" won")[0];
     }
     
     var minPrice = 0;
@@ -54,15 +56,20 @@ function search(){
             // render subscriptions
             subs.innerHTML = "";
             for(var data in json['subs']){
-                var contents = {price:data.price, reputation:data.reputation, unit:data.unit,quantityPerSub:data.quantityPerSub, period:data.period};
-                var title = data.cropName + " from " + data.farmer;
-                if(title.length > 19){
-                    subs.innerHTML += formSubscriptionPost(title.substring(0,19) + "...", contents, data.subid);
+                var contents = {price:json['subs'][data].price, 
+                unit:json['subs'][data].unit,quantityPerSub:json['subs'][data].quantityPerSub,
+                 period:json['subs'][data].period, cropName:json['subs'][data].cropName, farmer:json['subs'][data].farmer};
+                var title = json['subs'][data].cropName + " from " + json['subs'][data].farmer;
+                if(title.length > 15){
+                    subs.innerHTML += formSubscriptionPost(title.substring(0,15) + "...", contents, json['subs'][data].subid);
                 }
                 else{
-                    subs.innerHTML += formSubscriptionPost(title, contents, data.subid);
+                    subs.innerHTML += formSubscriptionPost(title, contents, json['subs'][data].subid);
                 }
             } 
+            if(json['subs'].length == 0){
+                subs.innerHTML += "Nothing to show";
+            }  
         }
     }
     xhr.send("data="+data);

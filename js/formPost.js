@@ -37,10 +37,12 @@ function formSubscriptionPost(title, contents, id){
     var postTitle = "<h3>"+title+"</h3>";
     var postContent = "";
     var postEnd = "</div>";
+    postContent += "<h5> Farmer: "+contents.farmer+" </h5>";
     postContent += "<h5> Farmer Reputation: "+contents.reputation+" </h5>";
+    postContent += "<h5> Crop: "+contents.cropName+" </h5>";
     postContent += "<h5> Price: "+contents.price+" won </h5>";
     postContent += "<h5> Quantity Per Subscription: "+contents.quantityPerSub+" "+contents.unit+" </h5>";
     postContent += "<h5> Period: once per "+contents.period+" month(s) </h5>";
-    postContent += "<button style=\"width:100%;background-color:#B2CFEF\" value=\""+id+"\" onclick=\"subscribe(this)\">Subscribe</button>";
+    postContent += "<button id=\""+id+"\"style=\"width:100%;background-color:#B2CFEF\" value=\""+id+"\" onclick=\"subscribe(this)\">Subscribe</button>";
     return postStart + postTitle + postContent + postEnd;
 }
