@@ -152,7 +152,7 @@
           </div>
           <div class="col-md-2">
               <div class="dropdown">
-                  <label>Rating</label>
+                  <label>Product Rating</label>
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="rating" style="width:150px;">Doesn't matter ▼
                     </button>
                     <ul class="dropdown-menu" id="ratings">

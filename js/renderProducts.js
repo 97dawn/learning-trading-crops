@@ -78,6 +78,7 @@ function search(){
                 }
                 var contents = {remaining:json['products'][data].remaining,isOrganic:isOrganic,farmer:json['products'][data].farmer,price:json['products'][data].price, preputation:json['products'][data].preputation,freputation:json['products'][data].freputation, unit:json['products'][data].unit};
                 var title = json['products'][data].cropName + " from " + json['products'][data].farmer;
+                
                 if(title.length > 15){
                     products.innerHTML += formProductPost(title.substring(0,15) + "...", contents, json['products'][data].pid);
                 }

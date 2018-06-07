@@ -27,8 +27,8 @@
     $sql = "SELECT * FROM DISCOUNT_RATES WHERE pid=".$pid.";";
     $result = $conn->query($sql) or die ("Error: " . mysql_error());
     while($row = $result->fetch_assoc()){
-        if($row["minQuantity"]==$row["maxQuantity"]){
-            if($row["maxQuantity"]<=$quantity){
+        if($row["maxQuantity"]==NULL){
+            if($row["minQuantity"]<=$quantity){
                 $discountRate = intval($row["rate"]);
                 break;
             }
@@ -54,10 +54,10 @@
     $conn->query($sql);
     if (!$conn->commit()) { 
         $conn->rollback();
-        echo("false");
+        echo(json_encode(["reponse"=>"false"]));
     }
     else{
-        echo("true");
+        echo(json_encode(["response"=>"true","totalPrice" => $totalPrice, "remaining" => $newRemaining]));
     }
     $conn->close();
 

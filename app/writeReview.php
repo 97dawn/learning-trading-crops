@@ -24,13 +24,11 @@
         $sql = "SELECT avgRating FROM FARMERS WHERE fid='".$farmer."';";
         $result = $conn->query($sql) or die ("Error: " . mysql_error());
         $oldFarmerRating = $result->fetch_assoc()["avgRating"];
-        $newFarmerRating = $oldFarmerRating + $rating;
 
 
         $sql = "SELECT avgRating FROM PRODUCTS WHERE pid=".$pid.";";
         $result = $conn->query($sql) or die ("Error: " . mysql_error());
         $oldProductRating = $result->fetch_assoc()["avgRating"];
-        $newProductRating = $oldProductRating + $rating;
 
         $sql = "SELECT pid FROM PRODUCTS WHERE fid='".$farmer."';";
         $result = $conn->query($sql) or die ("Error: " . mysql_error());

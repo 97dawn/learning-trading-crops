@@ -35,8 +35,8 @@
             $sql = "SELECT * FROM DISCOUNT_RATES WHERE pid=".$pid.";";
             $result = $conn->query($sql) or die ("Error: " . mysql_error());
             while($row = $result->fetch_assoc()){
-                if($row["minQuantity"]==$row["maxQuantity"]){
-                    if($row["maxQuantity"]<=$quantity){
+                if($row["maxQuantity"] == NULL){
+                    if($row["minQuantity"]<=$quantity){
                         $discountRate = intval($row["rate"]);
                         break;
                     }
@@ -65,7 +65,7 @@
         }
         else{
             // Reset amount
-            $quantity = intval($row["amount"] + $quantity);
+            $quantity = floatval($row["amount"] + $quantity);
             // Reset rawTotalPrice
             $rawTotalPrice = intval($quantity * $pricePerUnit);
             // Get discount rate
@@ -73,8 +73,8 @@
             $sql = "SELECT * FROM DISCOUNT_RATES WHERE pid=".$pid.";";
             $result = $conn->query($sql) or die ("Error: " . mysql_error());
             while($row = $result->fetch_assoc()){
-                if($row["minQuantity"]==$row["maxQuantity"]){
-                    if($row["maxQuantity"]<=$quantity){
+                if($row["maxQuantity"]==NULL){
+                    if($row["minQuantity"]<=$quantity){
                         $discountRate = intval($row["rate"]);
                         break;
                     }

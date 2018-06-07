@@ -8,12 +8,15 @@ function orderRightAway(product){
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function (){
         if(xhr.readyState === 4 && xhr.status === 200){
-            var answer = xhr.responseText;
-            if(answer == "true"){
-                alert("Successfully ordered the product.");
+            var answer = JSON.parse(xhr.responseText);
+            if(answer.response == "false"){
+                alert("ERROR");
             }
             else{
-                alert("ERROR");
+                alert("Successfully ordered the product.\nTotal price: "+answer.totalPrice+"won");
+                var unit = document.getElementById(pid+"-remaining").innerText.split(" ")[2];
+                document.getElementById(pid+"-remaining").innerText="";
+                document.getElementById(pid+"-remaining").innerText="Remaining: "+answer.remaining+" "+unit;
             }
         }
     }
