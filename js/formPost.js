@@ -17,9 +17,8 @@ function formProductPost(title, contents, id){
     postContent += "<h5> Farmer Reputation: "+contents.freputation+"</h5>";
     postContent += "<h5> Product Reputation: "+contents.preputation+"</h5>";
     postContent += "<h5 id=\""+id+"-isOrganic\" value=\""+contents.isOrganic+"\"> Organic Food: "+contents.isOrganic+"</h5>";
-    postContent += "<h5> Unit: "+contents.unit+"</h5>";
     postContent += "<h5 id=\""+id+"-pricePerUnit\" value=\""+contents.price+"\"> Price Per Unit: "+contents.price+" won </h5>"; 
-    postContent += "<h5 id=\""+id+"-remaining\" value=\""+contents.remaining+"\"> Remaining: "+contents.remaining+" </h5>"; 
+    postContent += "<h5 id=\""+id+"-remaining\" value=\""+contents.remaining+"\"> Remaining: "+contents.remaining+" "+contents.unit+" </h5>"; 
     postContent += "<div><label style=\"font-size:25px;\"> Quantity: </label>";
     if(contents.unit == "kg"){
         postContent += "<input id=\""+id+"-quantity\" type=\"text\"></div>";
