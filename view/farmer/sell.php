@@ -32,9 +32,9 @@
             <div class="btn-group">
                 <button style="color:navy;background-color:transparent;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Hello, <?php session_start(); if ( ! empty( $_SESSION['username'] ) ) {echo ($_SESSION['username']);} else{echo ("");}?>
-
                 </button>
-                <div id="currentUser"></div>
+                  
+
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <a href="myProduct.php" style="padding-left:10px;">My Product</a><br>
                     <a href="mySubscription.php" style="padding-left:10px;">My Subscription</a><br>
@@ -60,8 +60,8 @@
           }
             ?>
    <div class="probootstrap-section">
-      <div class="container ">
-          <form id="input-product" method="post">
+      <div class="container">
+          <form id="input-product" method="post" action="../../app/inputProduct.php">
 <!--  CROP NAME DROPDOWN-->
         <div class="row form-group">
             <div class="col-md-3">
@@ -105,33 +105,47 @@
            <label for="organic">Is this an organic product?:</label>
            <select name="organic" id="organic">
                <option selected disabled>Select</option>
-               <option value="yes">Yes</option>
-               <option value="no">No</option>
+               <option value="true">Yes</option>
+               <option value="false">No</option>
              </select>
            </div>
 
          </div>
 <!--              Discount Rate-->
+
+<div class="row form-group">
+  <div class="col-md-3">
+  <label for="discountrate">Discount Rate:</label><br>
+  </div>
+  <div class="col-md-3">
+      <label for="discount_min">Min Quantity:</label><br>
+  </div>
+</div>
+<div id="discount_header"></div>
+
+
+              <div class="discount-form">
               <div id="discount_form" class="row form-group">
+
                 <div class="col-md-3">
-                <label for="discountrate">Discount Rate:</label>
                 <input type="number" class="form-control" id="discountrate" name="discountrate">
                 </div>
                 <div class="col-md-3">
-                    <label for="discount_min">Min Quantity:</label>
-                    <input type="number" class="form-control" id="discount_min" name="discount_min">
+                    <input type="number" class="form-control" id="discountmin" name="discountmin">
                 </div>
                 <div class="form-group">
-                  <input type="button" class="btn btn-primary" id="add_discount" name="add_discount" value="Add more discount rate">
+                  <input type="button" class="btn btn-primary" id="add-discount" name="add-discount" value="Add discount rate">
                 </div>
               </div>
-            </div id="newDiscount"><div>
+            </div>
+            <div class="newDiscount" value=""></div>
 
             <div class="row form-group col-md-3">
-              <input type="submit" class="btn btn-primary" id="submit" name="submit" value="Submit">
+              <input type="button" class="btn btn-primary" id="submit" name="submit" value="Submit">
             </div>
           </form>
-
+          <div id="error"></div>
+          <div id="success"></div>
     </div>
   </div>
 
