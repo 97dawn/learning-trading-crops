@@ -1,4 +1,8 @@
-<?php ob_start(); ?>
+<?php 
+ob_start(); 
+require("../../app/DBinfo.php");
+$conn = new mysqli($hn, $un, $pw, $db);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,7 +11,7 @@
     <title>The Greatest Farmer</title>
     <meta name="description" content="Free Bootstrap Theme by uicookies.com">
     <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
-    
+    <link rel="icon" type="image/png" href="../../img/logo.png"/>
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
     <link rel="stylesheet" href="../../css/styles-merged.css">
     <link rel="stylesheet" href="../../css/style.min.css">
@@ -15,7 +19,27 @@
 
   </head>
   <body>
-
+  <style>
+  html, body{
+    height:100%;
+  }
+  button{
+    border: none;
+    background-color:transparent;
+    color:black;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+    text-align:left;
+  }
+  #content{
+    color:black;
+  }
+  h3{
+    margin-top: 0px;
+  }
+  </style> 
   <!-- START: header -->
   
   <div class="probootstrap-loader"></div>
@@ -30,7 +54,7 @@
           <ul class="probootstrap-main-nav">
             <div class="btn-group">
                 <button style="color:navy;background-color:transparent;"class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Hello, <?php session_start();if ( ! empty( $_SESSION['username'] ) ) {echo ($_SESSION['username']);} else{echo ("");}?>
+                    Hello, <?php session_start(); $username = $_SESSION['username'];if ( ! empty( $username ) ) {echo ($username);}  else{echo ("");}?>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <a href="myOrder.php" style="padding-left:10px;">My Order</a><br>
@@ -46,21 +70,32 @@
   </header>
   <!-- END: header -->
   
-  <div class="probootstrap-section">
-    <div class="container text-center">
-      <div class="row" id="saved-products">
+  <div class="probootstrap-section" style="height:100%;">
+    <div class="container" style=" border-right: 1px solid black;height:100%;width:25%;float:left;margin-left:10%; ">
+      <h3> My Saved Products</h3>
       <?php
-        require_once("DBinfo.php");
-        // Connect to DB
-        $conn = new mysqli($hn, $un, $pw, $db);
         if ($conn->connect_error) die($conn->connect_error);
-        $sql = "SELECT * FROM Stores;";
-        $result = $conn->query($sql) or die ("Error: " . mysql_error());
-        foreach($row = $result->fetch_assoc()){
-          echo "<div class=\"cart\"> id=\"cart-".$row["cartid"]."\"> ";
+        $query = "SELECT * FROM STORES WHERE bid = '" .$username."';";
+        $result = $conn->query($query) or die ("Error: " . mysql_error());
+           
+        if (!$result) echo "SELECT failed: $query<br>" .
+              $conn->error . "<br><br>";
+
+        while($row = $result->fetch_assoc()) {
+          $cartid = $row['cartid'];
+          $sql = "SELECT * FROM PRODUCTS WHERE pid=".$row['pid'].";";
+          $result = $conn->query($sql) or die ("Error: " . mysql_error());
+          $row = $result->fetch_assoc();
+          $cropName = $row['cropName'];
+          $farmer = $row['fid'];
+          echo "<button style=\"width: 250px;text-decoration: underline;\" onclick=\"showStores($cartid);\">".$cropName." from ".$farmer."</button>";
         }
+        $conn->close();
       ?>
-      </div>
+    
+    </div>
+    <div class="container" id="content" style="height:100%; width:60%;float:right;">
+      
     </div>
   </div>
 
@@ -71,6 +106,7 @@
   <script src="../../js/scripts.min.js"></script>
   <script src="../../js/main.min.js"></script>
   <script src="../../js/custom.js"></script>
+  <script src="../../js/showStores.js"></script>
 
   </body>
 </html>

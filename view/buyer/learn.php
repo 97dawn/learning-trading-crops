@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../css/styles-merged.css">
     <link rel="stylesheet" href="../../css/style.min.css">
     <link rel="stylesheet" href="../../css/custom.css">
-
+    <link rel="icon" type="image/png" href="../../img/logo.png"/>
   </head>
   <body>
   <style>

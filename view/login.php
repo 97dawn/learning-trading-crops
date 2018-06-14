@@ -6,7 +6,7 @@
     <title>The Greatest Farmer</title>
     <meta name="description" content="Free Bootstrap Theme by uicookies.com">
     <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
-
+    <link rel="icon" type="image/png" href="../img/logo.png"/>
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles-merged.css">
     <link rel="stylesheet" href="../css/style.min.css">
@@ -26,8 +26,8 @@
 
         <nav role="navigation" class="probootstrap-nav hidden-xs">
           <ul class="probootstrap-main-nav">
-            <li class="active"><a href="../index.html">Home</a></li>
-            <li><a href="login.php">Login</a></li>
+            <li><a href="../index.html">Home</a></li>
+            <li class="active"><a href="login.php">Login</a></li>
             <li><a href="signup.php">Sign Up</a></li>
           </ul>
         </nav>
