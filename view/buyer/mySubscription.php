@@ -57,9 +57,9 @@ $conn = new mysqli($hn, $un, $pw, $db);
                     Hello, <?php session_start(); $username = $_SESSION['username'];if ( ! empty( $username ) ) {echo ($username);} else{echo ("");}?>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <a href="myOrder.php" style="padding-left:10px;">My Order</a><br>
-                    <a href="mySubscription.php" style="padding-left:10px;">My Subscription</a><br>
-                    <a href="mySavedPost.php" style="padding-left:10px;">My Saved Post</a><br>
+                    <a href="myOrder.php" style="padding-left:10px;">My Orders</a><br>
+                    <a href="mySubscription.php" style="padding-left:10px;">My Subscriptions</a><br>
+                    <a href="mySavedPost.php" style="padding-left:10px;">My Saved Posts</a><br>
                     <a href="../../index.html" style="padding-left:10px;">Logout</a>
                 </div>
             </div>
