@@ -33,8 +33,6 @@
                 <button style="color:navy;background-color:transparent;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Hello, <?php session_start(); if ( ! empty( $_SESSION['username'] ) ) {echo ($_SESSION['username']);} else{echo ("");}?>
                 </button>
-                  
-
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <a href="myProduct.php" style="padding-left:10px;">My Product</a><br>
                     <a href="mySubscription.php" style="padding-left:10px;">My Subscription</a><br>
@@ -141,7 +139,7 @@
             <div class="newDiscount" value=""></div>
 
             <div class="row form-group col-md-3">
-              <input type="button" class="btn btn-primary" id="submit" name="submit" value="Submit">
+              <input type="button" class="btn btn-primary" id="submit" name="submit" value="Submit"/>
             </div>
           </form>
           <div id="error"></div>
