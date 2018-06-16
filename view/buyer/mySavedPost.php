@@ -39,11 +39,11 @@
               <?php session_start();if ( ! empty( $_SESSION['username'] ) ) {echo ($_SESSION['username']);} else{echo ("");}?>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <a href="myOrder.php" style="padding-left:10px;">My Order</a>
+              <a href="myOrder.php" style="padding-left:10px;">My Orders</a>
               <br>
-              <a href="mySubscription.php" style="padding-left:10px;">My Subscription</a>
+              <a href="mySubscription.php" style="padding-left:10px;">My Subscriptions</a>
               <br>
-              <a href="mySavedPost.php" style="padding-left:10px;">My Saved Post</a>
+              <a href="mySavedPost.php" style="padding-left:10px;">My Saved Posts</a>
               <br>
               <a href="../../index.html" style="padding-left:10px;">Logout</a>
             </div>
@@ -62,11 +62,9 @@
       <div class="row">
         <h2>Your saved posts</h2>
       </div>
-
-      <button id="submit" type="submit" class="btn btn-primary">Get Saved Posts</button>
-
-      <div id="postcontainter"></div>
       <div id="error"></div>
+
+      <div id="posts" style="margin-top: 2rem;"></div>
 
       <!-- to display the whole post-->
       <div id="myModal" class="modal">
@@ -80,18 +78,22 @@
           <div id="comments"></div>
         </div>
       </div>
+    </div>
 
+    <div class="gototop js-top">
+      <a href="#" class="js-gotop">
+        <i class="icon-chevron-thin-up"></i>
+      </a>
+    </div>
 
-      <div class="gototop js-top">
-        <a href="#" class="js-gotop">
-          <i class="icon-chevron-thin-up"></i>
-        </a>
-      </div>
-
-      <script src="../../js/scripts.min.js"></script>
-      <script src="../../js/main.min.js"></script>
-      <script src="../../js/custom.js"></script>
-      <script src="../../js/populateSavedPosts.js"></script>
+    <script src="../../js/scripts.min.js"></script>
+    <script src="../../js/main.min.js"></script>
+    <script src="../../js/custom.js"></script>
+    <script src="../../js/formPost.js"></script>
+    <script src="../../js/showLearningPost.js"></script>
+    <script src="../../js/saveLearningPost.js"></script>
+    <script src="../../js/writeComment.js"></script>
+    <script src="../../js/populateSavedPosts.js"></script>
 </body>
 
 </html>
