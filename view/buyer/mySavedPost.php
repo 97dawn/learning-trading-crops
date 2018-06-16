@@ -67,7 +67,7 @@
 
       <div id="postcontainter"></div>
       <div id="error"></div>
-      
+
       <!-- to display the whole post-->
       <div id="myModal" class="modal">
         <div class="modal-content">

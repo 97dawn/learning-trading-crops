@@ -13,7 +13,7 @@ $conn = new mysqli($hn, $un, $pw, $db);
     <title>The Greatest Farmer</title>
     <meta name="description" content="Free Bootstrap Theme by uicookies.com">
     <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
-    
+    <link rel="icon" type="image/png" href="../../img/logo.png"/>
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
     <link rel="stylesheet" href="../../css/styles-merged.css">
     <link rel="stylesheet" href="../../css/style.min.css">
@@ -21,6 +21,27 @@ $conn = new mysqli($hn, $un, $pw, $db);
 
   </head>
   <body>
+  <style>
+  html, body{
+    height:100%;
+  }
+  button{
+    border: none;
+    background-color:transparent;
+    color:black;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+    text-align:left;
+  }
+  #content{
+    color:black;
+  }
+  h3{
+    margin-top: 0px;
+  }
+  </style>  
   <!-- START: header -->
   
   <div class="probootstrap-loader"></div>
@@ -35,7 +56,7 @@ $conn = new mysqli($hn, $un, $pw, $db);
           <ul class="probootstrap-main-nav">
             <div class="btn-group">
                 <button style="color:navy;background-color:transparent;"class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Hello, <?php session_start();if ( ! empty( $_SESSION['username'] ) ) {echo ($_SESSION['username']);} else{echo ("");}?>
+                    Hello, <?php session_start(); $username = $_SESSION['username']; if ( ! empty( $username ) ) {echo ($username);} else{echo ("");}?>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <a href="myOrder.php" style="padding-left:10px;">My Order</a><br>
@@ -51,13 +72,12 @@ $conn = new mysqli($hn, $un, $pw, $db);
   </header>
   <!-- END: header -->
   
-  <div class="probootstrap-section">
-    <div class="container">
-      <div class="row" >
+  <div class="probootstrap-section" style="height:100%;">
+    <div class="container" style=" border-right: 1px solid black;height:100%;width:25%;float:left;margin-left:10%; ">
+      <h3> My Orders</h3>
       <?php
         if ($conn->connect_error) die($conn->connect_error);
-        $username = $_SESSION['username'];
-        $query = "SELECT orid FROM ORDERS WHERE bid = '" .$username."';";
+        $query = "SELECT * FROM ORDERS WHERE bid = '" .$username."';";
         $result = $conn->query($query) or die ("Error: " . mysql_error());
            
         if (!$result) echo "SELECT failed: $query<br>" .
@@ -65,11 +85,20 @@ $conn = new mysqli($hn, $un, $pw, $db);
 
         while($row = $result->fetch_assoc()) {
           $orid = $row['orid'];
-          echo "<input type='button' onclick='showOrders($orid)' name=$orid value=$orid>"."<br />";
+          $pid = $row['pid'];
+          $sql = "SELECT * FROM PRODUCTS WHERE pid=".$pid.";";
+          $result1 = $conn->query($sql) or die ("Error: " . mysql_error());
+          $row1 = $result1->fetch_assoc();
+          $cropName = $row1['cropName'];
+          $farmer = $row1['fid'];
+          echo "<button style=\"width: 250px;text-decoration: underline;\" onclick=\"showOrders($orid);\" name=$orid value=$orid>".$cropName." from ".$farmer."</button>";
         }
-
-        ?>
-      </div>
+        $conn->close();
+      ?>
+    
+    </div>
+    <div class="container" id="content" style="height:100%; width:60%;float:right;">
+      
     </div>
   </div>
 
@@ -81,6 +110,6 @@ $conn = new mysqli($hn, $un, $pw, $db);
   <script src="../../js/scripts.min.js"></script>
   <script src="../../js/main.min.js"></script>
   <script src="../../js/custom.js"></script>
-
+  <script src="../../js/showOrders.js"></script>
   </body>
 </html>
