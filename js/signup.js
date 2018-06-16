@@ -22,8 +22,8 @@ $('document').ready(function()
       phonenumber: {
         required: true,
         digits:true,
-        minlength: 10,
-        maxlength: 10
+        minlength: 11,
+        maxlength: 11
       },
       streetInfo: {
         required: true,
@@ -88,7 +88,6 @@ $('document').ready(function()
         },
         success :  function(data)
         {
-
           if(data==1){
             $("#error").fadeIn(1000, function(){
               $("#error").html('<div class="alert alert-danger"> <span></span> &nbsp; Username already exists !</div>');

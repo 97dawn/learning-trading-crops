@@ -60,12 +60,10 @@
                   <label for="lname">Last Name</label>
                   <input type="text" class="form-control" id="last_name" name="lname" placeholder="Doe">
               </div>
-            <div class="col-md-6">
-                <div class="form-group">
+            <div class="col-md-6 form-group">
                   <label for="lname">Username</label>
-                  <input type="text" class="form-control" id="user_name" name="username">
+                  <input type="text" class="form-control" id="user_name" name="user_name">
                 </div>
-            </div>
 
             <div class="col-md-2">
               <div class="form-group">
@@ -87,7 +85,7 @@
             </div>
             <div class="col-md-6 form-group">
               <label for="phonenumber">Phone Number</label>
-              <input type="phonenumber" class="form-control" id="phonenumber" name="phonenumber" placeholder="10 digits Korean phone number">
+              <input type="number" class="form-control" id="phonenumber" name="phonenumber" placeholder="11 digits Korean phone number">
             </div>
 
               <div class="col-md-6">
@@ -105,7 +103,7 @@
                           <option value="null"></option>
                           <?php
                               try{
-                                  $stm = $dbc->query("SELECT province from CITIES");
+                                  $stm = $dbc->query("SELECT DISTINCT province from CITIES");
                                   $stm->setFetchMode(PDO::FETCH_ASSOC);
                                   while ($row = $stm->fetch()){
                                     echo "<option value=\"".$row['province']."\">".$row['province']."</option>";
