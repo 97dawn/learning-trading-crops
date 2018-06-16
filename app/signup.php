@@ -15,7 +15,7 @@ $phone = "";
 //  get all info and insert into database
 if($_POST['submit'])
 {
-    $user_name 		= trim($_POST['username']);
+    $user_name 		= trim($_POST['user_name']);
     $user_email 	= trim($_POST['email']);
     $phone 	= trim($_POST['phonenumber']);
     //  check email and phone number validity
@@ -99,4 +99,5 @@ if($_POST['submit'])
         file_put_contents('PDOErrors.txt', $e->getMessage(), FILE_APPEND);
     }
 }
+$dbc = null;
 ?>
