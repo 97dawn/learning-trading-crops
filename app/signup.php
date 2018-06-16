@@ -23,23 +23,18 @@ if($_POST['submit'])
       $query = $dbc->prepare("SELECT * FROM fpdb.Members WHERE username=:user");
       $query->execute(array(":user"=>$user_name));
       $count = $query->rowCount();
-
       $query1 = $dbc->prepare("SELECT * FROM fpdb.Buyers WHERE email=:email");
       $query1->execute(array(":email"=>$user_email));
       $count1 = $query1->rowCount();
-
       $query2 = $dbc->prepare("SELECT * FROM fpdb.Farmers WHERE email=:email");
       $query2->execute(array(":email"=>$user_email));
       $count2 = $query2->rowCount();
-
       $query3 = $dbc->prepare("SELECT * FROM fpdb.Buyers WHERE phone=:phone");
       $query3->execute(array(":phone"=>$phone));
       $count3 = $query3->rowCount();
-
       $query4 = $dbc->prepare("SELECT * FROM fpdb.Farmers WHERE phone=:phone");
       $query4->execute(array(":phone"=>$phone));
       $count4 = $query4->rowCount();
-
       if ($count==0 && $count1==0 && $count2==0 && $count3==0 && $count4==0){
         $user_last 	= trim($_POST['fname']);
         $user_first 	= trim($_POST['lname']);
@@ -70,7 +65,6 @@ if($_POST['submit'])
           if($result)
           {
               echo "registered";
-
           }
           else
           {
@@ -81,18 +75,14 @@ if($_POST['submit'])
       else {
         if($count>0){
           echo "1";//"Username already exists";
-
         }
         if($count1>0 || $count2>0){
           echo "2";//"This email is already chosen";
-
         }
         if($count3>0 || $count4>0){
          echo "3";//"This phone is associated with an existing account";
-
         }
       }
-
     }
     catch(PDOException $e){
         echo $e->getMessage();

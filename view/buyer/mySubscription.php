@@ -84,10 +84,10 @@ $conn = new mysqli($hn, $un, $pw, $db);
         while($row = $result->fetch_assoc()) {
           $subid = $row['subid'];
           $sql = "SELECT * FROM SUB_PRODUCTS WHERE subid=".$subid.";";
-          $result = $conn->query($sql) or die ("Error: " . mysql_error());
-          $row = $result->fetch_assoc();
-          $cropName = $row['cropName'];
-          $farmer = $row['fid'];
+          $result1 = $conn->query($sql) or die ("Error: " . mysql_error());
+          $row1 = $result1->fetch_assoc();
+          $cropName = $row1['cropName'];
+          $farmer = $row1['fid'];
           echo "<button style=\"width: 250px;text-decoration: underline;\" onclick=\"showSubscriptions($subid);\">".$cropName." from ".$farmer."</button>";
         }
         $conn->close();
