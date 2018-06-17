@@ -83,11 +83,11 @@ $conn = new mysqli($hn, $un, $pw, $db);
 
         while($row = $result->fetch_assoc()) {
           $cartid = $row['cartid'];
-          $sql = "SELECT * FROM PRODUCTS WHERE pid=".$row['pid'].";";
-          $result = $conn->query($sql) or die ("Error: " . mysql_error());
-          $row = $result->fetch_assoc();
-          $cropName = $row['cropName'];
-          $farmer = $row['fid'];
+          $sql1 = "SELECT * FROM PRODUCTS WHERE pid=".$row['pid'].";";
+          $result1 = $conn->query($sql1) or die ("Error: " . mysql_error());
+          $row1 = $result1->fetch_assoc();
+          $cropName = $row1['cropName'];
+          $farmer = $row1['fid'];
           echo "<button style=\"width: 250px;text-decoration: underline;\" onclick=\"showStores($cartid);\">".$cropName." from ".$farmer."</button>";
         }
         $conn->close();
@@ -107,6 +107,6 @@ $conn = new mysqli($hn, $un, $pw, $db);
   <script src="../../js/main.min.js"></script>
   <script src="../../js/custom.js"></script>
   <script src="../../js/showStores.js"></script>
-
+  <script src="../../js/orderInCart.js"></script>
   </body>
 </html>
