@@ -80,7 +80,7 @@
 			<br>
 			<br>
 			<br>
-             <h2 class="outline" style="color: white; font-weight:bold; font-size: 25pt; font-family: Abel,sans-serif;">Welcome! We’re excited to have you as a community member. Navigate through the header to Learn, Buy, Subscribe.</h2>    
+             <h2 class="outline" style="color: white; font-weight:bold; font-size: 25pt; font-family: Abel,sans-serif;">Welcome <?php session_start(); $username = $_SESSION['username']; if ( ! empty( $_SESSION['username'] ) ) {echo ($_SESSION['username']);} else{echo ("");}?>! We’re excited to have you as a community member. Navigate through the header to Learn, Buy, Subscribe.</h2>    
         </div>
       </div>
 

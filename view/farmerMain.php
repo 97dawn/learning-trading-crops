@@ -58,7 +58,7 @@
           <ul class="probootstrap-main-nav">
             <div class="btn-group">
                 <button style="color:navy;background-color:transparent;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Hello, <?php session_start(); if ( ! empty( $_SESSION['username'] ) ) {echo ($_SESSION['username']);} else{echo ("");}?>
+                    Hello, <?php session_start(); $username = $_SESSION['username']; if ( ! empty( $_SESSION['username'] ) ) {echo ($_SESSION['username']);} else{echo ("");}?>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <a href="farmer/myProduct.php" style="padding-left:10px;">My Product</a><br>
@@ -80,7 +80,7 @@
         <div class="col-md-6 col-md-offset-3 mb40">
 				<br>
 				<br>
-				<h2 class="outline" style="color: black; font-weight:bold; font-size: 25pt;">Welcome! Thank you for being a great farmer. Navigate through the header to Teach, Learn, Sell, and Subscribe.</h2>     
+				<h2 class="outline" style="color: black; font-weight:bold; font-size: 25pt;">Welcome <?php session_start(); $username = $_SESSION['username']; if ( ! empty( $_SESSION['username'] ) ) {echo ($_SESSION['username']);} else{echo ("");}?> ! Thank you for being a great farmer. Navigate through the header to Teach, Learn, Sell, and Subscribe.</h2>     
         </div>
       </div>
 
