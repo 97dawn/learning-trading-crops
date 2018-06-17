@@ -23,7 +23,27 @@ $conn = new mysqli($hn, $un, $pw, $db);
 </head>
 
 <body>
-
+<style>
+  html, body{
+    height:100%;
+  }
+  button{
+    border: none;
+    background-color:transparent;
+    color:black;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+    text-align:left;
+  }
+  #content{
+    color:black;
+  }
+  h3{
+    margin-top: 0px;
+  }
+  </style>  
   <!-- START: header -->
 
   <div class="probootstrap-loader"></div>

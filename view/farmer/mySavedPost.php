@@ -14,7 +14,7 @@ $conn = new mysqli($hn, $un, $pw, $db);
   <title>The Greatest Farmer</title>
   <meta name="description" content="Free Bootstrap Theme by uicookies.com">
   <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
-  <link rel="icon" type="image/png" href="../../img/logo.png"/>
+  <link rel="icon" type="image/png" href="../../img/logo.png" />
   <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
   <link rel="stylesheet" href="../../css/styles-merged.css">
   <link rel="stylesheet" href="../../css/style.min.css">
@@ -23,54 +23,66 @@ $conn = new mysqli($hn, $un, $pw, $db);
 </head>
 
 <body>
-<style>
-  html, body{
-    height:100%;
-  }
-  button{
-    border: none;
-    background-color:transparent;
-    color:black;
-    overflow: hidden;
-    white-space: nowrap;
-    display: block;
-    text-overflow: ellipsis;
-    text-align:left;
-  }
-  #content{
-    color:black;
-  }
-  h3{
-    margin-top: 0px;
-  }
-  </style>  
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    button {
+      border: none;
+      background-color: transparent;
+      color: black;
+      overflow: hidden;
+      white-space: nowrap;
+      display: block;
+      text-overflow: ellipsis;
+      text-align: left;
+    }
+
+    #content {
+      color: black;
+    }
+
+    h3 {
+      margin-top: 0px;
+    }
+  </style>
   <!-- START: header -->
 
   <div class="probootstrap-loader"></div>
 
   <header role="banner" class="probootstrap-header">
     <div class="container">
-        <a href="../farmerMain.php" class="probootstrap-logo" style="margin-right:20px;">The Greatest Farmer<span>.</span></a>
-        <a href="learn.php" style="margin-right: 10px;color:green;">Learn</a>
-        <a href="teach.php" style="margin-right: 10px;color:green;">Teach</a>
-        <a href="sell.php" style="margin-right: 10px;color:green;">Sell</a>
-        <a href="subscribe.php" style="margin-right: 10px;color:green;">Subscribe</a>
-        <nav role="navigation" class="probootstrap-nav hidden-xs">
-          <ul class="probootstrap-main-nav">
-            <div class="btn-group">
-                <button style="color:navy;background-color:transparent;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Hello, <?php session_start(); $username = $_SESSION['username']; if ( ! empty( $username ) ) {echo ($username);} else{echo ("");}?>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <a href="myProduct.php" style="padding-left:10px;">My Products</a><br>
-                    <a href="mySubscription.php" style="padding-left:10px;">My Subscriptions</a><br>
-                    <a href="myWrittenPost.php" style="padding-left:10px;">My Written Posts</a><br>
-                    <a href="mySavedPost.php" style="padding-left:10px;">My Saved Posts</a><br>
-                    <a href="../../index.html" style="padding-left:10px;">Logout</a>
-                </div>
+      <a href="../farmerMain.php" class="probootstrap-logo" style="margin-right:20px;">The Greatest Farmer
+        <span>.</span>
+      </a>
+      <a href="learn.php" style="margin-right: 10px;color:green;">Learn</a>
+      <a href="teach.php" style="margin-right: 10px;color:green;">Teach</a>
+      <a href="sell.php" style="margin-right: 10px;color:green;">Sell</a>
+      <a href="subscribe.php" style="margin-right: 10px;color:green;">Subscribe</a>
+      <nav role="navigation" class="probootstrap-nav hidden-xs">
+        <ul class="probootstrap-main-nav">
+          <div class="btn-group">
+            <button style="color:navy;background-color:transparent;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Hello,
+              <?php session_start(); $username = $_SESSION['username']; if ( ! empty( $username ) ) {echo ($username);} else{echo ("");}?>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <a href="myProduct.php" style="padding-left:10px;">My Products</a>
+              <br>
+              <a href="mySubscription.php" style="padding-left:10px;">My Subscriptions</a>
+              <br>
+              <a href="myWrittenPost.php" style="padding-left:10px;">My Written Posts</a>
+              <br>
+              <a href="mySavedPost.php" style="padding-left:10px;">My Saved Posts</a>
+              <br>
+              <a href="../../index.html" style="padding-left:10px;">Logout</a>
             </div>
-          </ul>
-        </nav>
+          </div>
+        </ul>
+      </nav>
     </div>
   </header>
   <!-- END: header -->
@@ -95,24 +107,24 @@ $conn = new mysqli($hn, $un, $pw, $db);
         }
         $conn->close();
       ?>
-    
+
     </div>
     <div class="container" id="content" style="height:100%; width:60%;float:right;">
-      
+
     </div>
   </div>
 
-    <div class="gototop js-top">
-      <a href="#" class="js-gotop">
-        <i class="icon-chevron-thin-up"></i>
-      </a>
-    </div>
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop">
+      <i class="icon-chevron-thin-up"></i>
+    </a>
+  </div>
 
-    <script src="../../js/scripts.min.js"></script>
-    <script src="../../js/main.min.js"></script>
-    <script src="../../js/custom.js"></script>
-    <script src="../../js/showSavedPosts.js"></script>
-    <script src="../../js/unsave.js"></script>
+  <script src="../../js/scripts.min.js"></script>
+  <script src="../../js/main.min.js"></script>
+  <script src="../../js/custom.js"></script>
+  <script src="../../js/showSavedPosts.js"></script>
+  <script src="../../js/unsave.js"></script>
 </body>
 
 </html>
