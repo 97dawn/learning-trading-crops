@@ -108,5 +108,6 @@ $conn = new mysqli($hn, $un, $pw, $db);
   <script src="../../js/main.min.js"></script>
   <script src="../../js/custom.js"></script>
   <script src="../../js/showSubscriptions.js"></script>
+  <script src="../../js/finishSubscription.js"></script>
   </body>
 </html>

@@ -10,18 +10,10 @@ function showSubscriptions(subid, cropName, farmer){
             content.innerHTML += "<div> <label>Subscribing crop: </label> "+json.cropName+"</div>";
             content.innerHTML += "<div> <label>Producer: </label> "+json.farmer+"</div>";
             content.innerHTML += "<div> <label>Subscription start date: </label> "+json.startDate+"</div>";
-            if(json.endDate == null){
-                content.innerHTML += "<div> <label>Subscription end date: </label> Yet </div>";
-            }
-            else{
-                content.innerHTML += "<div> <label>Subscription end date: </label> "+json.endDate+"</div>";
-            }
             content.innerHTML += "<div> <label>Subscription amount: </label> "+json.quantity+" "+json.unit+" </div>";
             content.innerHTML += "<div> <label>Subscription price: </label> "+json.price+" won</div>";
             content.innerHTML += "<div> <label>Frequency: </label> Once per "+json.subPeriod+" "+ json.periodUnit+"</div>";
-            if(json.endDate == null){
-                content.innerHTML += "<button onclick=\"finishSubscription("+subid+");\" style=\"background-color:red;width:100px;text-align:center;color:white;\">Finish</button>";
-            }
+            content.innerHTML += "<button onclick=\"finishSubscription("+subid+");\" style=\"background-color:red;width:100px;text-align:center;color:white;\">Finish</button>";
           }
     }
     xhr.send("subid="+subid);
