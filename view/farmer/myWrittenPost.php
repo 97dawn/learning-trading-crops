@@ -1,4 +1,10 @@
-<?php ob_start(); ?>
+<?php 
+
+ob_start(); 
+require("../../app/DBinfo.php");
+$conn = new mysqli($hn, $un, $pw, $db);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +14,7 @@
   <title>The Greatest Farmer</title>
   <meta name="description" content="Free Bootstrap Theme by uicookies.com">
   <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
-  <link rel="icon" type="image/png" href="../../img/logo.png"/>
+  <link rel="icon" type="image/png" href="../../img/logo.png" />
   <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
   <link rel="stylesheet" href="../../css/styles-merged.css">
   <link rel="stylesheet" href="../../css/style.min.css">
@@ -24,68 +30,73 @@
 
   <header role="banner" class="probootstrap-header">
     <div class="container">
-        <a href="../farmerMain.php" class="probootstrap-logo" style="margin-right:20px;">The Greatest Farmer<span>.</span></a>
-        <a href="learn.php" style="margin-right: 10px;color:green;">Learn</a>
-        <a href="teach.php" style="margin-right: 10px;color:green;">Teach</a>
-        <a href="sell.php" style="margin-right: 10px;color:green;">Sell</a>
-        <a href="subscribe.php" style="margin-right: 10px;color:green;">Subscribe</a>
-        <nav role="navigation" class="probootstrap-nav hidden-xs">
-          <ul class="probootstrap-main-nav">
-            <div class="btn-group">
-                <button style="color:navy;background-color:transparent;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Hello, <?php session_start(); $username = $_SESSION['username']; if ( ! empty( $username ) ) {echo ($username);} else{echo ("");}?>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <a href="myProduct.php" style="padding-left:10px;">My Product</a><br>
-                    <a href="mySubscription.php" style="padding-left:10px;">My Subscription</a><br>
-                    <a href="myWrittenPost.php" style="padding-left:10px;">My Written Post</a><br>
-                    <a href="mySavedPost.php" style="padding-left:10px;">My Saved Post</a><br>
-                    <a href="../../index.html" style="padding-left:10px;">Logout</a>
-                </div>
+      <a href="../farmerMain.php" class="probootstrap-logo" style="margin-right:20px;">The Greatest Farmer
+        <span>.</span>
+      </a>
+      <a href="learn.php" style="margin-right: 10px;color:green;">Learn</a>
+      <a href="teach.php" style="margin-right: 10px;color:green;">Teach</a>
+      <a href="sell.php" style="margin-right: 10px;color:green;">Sell</a>
+      <a href="subscribe.php" style="margin-right: 10px;color:green;">Subscribe</a>
+      <nav role="navigation" class="probootstrap-nav hidden-xs">
+        <ul class="probootstrap-main-nav">
+          <div class="btn-group">
+            <button style="color:navy;background-color:transparent;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Hello,
+              <?php session_start(); $username = $_SESSION['username']; if ( ! empty( $username ) ) {echo ($username);} else{echo ("");}?>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <a href="myProduct.php" style="padding-left:10px;">My Products</a>
+              <br>
+              <a href="mySubscription.php" style="padding-left:10px;">My Subscriptions</a>
+              <br>
+              <a href="myWrittenPost.php" style="padding-left:10px;">My Written Posts</a>
+              <br>
+              <a href="mySavedPost.php" style="padding-left:10px;">My Saved Posts</a>
+              <br>
+              <a href="../../index.html" style="padding-left:10px;">Logout</a>
             </div>
-          </ul>
-        </nav>
+          </div>
+        </ul>
+      </nav>
     </div>
   </header>
   <!-- END: header -->
 
-  <div class="probootstrap-section">
-    <div class="container">
-      <div class="row">
-        <h2>Your saved posts</h2>
-      </div>
-      <div id="error"></div>
+  <div class="probootstrap-section" style="height:100%;">
+    <div class="container" style=" border-right: 1px solid black;height:100%;width:25%;float:left;margin-left:10%; ">
+      <h3> My Written Posts</h3>
+      <?php
+        if ($conn->connect_error) die($conn->connect_error);
+        $query = "SELECT * FROM POSTS WHERE authorName = '" .$username."';";
+        $result = $conn->query($query) or die ("Error: " . mysql_error());
 
-      <div id="posts" style="margin-top: 2rem;"></div>
-
-      <!-- to display the whole post-->
-      <div id="myModal" class="modal">
-        <div class="modal-content">
-          <div id="texts"></div>
-          <div style="margin-top:30px;" class="row">
-            <label id="label">Write Comment</label>
-            <textarea id="label" style="height:50px;width: 87%;">Write here...</textarea>
-            <button style="float:right;background-color:grey" style="height:10px;" id="submit">Submit</button>
-          </div>
-          <div id="comments"></div>
-        </div>
-      </div>
+        if (!$result) echo "SELECT failed: $query<br>" .
+              $conn->error . "<br><br>";
+          
+        while($row = $result->fetch_assoc()) {
+          $postid = $row['postid'];
+          $title = $row['title'];
+          echo "<button style=\"width: 250px;text-decoration: underline;\" onclick=\"showWrittenPosts($postid);\" >".$title."</button>";
+        }
+        $conn->close();
+      ?>
     </div>
+    <div class="container" id="content" style="height:100%; width:60%;float:right;">
 
-    <div class="gototop js-top">
-      <a href="#" class="js-gotop">
-        <i class="icon-chevron-thin-up"></i>
-      </a>
     </div>
+  </div>
 
-    <script src="../../js/scripts.min.js"></script>
-    <script src="../../js/main.min.js"></script>
-    <script src="../../js/custom.js"></script>
-    <script src="../../js/formPost.js"></script>
-    <script src="../../js/showLearningPost.js"></script>
-    <script src="../../js/saveLearningPost.js"></script>
-    <script src="../../js/writeComment.js"></script>
-    <script src="../../js/populateWrittenPosts.js"></script>
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop">
+      <i class="icon-chevron-thin-up"></i>
+    </a>
+  </div>
+
+  <script src="../../js/scripts.min.js"></script>
+  <script src="../../js/main.min.js"></script>
+  <script src="../../js/custom.js"></script>
+  <script src="../../js/showWrittenPosts.js"></script>
 </body>
 
 </html>

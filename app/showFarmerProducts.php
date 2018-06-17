@@ -21,8 +21,7 @@ $rating = $row['avgRating'];
 $sql = "SELECT * FROM DISCOUNT_RATES WHERE pid=".$pid.";";
 $result = $conn->query($sql) or die ("Error: " . mysql_error());
 $discounts = array();
-while($result->fetch_assoc()){
-    $row =  $result->fetch_assoc();
+while($row = $result->fetch_assoc()){
     $aDiscount = array();
     $minquan = $row['minQuantity'];
     $rate = $row['rate'];

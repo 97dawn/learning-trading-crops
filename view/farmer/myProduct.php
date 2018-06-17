@@ -48,9 +48,10 @@ $conn = new mysqli($hn, $un, $pw, $db);
 
   <header role="banner" class="probootstrap-header">
     <div class="container">
-        <a href="../buyerMain.php" class="probootstrap-logo" style="margin-right:20px;">The Greatest Farmer<span>.</span></a>
+    <a href="../farmerMain.php" class="probootstrap-logo" style="margin-right:20px;">The Greatest Farmer<span>.</span></a>
         <a href="learn.php" style="margin-right: 10px;color:green;">Learn</a>
-        <a href="buy.php" style="margin-right: 10px;color:green;">Buy</a>
+        <a href="teach.php" style="margin-right: 10px;color:green;">Teach</a>
+        <a href="sell.php" style="margin-right: 10px;color:green;">Sell</a>
         <a href="subscribe.php" style="margin-right: 10px;color:green;">Subscribe</a>
         <nav role="navigation" class="probootstrap-nav hidden-xs">
           <ul class="probootstrap-main-nav">
@@ -86,7 +87,7 @@ $conn = new mysqli($hn, $un, $pw, $db);
         while($row = $result->fetch_assoc()) {
           $pid = $row['pid'];
           $cropName = $row['cropName'];
-          echo "<button style=\"width: 250px;text-decoration: underline;\" onclick=\"showOrders($pid);\" name=$pid value=$pid>".$cropName."</button>";
+          echo "<button style=\"width: 250px;text-decoration: underline;\" onclick=\"showFarmerProducts($pid);\" name=$pid value=$pid>".$cropName."</button>";
         }
         $conn->close();
       ?>
@@ -106,5 +107,6 @@ $conn = new mysqli($hn, $un, $pw, $db);
   <script src="../../js/main.min.js"></script>
   <script src="../../js/custom.js"></script>
   <script src="../../js/showFarmerProducts.js"></script>
+  
   </body>
 </html>

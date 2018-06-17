@@ -62,10 +62,10 @@ $conn = new mysqli($hn, $un, $pw, $db);
                 Hello, <?php session_start(); $username = $_SESSION['username']; if ( ! empty( $username ) ) {echo ($username);} else{echo ("");}?>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <a href="myProduct.php" style="padding-left:10px;">My Product</a><br>
-                    <a href="mySubscription.php" style="padding-left:10px;">My Subscription</a><br>
-                    <a href="myWrittenPost.php" style="padding-left:10px;">My Written Post</a><br>
-                    <a href="mySavedPost.php" style="padding-left:10px;">My Saved Post</a><br>
+                    <a href="myProduct.php" style="padding-left:10px;">My Products</a><br>
+                    <a href="mySubscription.php" style="padding-left:10px;">My Subscriptions</a><br>
+                    <a href="myWrittenPost.php" style="padding-left:10px;">My Written Posts</a><br>
+                    <a href="mySavedPost.php" style="padding-left:10px;">My Saved Posts</a><br>
                     <a href="../../index.html" style="padding-left:10px;">Logout</a>
                 </div>
             </div>
@@ -81,10 +81,9 @@ $conn = new mysqli($hn, $un, $pw, $db);
         if ($conn->connect_error) die($conn->connect_error);
         $query = "SELECT * FROM SAVED_POSTS WHERE username = '" .$username."';";
         $result = $conn->query($query) or die ("Error: " . mysql_error());
-           
         if (!$result) echo "SELECT failed: $query<br>" .
               $conn->error . "<br><br>";
-
+          
         while($row = $result->fetch_assoc()) {
           $postid = $row['postid'];
           $sql = "SELECT * FROM POSTS WHERE postid=".$postid.";";

@@ -39,13 +39,13 @@
                             <?php session_start(); if ( ! empty( $_SESSION['username'] ) ) {echo ($_SESSION['username']);} else{echo ("");}?>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                            <a href="myProduct.php" style="padding-left:10px;">My Product</a>
+                            <a href="myProduct.php" style="padding-left:10px;">My Products</a>
                             <br>
-                            <a href="mySubscription.php" style="padding-left:10px;">My Subscription</a>
+                            <a href="mySubscription.php" style="padding-left:10px;">My Subscriptions</a>
                             <br>
-                            <a href="myWrittenPost.php" style="padding-left:10px;">My Written Post</a>
+                            <a href="myWrittenPost.php" style="padding-left:10px;">My Written Posts</a>
                             <br>
-                            <a href="mySavedPost.php" style="padding-left:10px;">My Saved Post</a>
+                            <a href="mySavedPost.php" style="padding-left:10px;">My Saved Posts</a>
                             <br>
                             <a href="../../index.html" style="padding-left:10px;">Logout</a>
                         </div>

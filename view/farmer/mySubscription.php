@@ -1,4 +1,10 @@
-<?php ob_start(); ?>
+<?php 
+
+ob_start(); 
+require("../../app/DBinfo.php");
+$conn = new mysqli($hn, $un, $pw, $db);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,14 +36,14 @@
         <nav role="navigation" class="probootstrap-nav hidden-xs">
           <ul class="probootstrap-main-nav">
             <div class="btn-group">
-                <button style="color:navy;background-color:transparent;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Hello, <?php session_start(); if ( ! empty( $_SESSION['username'] ) ) {echo ($_SESSION['username']);} else{echo ("");}?>
+            <button style="color:navy;background-color:transparent;"class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Hello, <?php session_start(); $username = $_SESSION['username']; if ( ! empty( $username ) ) {echo ($username);} else{echo ("");}?>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <a href="myProduct.php" style="padding-left:10px;">My Product</a><br>
-                    <a href="mySubscription.php" style="padding-left:10px;">My Subscription</a><br>
-                    <a href="myWrittenPost.php" style="padding-left:10px;">My Written Post</a><br>
-                    <a href="mySavedPost.php" style="padding-left:10px;">My Saved Post</a><br>
+                    <a href="myProduct.php" style="padding-left:10px;">My Products</a><br>
+                    <a href="mySubscription.php" style="padding-left:10px;">My Subscriptions</a><br>
+                    <a href="myWrittenPost.php" style="padding-left:10px;">My Written Posts</a><br>
+                    <a href="mySavedPost.php" style="padding-left:10px;">My Saved Posts</a><br>
                     <a href="../../index.html" style="padding-left:10px;">Logout</a>
                 </div>
             </div>
@@ -47,13 +53,27 @@
   </header>
   <!-- END: header -->
   
-  <div class="probootstrap-section">
-    <div class="container">
-      <div class="row">
-          <h2>Your subscriptions</h2>      
-        
-      </div>
+  <div class="probootstrap-section" style="height:100%;">
+    <div class="container" style=" border-right: 1px solid black;height:100%;width:25%;float:left;margin-left:10%; ">
+      <h3> My Subscriptions</h3>
+      <?php
+        if ($conn->connect_error) die($conn->connect_error);
+        $query = "SELECT * FROM SUB_PRODUCTS WHERE fid = '" .$username."';";
+        $result = $conn->query($query) or die ("Error: " . mysql_error());
+           
+        if (!$result) echo "SELECT failed: $query<br>" .
+              $conn->error . "<br><br>";
 
+        while($row = $result->fetch_assoc()) {
+          $subid = $row['subid'];
+          $cropName = $row['cropName'];
+          echo "<button style=\"width: 250px;text-decoration: underline;\" onclick=\"showFarmerSubscription($subid);\" name=$subid value=$subid>".$cropName."</button>";
+        }
+        $conn->close();
+      ?>
+    
+    </div>
+    <div class="container" id="content" style="height:100%; width:60%;float:right;">
       
     </div>
   </div>
@@ -66,6 +86,7 @@
   <script src="../../js/scripts.min.js"></script>
   <script src="../../js/main.min.js"></script>
   <script src="../../js/custom.js"></script>
-
+  <script src="../../js/showFarmerSubscriptions.js"></script>
+  
   </body>
 </html>
