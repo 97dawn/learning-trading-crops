@@ -16,7 +16,7 @@ $amount = $row['amount'];
 $rawTotalPrice = $row['rawTotalPrice'];
 $discountRate = $row['discountRate'];
 $extraCharge = $row['extraCharge'];
-$totalPrice = $rawTotalPrice * (1+$discountRate/100) + $extraCharge;
+$totalPrice = $rawTotalPrice * (1-$discountRate/100) + $extraCharge;
 
 $sql = "SELECT * FROM PRODUCTS WHERE pid=".$row['pid'].";";
 $result = $conn->query($sql) or die ("Error: " . mysql_error());
