@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
   $price 	= $formData[1]['value'];
   $quantity =  $formData[2]['value'];
   $organic = $formData[3]['value'];
-  $rating =  3;
+  $rating =  null;
   $did=0;
 
   //for each discount rate enter a row in DISCOUNT RATES
