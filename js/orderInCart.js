@@ -7,6 +7,7 @@ function orderInCart(cartid){
             var answer = xhr.responseText;
             if(answer == "success"){
                 alert("Order successfully");
+                location.reload();
             }
             else{
                 alert("ERROR");

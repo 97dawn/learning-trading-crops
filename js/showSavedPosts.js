@@ -11,9 +11,9 @@ function showSavedPosts(postid){
             content.innerHTML += "<div> <label>Post date: </label> "+json.postDate+"</div>";
             content.innerHTML += "<div> <label>Author name: </label> "+json.authorName+"</div>";
             content.innerHTML += "<div> <label>Crop: </label> "+json.cropName+"</div>";
-            content.innerHTML += "<div> <label>How to grow: </label> "+json.cropInfo+"</div>";
+            content.innerHTML += "<div> <label>Crop Description: </label> "+json.cropInfo+"</div>";
             content.innerHTML += "<div> <label>Usages: </label> "+json.uses+"</div>";
-            content.innerHTML += "<div> <label>Diseases: </label> "+json.disease+"</div>";
+            content.innerHTML += "<div> <label>Disease: </label> "+json.disease+"</div>";
             content.innerHTML += "<button onclick=\"unsave("+postid+");\" style=\"background-color:red;width:100px;text-align:center;color:white;\">Unsave</button><br>";
           }
     }

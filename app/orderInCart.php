@@ -30,7 +30,7 @@ $newRemaining = $row["remaining"] - $amount;
 $conn->autocommit(FALSE);
 $sql = "DELETE FROM STORES WHERE cartid=".$cartid.";";
 $conn->query($sql);
-$sql = "INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (".$pid.",'".$bid."',".$amount.",".$totalPrice.",'".date("Y-m-d h:i:sa")."');";
+$sql = "INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (".$pid.",'".$bid."',".$amount.",".$totalPrice.",'".date("Y-m-d H:i:s")."');";
 $conn->query($sql);
 $sql = "UPDATE PRODUCTS SET remaining =".$newRemaining." WHERE pid =".$pid.";";
 $conn->query($sql);

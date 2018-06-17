@@ -26,7 +26,7 @@ function showLearningPost(post){
             texts += "<div id=\"content\">"+json.authorName+"</div>";
             texts += "</div>";
             texts += "<div class=\"row\">";
-            texts += "<label id=\"label\">How to grow</label>";
+            texts += "<label id=\"label\">Crop Description</label>";
             texts += "<div id=\"content\">"+json.cropInfo+"</div>";
             texts += "</div>";
             texts += "<div class=\"row\">";
@@ -34,7 +34,7 @@ function showLearningPost(post){
             texts += "<div id=\"content\">"+json.uses+"</div>";
             texts += "</div>";
             texts += "<div class=\"row\">";
-            texts += "<label id=\"label\">Diseases</label>";
+            texts += "<label id=\"label\">Disease</label>";
             texts += "<div id=\"content\">"+json.disease+"</div>";
             texts += "</div>";
             var comments = "";
