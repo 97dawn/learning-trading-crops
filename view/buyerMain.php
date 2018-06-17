@@ -34,6 +34,7 @@
 			background-position: left top;
 			max-height:1013px;
 			min-height: 1013px;
+			 background-size: 100%;
 		  }
 		html, body {
 			height:100%;
