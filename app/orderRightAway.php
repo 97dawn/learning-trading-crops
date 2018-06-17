@@ -48,7 +48,7 @@
     session_start();
     date_default_timezone_set("Asia/Seoul");
     $conn->autocommit(FALSE);
-    $sql = "INSERT INTO ORDERS(pid,bid,amount,totalPrice,orderDate) VALUES(".$pid.",'".$_SESSION["username"]."',".$quantity.",".$totalPrice.",'".date("Y-m-d h:i:sa")."')";
+    $sql = "INSERT INTO ORDERS(pid,bid,amount,totalPrice,orderDate) VALUES(".$pid.",'".$_SESSION["username"]."',".$quantity.",".$totalPrice.",'".date("Y-m-d H:i:s")."')";
     $conn->query($sql);
     $sql = "UPDATE PRODUCTS SET remaining =".$newRemaining." WHERE pid =".$pid.";";
     $conn->query($sql);
