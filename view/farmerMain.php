@@ -34,6 +34,7 @@
 			background-position: left top;
 			max-height:1013px;
 			min-height: 1013px;
+			background-size: 100%;
 		    }
 		html, body {
 			height:100%;
@@ -80,7 +81,7 @@
         <div class="col-md-6 col-md-offset-3 mb40">
 				<br>
 				<br>
-				<h2 class="outline" style="color: black; font-weight:bold; font-size: 25pt;">Welcome <?php session_start(); $username = $_SESSION['username']; if ( ! empty( $_SESSION['username'] ) ) {echo ($_SESSION['username']);} else{echo ("");}?> ! Thank you for being a great farmer. Navigate through the header to Teach, Learn, Sell, and Subscribe.</h2>     
+				<h2 class="outline" style="color: black; font-weight:bold; font-size: 25pt;">Welcome <?php $username = $_SESSION['username']; if ( ! empty( $_SESSION['username'] ) ) {echo ($_SESSION['username']);} else{echo ("");}?> ! Thank you for being a great farmer. Navigate through the header to Teach, Learn, Sell, and Subscribe.</h2>     
         </div>
       </div>
 
