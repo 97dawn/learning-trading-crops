@@ -7,6 +7,7 @@ function finishSubscription(subid){
             var answer = xhr.responseText;
             if(answer == "success"){
                 alert("You finished subscription");
+                location.reload();
             }
             else{
                 alert("ERROR");

@@ -7,6 +7,7 @@ function unsave(postid){
             var answer = xhr.responseText;
             if(answer == "success"){
                 alert("Unsave post successfully");
+                location.reload();
             }
             else{
                 alert("ERROR");
