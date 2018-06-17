@@ -42,14 +42,12 @@ $('document').ready(function()
       {
         if(data=="entered")
         {
-          $("#input-subscription")[0].reset();
-          //clear out the form 
-          $("#success").html('<div class="row"><div class="col-md-6"><input type="button" class="btn btn-primary" id="continue"value="Continue Adding">'+
-            '<input type="button" class="btn btn-primary" id="gotoprofile" value="See all Products"></div></div>');
+          alert("You've successfully added this subscription.");
+          $("#input-post")[0].reset();
         }
         else {
           $("#error").fadeIn(1000, function(){
-            $("#error").html('<div class="alert alert-danger"> <span></span> &nbsp; There has been an error in the server :('+ data +'</div>');
+            $("#error").html('<div class="alert alert-danger"> <span></span> &nbsp; There has been an error in the server :(</div>');
           });
         }
       }

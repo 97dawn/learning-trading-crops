@@ -1,1 +1,2 @@
-SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '; 'doeun', '0987655325', 'doeun4@hotmail.com', '3', '54 biu1', 'Busan Metropolit' at line 1SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'doeun4' for key 'PRIMARY'
+
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'fname' cannot be null
