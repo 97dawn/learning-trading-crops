@@ -6,6 +6,11 @@ function showWrittenPosts(postid){
         if(xhr.readyState === 4 && xhr.status === 200){
             var json = JSON.parse(xhr.responseText);
             var content = document.getElementById("content");
+            var allSubscriber = "";
+            var displaySubscriber = json.subscribers;
+            for (var i=0; i<displaySubscriber.length; i++){
+                allSubscriber += displaySubscriber[i];
+            }
             content.innerHTML = "";
             content.innerHTML += "<div> <label>Title: </label> "+json.title+"</div>";
             content.innerHTML += "<div> <label>Post date: </label> "+json.postDate+"</div>";
@@ -14,6 +19,7 @@ function showWrittenPosts(postid){
             content.innerHTML += "<div> <label>How to grow: </label> "+json.cropInfo+"</div>";
             content.innerHTML += "<div> <label>Usages: </label> "+json.uses+"</div>";
             content.innerHTML += "<div> <label>Diseases: </label> "+json.disease+"</div>";
+            content.innerHTML += "<div> <label>Currently Saved by ("+json.subscriberNum+"): </label> "+allSubscriber+"</div>";
             content.innerHTML += "<button onclick=\"delete_post("+postid+");\" style=\"background-color:red;width:200px;text-align:center;color:white;\">Delete post</button><br>";
           }
     }

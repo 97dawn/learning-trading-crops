@@ -17,19 +17,20 @@ $quantityPerSub = $row['quantityPerSub'];
 $price = $row['price'];
 $subPeriod = $row['subPeriod'];
 
-$sql = "SELECT * FROM SUB_ORDERS WHERE subid=".$subid.";";
-$result = $conn->query($sql) or die ("Error: " . mysql_error());
-$count=0;
+$sql1 = "SELECT * FROM SUB_ORDERS WHERE subid=".$subid.";";
+$result1 = $conn->query($sql1) or die ("Error: " . mysql_error());
+
+$num_rows = mysqli_num_rows($result1);
 $subscribers = array();
-while($result->fetch_assoc()){
-    $row =  $result->fetch_assoc();
-    $bid = $row['bid'];
-    $count++;
-    array_push($subscribers,$bid);
+if($num_rows>0){
+    while($row1 = $result1->fetch_assoc()){
+        $bid = $row1['bid'];
+        array_push($subscribers,$bid);
+    }
 }
 
 $json = ["cropName"=>$cropName,"quantityPerSub"=>$quantityPerSub, "price"=>$price,
-"subPeriod"=>$subPeriod, "subscriberNum"=>$count, "subscribers"=>$subscribers
+"subPeriod"=>$subPeriod, "subscriberNum"=>$num_rows, "subscribers"=>$subscribers
 ];
 $conn->close();
 echo(json_encode($json));

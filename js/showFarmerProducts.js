@@ -6,6 +6,11 @@ function showFarmerProducts(pid){
         if(xhr.readyState === 4 && xhr.status === 200){
             var json = JSON.parse(xhr.responseText);
             var content = document.getElementById("content");
+            var allSubscriber = "";
+            var displaySubscriber = json.subscribers;
+            for (var i=0; i<displaySubscriber.length; i++){
+                allSubscriber += displaySubscriber[i];
+            }
             var allDiscount = json.discounts;
             var displayDiscount = "";
             var displayRating = json.rating;
@@ -32,6 +37,7 @@ function showFarmerProducts(pid){
             content.innerHTML += "<div> <label>Discount rates on Product: </label></div>";
             content.innerHTML += "<div> <ul>"+displayDiscount+"</ul></div>";
             content.innerHTML += "<div> <label>Product rating: </label> "+displayRating+"</div>";
+            content.innerHTML += "<div> <label>Product is ordered by ("+json.subscriberNum+"): </label> "+allSubscriber+"</div>";
             content.innerHTML += "<button onclick=\"delete_product("+pid+");\" style=\"background-color:red;width:200px;text-align:center;color:white;\">Delete Product</button><br>";
           }
     }
