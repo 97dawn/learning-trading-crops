@@ -9,9 +9,11 @@ function showFarmerSubscription(subid){
             var allSubscriber = "";
             var displaySubscriber = json.subscribers;
             for (var i=0; i<displaySubscriber.length; i++){
-                allSubscriber += displaySubscriber[i];
-                if(displaySubscriber.length>1){
-                    allSubscriber+=", ";
+                if(displaySubscriber.length==1 || i==(displaySubscriber.length-1)){
+                    allSubscriber += displaySubscriber[i];
+                }
+                else{
+                    allSubscriber += displaySubscriber[i]+", ";
                 }
             }
             content.innerHTML = "";

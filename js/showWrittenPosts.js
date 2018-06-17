@@ -9,11 +9,13 @@ function showWrittenPosts(postid){
             var allSubscriber = "";
             var displaySubscriber = json.subscribers;
             for (var i=0; i<displaySubscriber.length; i++){
-                allSubscriber += displaySubscriber[i];
-                if(displaySubscriber.length>1){
-                    allSubscriber+=", ";
+                if(displaySubscriber.length==1 || i==(displaySubscriber.length-1)){
+                    allSubscriber += displaySubscriber[i];
                 }
+                else{
+                    allSubscriber += displaySubscriber[i]+", ";
                 }
+            }
             content.innerHTML = "";
             content.innerHTML += "<div> <label>Title: </label> "+json.title+"</div>";
             content.innerHTML += "<div> <label>Post date: </label> "+json.postDate+"</div>";
