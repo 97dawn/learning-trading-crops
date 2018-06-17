@@ -11,8 +11,8 @@
   <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
   <link rel="stylesheet" href="../../css/styles-merged.css">
   <link rel="stylesheet" href="../../css/style.min.css">
-  <link rel="stylesheet" href="../../css/custom.css">    
-  <link rel="icon" type="image/png" href="../../img/logo.png"/>
+  <link rel="stylesheet" href="../../css/custom.css">
+  <link rel="icon" type="image/png" href="../../img/logo.png" />
 
 
 </head>
@@ -66,7 +66,7 @@
           <form id="input-post" method="post">
             <!--              Title of the post-->
             <div class="row">
-              <div class="col-md-2 form-group">
+              <div class="col-md-9 form-group">
                 <label for="title">Title:</label>
                 <input type="text" class="form-control" id="title" name="title" required>
               </div>
@@ -104,29 +104,28 @@
                             ?>
                   </select>
                 </div>
-              </div>
 
-              <!--              Description of crops-->
-              <div class="row">
-                <div class="col-md-3" class="form-group">
+
+                <!--              Description of crops-->
+                <div class="col-md-6" class="form-group">
                   <label for="description">Crop Description:</label>
-                  <input type="text" class="form-control" id="description" name="description" required>
+                  <textarea type="text" class="form-control" id="description" name="description" required></textarea>
                 </div>
               </div>
 
               <!--              Uses of crops-->
               <div class="row">
-                <div class="col-md-3 form-group">
+                <div class="col-md-12 form-group">
                   <label for="uses">Uses:</label>
-                  <input type="text" class="form-control" id="uses" name="uses" required>
+                  <textarea type="text" class="form-control" id="uses" name="uses" required></textarea>
                 </div>
               </div>
 
               <!--              Disease-->
               <div class="row">
-                <div class="col-md-3 form-group">
+                <div class="col-md-12 form-group">
                   <label for="disease">Disease:</label>
-                  <input type="text" class="form-control" id="disease" name="disease" required>
+                  <textarea class="form-control" id="disease" name="disease" width="30" required></textarea>
                 </div>
               </div>
 
@@ -135,7 +134,7 @@
                 <input type="submit" class="btn btn-primary" id="writepost" name="writepost" value="Write Post">
               </div>
               <div id="success"> </div>
-              
+
           </form>
         </div>
       </div>
