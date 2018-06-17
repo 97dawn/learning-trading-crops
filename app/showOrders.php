@@ -33,7 +33,7 @@ $unit = $result->fetch_assoc()['unitToSell'];
 
 $sql = "SELECT * FROM DISCOUNT_RATES WHERE pid=".$row['pid'].";";
 $result = $conn->query($sql) or die ("Error: " . mysql_error());
-$discountRate;
+$discountRate=0;
 while($row = $result->fetch_assoc()){
     if($row['maxQuantity'] != NULL){
         if($row['minQuantity'] <= $amount && $amount <=$row['maxQuantity']){
@@ -45,6 +45,9 @@ while($row = $result->fetch_assoc()){
         $discountRate = $row['rate'];
         break;
     }
+}
+if($discountRate == NULL){
+    $discountRate = 0;
 }
 $json = ["amount"=>$amount, "orderDate" => $orderDate, "rawTotalPrice"=>$pricePerUnit * $amount, "unit"=>$unit,
  "discountRate" =>$discountRate , "extraCharge"=>$extraCharge,"totalPrice"=>$totalPrice, "avgRating"=>$avgRating,
