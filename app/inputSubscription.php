@@ -1,11 +1,6 @@
 <?php
 require_once 'DBinfo.php';
-ini_set('display_errors', 'On');
-error_reporting(E_ALL | E_STRICT);
 
-// Any syntax errors here will result in a blank screen in the browser
-
-include 'errors.php';
 try{
   $dbc = new PDO("mysql:host={$hn};dbname={$db}",$un,$pw);
   $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
