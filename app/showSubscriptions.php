@@ -1,6 +1,6 @@
 <?php
 require_once("DBinfo.php");
-        
+session_start();
 // Get data from Ajax
 header("Content-Type: text/plain; charset=UTF-8");
 $subid = intval($_POST["subid"]);
@@ -9,7 +9,7 @@ $subid = intval($_POST["subid"]);
 $conn = new mysqli($hn, $un, $pw, $db);
 if ($conn->connect_error) die($conn->connect_error);
 
-$sql = "SELECT * FROM SUB_ORDERS WHERE subid=".$subid.";";
+$sql = "SELECT * FROM SUB_ORDERS WHERE subid=".$subid." AND bid = '".$_SESSION['username']."';";
 $result = $conn->query($sql) or die ("Error: " . mysql_error());
 $row = $result->fetch_assoc();
 $startDate = $row['startDate'];
