@@ -15,6 +15,33 @@
 
   </head>
   <body>
+	  	  <style>
+			   .outline
+			{
+				color: white;
+				text-shadow:
+				-1px -1px 0 #000,
+				1px -1px 0 #000,
+				-1px 1px 0 #000,
+				1px 1px 0 #000;  
+			}
+		.probootstrap-header {
+			background-color: #fff;
+			}
+		 body {
+			background-image: url("../img/buyerImage.jpg");
+			background-repeat: no-repeat;
+			background-position: left top;
+			max-height:1013px;
+			min-height: 1013px;
+		  }
+		html, body {
+			height:100%;
+			width: 100%;
+			background-attachment: scroll;
+		  	} 
+
+	  </style>
 
   <!-- START: header -->
   
@@ -50,7 +77,10 @@
     <div class="container text-center">
       <div class="row">
         <div class="col-md-6 col-md-offset-3 mb40">
-          <h2></h2>      
+			<br>
+			<br>
+			<br>
+             <h2 class="outline" style="color: white; font-weight:bold; font-size: 25pt; font-family: Abel,sans-serif;">Welcome! We’re excited to have you as a community member. Navigate through the header to Learn, Buy, Subscribe.</h2>    
         </div>
       </div>
 
