@@ -1,4 +1,10 @@
-<?php ob_start(); ?>
+<?php 
+
+ob_start(); 
+require("../../app/DBinfo.php");
+$conn = new mysqli($hn, $un, $pw, $db);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +23,27 @@
 </head>
 
 <body>
-
+<style>
+  html, body{
+    height:100%;
+  }
+  button{
+    border: none;
+    background-color:transparent;
+    color:black;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+    text-align:left;
+  }
+  #content{
+    color:black;
+  }
+  h3{
+    margin-top: 0px;
+  }
+  </style>  
   <!-- START: header -->
 
   <div class="probootstrap-loader"></div>
@@ -35,8 +61,7 @@
           <div class="btn-group">
             <button style="color:navy;background-color:transparent;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Hello,
-              <?php session_start();if ( ! empty( $_SESSION['username'] ) ) {echo ($_SESSION['username']);} else{echo ("");}?>
+              Hello, <?php session_start(); $username = $_SESSION['username']; if ( ! empty( $username ) ) {echo ($username);} else{echo ("");}?>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
               <a href="myOrder.php" style="padding-left:10px;">My Orders</a>
@@ -57,29 +82,34 @@
   </header>
   <!-- END: header -->
 
-  <div class="probootstrap-section">
-    <div class="container">
-      <div class="row">
-        <h2>Your saved posts</h2>
-      </div>
-      <div id="error"></div>
+  <div class="probootstrap-section" style="height:100%;">
+    <div class="container" style=" border-right: 1px solid black;height:100%;width:25%;float:left;margin-left:10%; ">
+      <h3> My Saved Posts</h3>
+      <?php
+        if ($conn->connect_error) die($conn->connect_error);
+        $query = "SELECT * FROM SAVED_POSTS WHERE username = '" .$username."';";
+        $result = $conn->query($query) or die ("Error: " . mysql_error());
+           
+        if (!$result) echo "SELECT failed: $query<br>" .
+              $conn->error . "<br><br>";
 
-      <div id="posts" style="margin-top: 2rem;"></div>
-
-      <!-- to display the whole post-->
-      <div id="myModal" class="modal">
-        <div class="modal-content">
-          <div id="texts"></div>
-          <div style="margin-top:30px;" class="row">
-            <label id="label">Write Comment</label>
-            <textarea id="label" style="height:50px;width: 87%;">Write here...</textarea>
-            <button style="float:right;background-color:grey" style="height:10px;" id="submit">Submit</button>
-          </div>
-          <div id="comments"></div>
-        </div>
-      </div>
+        while($row = $result->fetch_assoc()) {
+          $postid = $row['postid'];
+          $sql = "SELECT * FROM POSTS WHERE postid=".$postid.";";
+          $result1 = $conn->query($sql) or die ("Error: " . mysql_error());
+          $row1 = $result1->fetch_assoc();
+          $farmer = $row1['authorName'];
+          $cropName = $row1['cropName'];
+          echo "<button style=\"width: 250px;text-decoration: underline;\" onclick=\"showSavedPosts($postid);\" >".$cropName." from ".$farmer."</button>";
+        }
+        $conn->close();
+      ?>
+    
     </div>
-
+    <div class="container" id="content" style="height:100%; width:60%;float:right;">
+      
+    </div>
+  </div>
     <div class="gototop js-top">
       <a href="#" class="js-gotop">
         <i class="icon-chevron-thin-up"></i>
@@ -89,11 +119,8 @@
     <script src="../../js/scripts.min.js"></script>
     <script src="../../js/main.min.js"></script>
     <script src="../../js/custom.js"></script>
-    <script src="../../js/formPost.js"></script>
-    <script src="../../js/showLearningPost.js"></script>
-    <script src="../../js/saveLearningPost.js"></script>
-    <script src="../../js/writeComment.js"></script>
-    <script src="../../js/populateSavedPosts.js"></script>
+    <script src="../../js/showSavedPosts.js"></script>
+    <script src="../../js/unsave.js"></script>
 </body>
 
 </html>
