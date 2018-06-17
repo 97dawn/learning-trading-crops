@@ -20,7 +20,7 @@ $uses = $row['uses'];
 $disease = $row['disease'];
 $postDate = $row['postDate'];
 
-$sql1 = "SELECT * FROM SAVED_POSTS WHERE postid=".$postid.";";
+$sql1 = "SELECT DISTINCT SAVED_POSTS.username FROM SAVED_POSTS WHERE postid=".$postid.";";
 $result1 = $conn->query($sql1) or die ("Error: " . mysql_error());
 
 $num_rows = mysqli_num_rows($result1);

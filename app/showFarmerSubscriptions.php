@@ -17,7 +17,7 @@ $quantityPerSub = $row['quantityPerSub'];
 $price = $row['price'];
 $subPeriod = $row['subPeriod'];
 
-$sql1 = "SELECT * FROM SUB_ORDERS WHERE subid=".$subid.";";
+$sql1 = "SELECT DISTINCT SUB_ORDERS.bid FROM SUB_ORDERS WHERE subid=".$subid.";";
 $result1 = $conn->query($sql1) or die ("Error: " . mysql_error());
 
 $num_rows = mysqli_num_rows($result1);

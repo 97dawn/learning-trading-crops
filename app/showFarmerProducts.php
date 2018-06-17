@@ -30,7 +30,7 @@ while($row = $result->fetch_assoc()){
     array_push($discounts,$aDiscount);
 }
 
-$sql1 = "SELECT * FROM ORDERS WHERE pid=".$pid.";";
+$sql1 = "SELECT DISTINCT ORDERS.bid FROM ORDERS WHERE pid=".$pid.";";
 $result1 = $conn->query($sql1) or die ("Error: " . mysql_error());
 
 $num_rows = mysqli_num_rows($result1);

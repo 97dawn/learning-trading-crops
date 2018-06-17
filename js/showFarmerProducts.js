@@ -10,7 +10,10 @@ function showFarmerProducts(pid){
             var displaySubscriber = json.subscribers;
             for (var i=0; i<displaySubscriber.length; i++){
                 allSubscriber += displaySubscriber[i];
-            }
+                if(displaySubscriber.length>1){
+                    allSubscriber+=", ";
+                }
+                }
             var allDiscount = json.discounts;
             var displayDiscount = "";
             var displayRating = json.rating;
