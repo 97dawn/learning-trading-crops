@@ -107,6 +107,12 @@ $('document').ready(function()
           {
           window.location.replace("../view/successreg.html");
           }
+          else if(data=="servererror")
+          {
+            $("#error").fadeIn(1000, function(){
+              $("#error").html('<div class="alert alert-danger"> <span></span> &nbsp; It is most likely you chose the wrong City-Province combination.</div>');
+            });
+          }
           else {
             $("#error").fadeIn(1000, function(){
               $("#error").html('<div class="alert alert-danger"> <span></span> &nbsp; There has been an error in the server :(</div>');
