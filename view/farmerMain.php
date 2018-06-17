@@ -15,6 +15,33 @@
 
   </head>
   <body>
+	    <style>
+			 .outline
+			{
+				color: white;
+				text-shadow:
+				-1px -1px 0 #fff,
+				1px -1px 0 #fff,
+				-1px 1px 0 #fff,
+				1px 1px 0 #fff;  
+			}
+		.probootstrap-header {
+			background-color: #fff;
+			}
+		.probootstrap-section {
+			background-image: url("../img/farmerImage.jpg");
+			background-repeat: no-repeat;
+			background-position: left top;
+			max-height:1013px;
+			min-height: 1013px;
+		    }
+		html, body {
+			height:100%;
+			width: 100%;
+			background-attachment: scroll;
+		  	} 
+
+	  </style>
 
   <!-- START: header -->
   
@@ -51,7 +78,9 @@
     <div class="container text-center">
       <div class="row">
         <div class="col-md-6 col-md-offset-3 mb40">
-          <h2></h2>       
+				<br>
+				<br>
+				<h2 class="outline" style="color: black; font-weight:bold; font-size: 25pt;">Welcome! Thank you for being a great farmer. Navigate through the header to Teach, Learn, Sell, and Subscribe.</h2>     
         </div>
       </div>
 
