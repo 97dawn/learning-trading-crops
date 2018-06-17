@@ -1,11 +1,6 @@
 <?php
 require_once 'DBinfo.php';
-ini_set('display_errors', 'On');
-error_reporting(E_ALL | E_STRICT);
 
-// Any syntax errors here will result in a blank screen in the browser
-
-include 'errors.php';
 try{
   $dbc = new PDO("mysql:host={$hn};dbname={$db}",$un,$pw);
   $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -16,13 +11,8 @@ catch(PDOException $e){
 }
 //get userid
 session_start(); 
-$fid;
-if (!empty($_SESSION['username'])){
   $fid = $_SESSION['username'];
-}
-else{
-  $fid = "ahyes"; //set userid to a default just so query can be executed
-}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
   $rateData = json_decode(stripslashes($_POST['rates']),true);
@@ -45,7 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $result = $updateProduct->execute($productInfo);
         //UPDATE DISCOUNT TABLE IF FARMER SETS A RATE
         $last_id = $dbc->lastInsertId();
-          echo "New record created successfully. Last inserted ID is: " . $last_id;
           
       if(sizeof($rateData)>0 && sizeof($quantityData)>0){
       $updateDiscount = $dbc->prepare("INSERT INTO fpdb.DISCOUNT_RATES(discountid, rate, minQuantity, maxQuantity, pid) VALUES (:did, :rate, :minQuan, :maxQuan, :pid)");
