@@ -440,12 +440,12 @@ INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 2, 6
 INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (15, 7, NULL, 3);
 INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 3, 5, 4);
 INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (15, 6, NULL, 4);
-INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (20, 4, 5, 5);
-INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 2, 4, 6);
-INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 2, 6, 7);
-INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (20, 6, 8, 8);
-INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (20, 5, 6, 9);
-INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 3, 5, 10);
+INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (20, 4, NULL, 5);
+INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 2, NULL, 6);
+INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 2, NULL, 7);
+INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (20, 6, NULL, 8);
+INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (20, 5, NULL, 9);
+INSERT INTO DISCOUNT_RATES(rate, minQuantity, maxQuantity, pid) VALUES (10, 10, NULL, 10);
 
 INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (1, "kross", 2.00, 40000, 10, 0);
 INSERT INTO STORES(pid, bid, amount, rawTotalPrice, discountRate, extraCharge) VALUES (2, "swood", 3.00, 36000, 10, 0);
