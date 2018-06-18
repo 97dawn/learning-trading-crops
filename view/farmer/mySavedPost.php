@@ -104,7 +104,8 @@ $conn = new mysqli($hn, $un, $pw, $db);
           $farmer = $row1['authorName'];
           $cropName = $row1['cropName'];
           $title = $row1['title'];
-          echo "<button style=\"width: 250px;text-decoration: underline;\" onclick=\"showSavedPosts($postid);\" >".$title."</button>";        }
+          echo "<button style=\"width: 250px;text-decoration: underline;\" onclick=\"showSavedPosts($postid);\" >".$title."</button>";
+        }
         $conn->close();
       ?>
 
