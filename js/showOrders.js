@@ -15,7 +15,7 @@ function showOrders(orid){
             content.innerHTML += "<div> <label>Discount rate: </label> "+json.discountRate+"%</div>";
             content.innerHTML += "<div> <label>Extra charge: </label> "+json.extraCharge+" won</div>";
             content.innerHTML += "<div> <label>Final total price: </label> "+json.totalPrice+" won</div>";
-            content.innerHTML += "<div> <label>Product rating: </label> "+json.avgRating+"</div>";
+            content.innerHTML += "<div> <label>Product reputation: </label> "+json.repu+"</div>";
           }
     }
     xhr.send("orid="+orid);
