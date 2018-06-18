@@ -9,6 +9,9 @@ function orderInCart(cartid){
                 alert("Order successfully");
                 location.reload();
             }
+            else if (answer == "can't buy"){
+                alert("Remaining is less than the order amount");
+            }
             else{
                 alert("ERROR");
             }

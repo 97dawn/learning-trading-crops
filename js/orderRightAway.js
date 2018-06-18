@@ -12,6 +12,9 @@ function orderRightAway(product){
             if(answer.response == "false"){
                 alert("ERROR");
             }
+            else if (answer.response == "can't buy"){
+                alert("Remaining is less than the order amount");
+            }
             else{
                 alert("Successfully ordered the product.\nTotal price: "+answer.totalPrice+"won");
                 var unit = document.getElementById(pid+"-remaining").innerText.split(" ")[2];

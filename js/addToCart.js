@@ -20,6 +20,9 @@ function addToCart(product){
             else if(answer == "false"){
                 alert("ERROR.");
             }
+            else{
+                alert("You can't store this amount of product.");
+            }
         }
     }
     xhr.send("pid="+pid+"&quantity="+quantity+"&pricePerUnit="+pricePerUnit+"&isOrganic="+isOrganic);
