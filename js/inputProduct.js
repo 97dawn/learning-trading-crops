@@ -58,8 +58,8 @@ $(".editdiscount").click(function() {
 */
   $("#add-discount").click(function () {
     //clear out the form 
-    $("#discountrate").val = "";
-    $("#discountmin").val = "";
+    $('input[name=discountrate').val('');
+    $('input[name=discountmin').val('');
     var newRate = rate;
     var newQuan = quan;
     rates.push(newRate);

@@ -41,8 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
      for($x=0; $x<sizeof($rateData); $x++){
       $aRate = $rateData[$x];
       $aMinQuantity = $quantityData[$x];
+      $maxQuantity =  $quantityData[$x]+10;
       if($aRate>=0 && $aMinQuantity>=0){
-        $productInfo = array(':did'=>$did,':rate'=>$aRate,':minQuan'=>$aMinQuantity,':maxQuan'=>null,':pid'=>$last_id);
+        $productInfo = array(':did'=>$did,':rate'=>$aRate,':minQuan'=>$aMinQuantity,':maxQuan'=>$maxQuantity,':pid'=>$last_id);
         $result = $updateDiscount->execute($productInfo);
       }
      }
