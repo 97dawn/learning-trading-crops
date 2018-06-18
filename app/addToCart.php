@@ -18,6 +18,9 @@
     if($row['remaining'] < $quantity){
         echo("can't store");
     }
+    else if($quantity == 0){
+        echo("zero");
+    }
     else{
         // Check whether the buyer had already stored the same product in the cart
         $sql = "SELECT * FROM STORES WHERE pid=".$pid.";";

@@ -18,6 +18,9 @@
     if($row['remaining'] < $quantity){
         echo(json_encode(["response"=>"can't buy"]));
     }
+    else if($quantity == 0){
+        echo(json_encode(["response"=>"zero"]));
+    }
     else{
 
         $newRemaining = $row["remaining"] - $quantity;
