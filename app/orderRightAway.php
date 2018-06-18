@@ -15,49 +15,55 @@
     $sql = "SELECT * FROM PRODUCTS WHERE pid=".$pid.";";
     $result = $conn->query($sql) or die ("Error: " . mysql_error());
     $row = $result->fetch_assoc();
-    $newRemaining = $row["remaining"] - $quantity;
-    
-    // Find is organic and get extra charge
-    $sql = "SELECT * FROM ADDITIONAL_CHARGES WHERE organicTrue='".$row["organicTrue"]."';";
-    $result = $conn->query($sql) or die ("Error: " . mysql_error());
-    $extraCharge = $result->fetch_assoc()["extraCharge"];
-
-    // Get discount rate
-    $discountRate = 0;
-    $sql = "SELECT * FROM DISCOUNT_RATES WHERE pid=".$pid.";";
-    $result = $conn->query($sql) or die ("Error: " . mysql_error());
-    while($row = $result->fetch_assoc()){
-        if($row["maxQuantity"]==NULL){
-            if($row["minQuantity"]<=$quantity){
-                $discountRate = intval($row["rate"]);
-                break;
-            }
-        }
-        else{
-            if($row["minQuantity"]<=$quantity && $quantity<=$row["maxQuantity"]){
-                $discountRate = intval($row["rate"]);
-                break;
-            }
-        }                
-    }
-
-    // Get total price
-    $totalPrice = intval($quantity * $pricePerUnit * (100 - $discountRate) / 100 + $extraCharge);
-    
-    // Put row in Orders Table
-    session_start();
-    date_default_timezone_set("Asia/Seoul");
-    $conn->autocommit(FALSE);
-    $sql = "INSERT INTO ORDERS(pid,bid,amount,totalPrice,orderDate) VALUES(".$pid.",'".$_SESSION["username"]."',".$quantity.",".$totalPrice.",'".date("Y-m-d H:i:s")."')";
-    $conn->query($sql);
-    $sql = "UPDATE PRODUCTS SET remaining =".$newRemaining." WHERE pid =".$pid.";";
-    $conn->query($sql);
-    if (!$conn->commit()) { 
-        $conn->rollback();
-        echo(json_encode(["reponse"=>"false"]));
+    if($row['remaining'] < $quantity){
+        echo(json_encode(["response"=>"can't buy"]));
     }
     else{
-        echo(json_encode(["response"=>"true","totalPrice" => $totalPrice, "remaining" => $newRemaining]));
+
+        $newRemaining = $row["remaining"] - $quantity;
+    
+        // Find is organic and get extra charge
+        $sql = "SELECT * FROM ADDITIONAL_CHARGES WHERE organicTrue='".$row["organicTrue"]."';";
+        $result = $conn->query($sql) or die ("Error: " . mysql_error());
+        $extraCharge = $result->fetch_assoc()["extraCharge"];
+    
+        // Get discount rate
+        $discountRate = 0;
+        $sql = "SELECT * FROM DISCOUNT_RATES WHERE pid=".$pid.";";
+        $result = $conn->query($sql) or die ("Error: " . mysql_error());
+        while($row = $result->fetch_assoc()){
+            if($row["maxQuantity"]==NULL){
+                if($row["minQuantity"]<=$quantity){
+                    $discountRate = intval($row["rate"]);
+                    break;
+                }
+            }
+            else{
+                if($row["minQuantity"]<=$quantity && $quantity<=$row["maxQuantity"]){
+                    $discountRate = intval($row["rate"]);
+                    break;
+                }
+            }                
+        }
+    
+        // Get total price
+        $totalPrice = intval($quantity * $pricePerUnit * (100 - $discountRate) / 100 + $extraCharge);
+        
+        // Put row in Orders Table
+        session_start();
+        date_default_timezone_set("Asia/Seoul");
+        $conn->autocommit(FALSE);
+        $sql = "INSERT INTO ORDERS(pid,bid,amount,totalPrice,orderDate) VALUES(".$pid.",'".$_SESSION["username"]."',".$quantity.",".$totalPrice.",'".date("Y-m-d H:i:s")."')";
+        $conn->query($sql);
+        $sql = "UPDATE PRODUCTS SET remaining =".$newRemaining." WHERE pid =".$pid.";";
+        $conn->query($sql);
+        if (!$conn->commit()) { 
+            $conn->rollback();
+            echo(json_encode(["response"=>"false"]));
+        }
+        else{
+            echo(json_encode(["response"=>"true","totalPrice" => $totalPrice, "remaining" => $newRemaining]));
+        }
     }
     $conn->close();
 
