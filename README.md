@@ -31,5 +31,3 @@ localhost/'folder'
 ```
 ### If you are using Mac
 
-### If you don't want to run the website on localhost
-https://thegreatestfarmer.000webhostapp.com/
