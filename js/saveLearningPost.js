@@ -9,6 +9,9 @@ function saveLearningPost(post){
             if(answer == "true"){
                 alert("Successfully saved the post.");
             }
+            else if (answer == "already"){
+                alert("You already saved this post.");
+            }
             else{
                 alert("ERROR");
             }

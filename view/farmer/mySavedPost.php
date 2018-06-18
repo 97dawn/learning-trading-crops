@@ -103,7 +103,8 @@ $conn = new mysqli($hn, $un, $pw, $db);
           $row1 = $result1->fetch_assoc();
           $farmer = $row1['authorName'];
           $cropName = $row1['cropName'];
-          echo "<button style=\"width: 250px;text-decoration: underline;\" onclick=\"showSavedPosts($postid);\" >".$cropName." from ".$farmer."</button>";
+          $title = $row1['title'];
+          echo "<button style=\"width: 250px;text-decoration: underline;\" onclick=\"showSavedPosts($postid);\" >".$title."</button>";
         }
         $conn->close();
       ?>
