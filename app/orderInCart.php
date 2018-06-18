@@ -25,21 +25,26 @@ $totalPrice = intval(doubleval($row['rawTotalPrice'])*(1-intval($row['discountRa
 $sql = "SELECT * FROM PRODUCTS WHERE pid=".$pid.";";
 $result = $conn->query($sql) or die ("Error: " . mysql_error());
 $row = $result->fetch_assoc();
-$newRemaining = $row["remaining"] - $amount;
-
-$conn->autocommit(FALSE);
-$sql = "DELETE FROM STORES WHERE cartid=".$cartid.";";
-$conn->query($sql);
-$sql = "INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (".$pid.",'".$bid."',".$amount.",".$totalPrice.",'".date("Y-m-d H:i:s")."');";
-$conn->query($sql);
-$sql = "UPDATE PRODUCTS SET remaining =".$newRemaining." WHERE pid =".$pid.";";
-$conn->query($sql);
-if (!$conn->commit()) { 
-    $conn->rollback();
-    echo("fail");
+if($row['remaining'] < $amount){
+    echo("can't buy");
 }
 else{
-    echo("success");
+    $newRemaining = $row["remaining"] - $amount;
+
+    $conn->autocommit(FALSE);
+    $sql = "DELETE FROM STORES WHERE cartid=".$cartid.";";
+    $conn->query($sql);
+    $sql = "INSERT INTO ORDERS(pid, bid, amount, totalPrice, orderDate) VALUES (".$pid.",'".$bid."',".$amount.",".$totalPrice.",'".date("Y-m-d H:i:s")."');";
+    $conn->query($sql);
+    $sql = "UPDATE PRODUCTS SET remaining =".$newRemaining." WHERE pid =".$pid.";";
+    $conn->query($sql);
+    if (!$conn->commit()) { 
+        $conn->rollback();
+        echo("fail");
+    }
+    else{
+        echo("success");
+    }
 }
 $conn->close();
 ?>
