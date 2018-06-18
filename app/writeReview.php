@@ -24,29 +24,33 @@
         $sql = "SELECT avgRating FROM FARMERS WHERE fid='".$farmer."';";
         $result = $conn->query($sql) or die ("Error: " . mysql_error());
         $oldFarmerRating = $result->fetch_assoc()["avgRating"];
-
+        if($oldFarmerRating == NULL){
+            $oldFarmerRating = 0;
+        }
 
         $sql = "SELECT avgRating FROM PRODUCTS WHERE pid=".$pid.";";
         $result = $conn->query($sql) or die ("Error: " . mysql_error());
         $oldProductRating = $result->fetch_assoc()["avgRating"];
+        if($oldProductRating == NULL){
+            $oldProductRating = 0;
+        }
 
         $sql = "SELECT pid FROM PRODUCTS WHERE fid='".$farmer."';";
         $result = $conn->query($sql) or die ("Error: " . mysql_error());
-        $numOfCommentsOnFarmer = 0;
+        $numOfCommentsOnFarmer = 1;
         while($row = $result->fetch_assoc()){
             $sql = "SELECT COUNT(pid) as numOfCommentsOnProduct FROM PRODUCT_REVIEWS WHERE pid=".$row["pid"].";";
             $result = $conn->query($sql) or die ("Error: " . mysql_error());
             $data=$result->fetch_assoc();
-            $numOfCommentsOnFarmer += $data['numOfCommentsOnProduct']+1;
+            $numOfCommentsOnFarmer += $data['numOfCommentsOnProduct'];
         }
-
         $sql = "SELECT COUNT(pid) as numOfCommentsOnProduct FROM PRODUCT_REVIEWS WHERE pid=".$pid.";";
         $result = $conn->query($sql) or die ("Error: " . mysql_error());
         $data=$result->fetch_assoc();
         $numOfCommentsOnProduct = $data['numOfCommentsOnProduct']+1;
 
-        $newFarmerRating = round(($oldFarmerRating + $rating) / $numOfCommentsOnFarmer);
-        $newProductRating = round(($oldProductRating + $rating) / $numOfCommentsOnProduct);
+        $newFarmerRating = round(($oldFarmerRating * ($numOfCommentsOnFarmer-1) + $rating) / $numOfCommentsOnFarmer);
+        $newProductRating = round(($oldProductRating * ($numOfCommentsOnProduct -1) + $rating) / $numOfCommentsOnProduct);
         
         $sql = "UPDATE PRODUCTS SET avgRating=".$newProductRating." WHERE pid=".$pid.";";
         $result = $conn->query($sql) or die ("Error: " . mysql_error());
