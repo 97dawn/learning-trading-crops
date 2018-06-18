@@ -14,14 +14,36 @@ $('document').ready(function () {
         required: true
       },
       price: {
+        min:0.01,
         required: true,
         number: true
       },
       discountrate: {
-        required: false
+        min:0.01,
+        required: false,
+        number: true
       },
       discountmin: {
-        required: false
+        min:0.01,
+        required: false,
+        number: true
+      }
+    },
+    messages:{
+      crop: "Please enter the Type of Crop",
+      organic:"Please specify if Product is Organic",
+      price: {
+        min:"Please enter a valid Positive number",
+        required: "Please enter the Price",
+        number: "Please enter a valid Positive number"
+      },
+      discountrate: {
+        min:"Please enter a valid Positive number",
+        number: "Please enter a valid Positive number"
+      },
+      discountmin: {
+        min:"Please enter a valid Positive number",
+        number: "Please enter a valid Positive number"
       }
     },
     submitHandler: submitForm

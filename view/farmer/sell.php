@@ -123,11 +123,11 @@
 
           <div class="row form-group">
             <div class="col-md-3">
-              <label for="discountrate">Discount Rate:</label>
+              <label for="discountrate">Discount Rate(%):</label>
               <br>
             </div>
             <div class="col-md-3">
-              <label for="discount_min">Min Quantity:</label>
+              <label for="discount_min">Min Quantity(Unit):</label>
               <br>
             </div>
             <label>**Please enter valid values and in increments, otherwise we cannot record your discount rates**</label>

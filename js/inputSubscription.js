@@ -7,17 +7,38 @@ $('document').ready(function()
         required: true
       },
       remaining: {
+        min:0.01,
         required: true,
         number: true
       },
       subPeriod: {
+        min:0.01,
         required: true,
         number: true
       },
       price: {
+        min:0.01,
         required: true,
         number:true
+      }
+    },
+    messages:{
+      crop: "Please enter the Type of Crop",
+      price: {
+        min:"Please enter a valid Positive number",
+        required: "Please enter the Price",
+        number: "Please enter a valid Positive number"
       },
+      subPeriod: {
+        min:"Please enter a valid Positive number",
+        required: "Please enter the Subscription Period",
+        number: "Please enter a valid Positive number"
+      },
+      remaining: {
+        min:"Please enter a valid Positive number",
+        number: "Please enter a valid Positive number",
+        required: "Please enter the Quantity per Subscription"
+      }
     },
     submitHandler: submitForm
 
@@ -43,7 +64,7 @@ $('document').ready(function()
         if(data=="entered")
         {
           alert("You've successfully added this subscription.");
-          $("#input-post")[0].reset();
+          $("#input-subscription")[0].reset();
         }
         else {
           $("#error").fadeIn(1000, function(){
