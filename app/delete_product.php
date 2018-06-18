@@ -12,6 +12,26 @@ session_start();
 
 $conn->autocommit(FALSE);
 $sql = "DELETE FROM PRODUCTS WHERE pid=".$pid.";";
+$conn->query($sql);
+// Calculate farmer's rating
+$sql = "SELECT fid FROM PRODUCTS WHERE pid=".$pid.";";
+$result = $conn->query($sql) or die ("Error: " . mysql_error());
+$farmer = $result->fetch_assoc()["fid"];
+
+$totalRating=0;
+$sql = "SELECT pid FROM PRODUCTS WHERE fid='".$farmer."';";
+$result = $conn->query($sql) or die ("Error: " . mysql_error());
+$cnt = 0;
+while($row = $result->fetch_assoc()){
+    $sql = "SELECT SUM(rating) as sumOfRating,COUNT(pid) as numOfCommentsOnProduct FROM PRODUCT_REVIEWS WHERE pid=".$row["pid"].";";
+    $result = $conn->query($sql) or die ("Error: " . mysql_error());
+    $data=$result->fetch_assoc();
+    $totalRating += $data['sumOfRating'];
+    $cnt += $data['numOfCommentsOnProduct'];
+}
+$farmerRating = round($totalRating / $cnt);
+
+$sql = "UPDATE FARMERS SET avgRating=".$farmerRating." WHERE fid='".$farmer."';";
 
 $conn->query($sql);
 if (!$conn->commit()) { 

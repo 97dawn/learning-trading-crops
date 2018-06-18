@@ -19,6 +19,9 @@ function showFarmerProducts(pid){
             var allDiscount = json.discounts;
             var displayDiscount = "";
             var displayRepu = json.repu;
+            if(displayRepu==null){
+                displayRepu = "This product currently has no rating.";
+            }
             var displayOrganic = json.organic;
             if(json.organic==0){
                 displayOrganic = "No";
