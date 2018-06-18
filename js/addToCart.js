@@ -20,6 +20,9 @@ function addToCart(product){
             else if(answer == "false"){
                 alert("ERROR.");
             }
+            else if(answer == "zero"){
+                alert("You can't add 0 product.");
+            }
             else{
                 alert("You can't store this amount of product.");
             }
