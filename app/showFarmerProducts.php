@@ -18,6 +18,11 @@ $pricePerUnit = $row['pricePerUnit'];
 $organic = $row['organicTrue'];
 $rating = $row['avgRating'];
 
+$sql = "SELECT * FROM PRODUCT_REPUTATIONS WHERE avgRating=".intval($rating).";";
+$result = $conn->query($sql) or die ("Error: " . mysql_error());
+$repu = $result->fetch_assoc()['productRep'];
+
+
 $sql = "SELECT * FROM DISCOUNT_RATES WHERE pid=".$pid.";";
 $result = $conn->query($sql) or die ("Error: " . mysql_error());
 $discounts = array();
@@ -42,7 +47,7 @@ if($num_rows>0){
     }
 }
 $json = ["cropName"=>$cropName,"remaining"=>$remaining, "pricePerUnit"=>$pricePerUnit,
-"organic"=>$organic, "rating"=>$rating, "discounts"=>$discounts, "subscriberNum"=>$num_rows,
+"organic"=>$organic, "repu"=>$repu, "discounts"=>$discounts, "subscriberNum"=>$num_rows,
 "subscribers"=>$subscribers
 ];
 $conn->close();
