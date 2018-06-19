@@ -24,13 +24,21 @@ $row =  $result->fetch_assoc();
 $avgRating = $row['avgRating'];
 $cropName = $row['cropName'];
 $farmer = $row['fid'];
+if($avgRating == NULL){
+    $repu = "Not reputation yet.";
+}
+else{
+    $sql = "SELECT * FROM PRODUCT_REPUTATIONS WHERE avgRating=".intval($avgRating).";";
+    $result = $conn->query($sql) or die ("Error: " . mysql_error());
+    $repu = $result->fetch_assoc()['productRep'];
+}
 
 $sql = "SELECT * FROM CROPS WHERE cropName='".$cropName."';";
 $result = $conn->query($sql) or die ("Error: " . mysql_error());
 $unit = $result->fetch_assoc()['unitToSell'];
 
 $json = ["amount"=>$amount, "rawTotalPrice"=>$rawTotalPrice, "unit"=>$unit,
- "discountRate" =>$discountRate , "extraCharge"=>$extraCharge,"totalPrice"=>$totalPrice, "avgRating"=>$avgRating,
+ "discountRate" =>$discountRate , "extraCharge"=>$extraCharge,"totalPrice"=>$totalPrice, "repu"=>$repu,
 "cropName" => $cropName, "farmer" => $farmer];
 $conn->close();
 echo(json_encode($json));

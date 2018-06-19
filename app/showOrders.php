@@ -28,9 +28,15 @@ $farmer = $row['fid'];
 $avgRating = $row['avgRating'];
 $cropName = $row['cropName'];
 
-$sql = "SELECT * FROM PRODUCT_REPUTATIONS WHERE avgRating=".intval($avgRating).";";
-$result = $conn->query($sql) or die ("Error: " . mysql_error());
-$repu = $result->fetch_assoc()['productRep'];
+if($avgRating == NULL){
+    $repu = "Not reputation yet.";
+}
+else{
+    $sql = "SELECT * FROM PRODUCT_REPUTATIONS WHERE avgRating=".intval($avgRating).";";
+    $result = $conn->query($sql) or die ("Error: " . mysql_error());
+    $repu = $result->fetch_assoc()['productRep'];
+}
+
 
 $sql = "SELECT * FROM CROPS WHERE cropName='".$cropName."';";
 $result = $conn->query($sql) or die ("Error: " . mysql_error());
