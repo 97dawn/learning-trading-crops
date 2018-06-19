@@ -14,7 +14,7 @@ function showStores(cartid){
             content.innerHTML += "<div> <label>Discount rate: </label> "+json.discountRate+"%</div>";
             content.innerHTML += "<div> <label>Extra charge: </label> "+json.extraCharge+" won</div>";
             content.innerHTML += "<div> <label>Expected final total price: </label> "+json.totalPrice+" won</div>";
-            content.innerHTML += "<div> <label>Product rating: </label> "+json.avgRating+"</div>";
+            content.innerHTML += "<div> <label>Product reputation: </label> "+json.repu+"</div>";
             content.innerHTML += "<button onclick=\"orderInCart("+cartid+");\" style=\"background-color:red;width:100px;text-align:center;color:white;\">Order</button>";
           }
     }

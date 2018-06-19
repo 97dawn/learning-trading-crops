@@ -36,8 +36,8 @@ if($_POST['submit'])
       $query4->execute(array(":phone"=>$phone));
       $count4 = $query4->rowCount();
       if ($count==0 && $count1==0 && $count2==0 && $count3==0 && $count4==0){
-        $user_last 	= trim($_POST['fname']);
-        $user_first 	= trim($_POST['lname']);
+        $user_last 	= trim($_POST['lname']);
+        $user_first 	= trim($_POST['fname']);
         $phone 	= trim($_POST['phonenumber']);
         $email 	= trim($_POST['email']);
         $password 	= trim($_POST['password']);
@@ -45,7 +45,7 @@ if($_POST['submit'])
         //$password 	= password_hash( $user_password, PASSWORD_BCRYPT, array('cost' => 11));
         $streetInfo 	= trim($_POST['streetInfo']);
         $city	= trim($_POST['city']);
-        $defaultRating = 3;
+        $defaultRating = NULL;
         //$joining_date 	= date('Y-m-d H:i:s');
         if(!empty($_POST['membertype'])){
           $membertype = $_POST['membertype'];
