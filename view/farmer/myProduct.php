@@ -94,7 +94,7 @@ $conn = new mysqli($hn, $un, $pw, $db);
     
     </div>
     <div class="container" id="content" style="height:100%; width:60%;float:right;">
-      
+
     </div>
   </div>
 
