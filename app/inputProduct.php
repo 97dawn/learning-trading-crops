@@ -23,6 +23,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
   $price 	= $formData[1]['value'];
   $quantity =  $formData[2]['value'];
   $organic = $formData[3]['value'];
+  if($organic == "true"){
+    $organic = 1;
+  }
+  else{
+    $organic = 0;
+  }
   $rating =  null;
   $did=0;
 
