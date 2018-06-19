@@ -111,17 +111,10 @@ $(".editdiscount").click(function() {
         $("#error").html('<span class="glyphicon glyphicon-transfer"></span> &nbsp; sending ...');
       },
       success: function (data) {
-        if(data=="entered")
-        {
           alert("You've successfully added this product.");
           $("#input-product")[0].reset();
           $(".discount").remove();
-        }
-        else {
-          $("#error").fadeIn(1000, function(){
-            $("#error").html('<div class="alert alert-danger"> <span></span> &nbsp; There has been an error in the server :(</div>');
-          });
-        }
+        
       }
     });
     return false;
